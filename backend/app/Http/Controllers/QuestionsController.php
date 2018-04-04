@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Sections;
 use App\Questions;
+use App\Dropdownvalues;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class QuestionsController extends Controller
 {
@@ -44,10 +46,19 @@ class QuestionsController extends Controller
         $last = $split[count($split)-1];
 
         $question = Questions::create($request->all());
-
         $question->update([
             'name' => $last . $question->id
         ]);
+        $type = $request->input('type');
+        if ($type == "Drop down") {
+            $array = array();
+            $mI = $request->input('dropdownvalues');
+            foreach ($mI as $input) {
+                $array[] = ['nameid' => $question->id, 'name' => $input];
+            }
+
+            DB::table('dropdownvalues')->insert($array);
+        }
         return redirect()->back();
     }
 

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Sections;
 use App\Questions;
+use App\Dropdownvalues;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ApiController extends Controller
 {
@@ -15,18 +17,27 @@ class ApiController extends Controller
      */
     public function index()
     {
-        $array = new Questions;
-
-        $questions = Questions::all();
+        $array = array();
         $sections = Sections::all();
+        $drop = Dropdownvalues::all();
 
-        foreach ($questions as $index => $q) {
-            foreach ($sections as $key => $s) {
-                if ($q->section == $s->id) {
-                    $array->append($q . $s);
-                }       
-            }
+        $questions = DB::table('questions')
+            ->join('sections', 'sections.id', '=', 'questions.section')
+            ->join('dropdownvalues', 'questions.id', '=', 'dropdownvalues.nameid')
+            ->select('sections.id','sections.name as topname','questions.id as qid' ,'questions.type','questions.name','questions.title as question','questions.ifForEach','questions.section as sectionid', 'dropdownvalues.name as dropname')
+            ->get();
+
+        foreach ($sections as $section) {
+            $group = array();
+            $group["title"] = $section->name; 
+            foreach ($questions as $question) {
+                if($section->id == $question->sectionid){
+                    $group[$question->name] = ['type' => $question->type,'question'=> $question->question, 'choices' => $drop->whereIn('nameid',[$question->qid])->pluck('name')];
+                }
+            }   
+            $array[] = $group; 
         }
+
         return response()->json(['questions' => $array]);
     }
 
