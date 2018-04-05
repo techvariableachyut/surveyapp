@@ -45,7 +45,12 @@ class QuestionsController extends Controller
         $split = explode(" ", $str);
         $last = $split[count($split)-1];
 
-        $question = Questions::create($request->all());
+        $question = Questions::create([
+            "section" => $request->input('section'),
+            "title" => $request->input('title'),
+            "type" => $request->input('type'),
+            "ifForEach" => $request->input('ifForEach')
+        ]);
         $question->update([
             'name' => $last . $question->id
         ]);

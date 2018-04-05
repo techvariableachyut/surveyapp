@@ -1,128 +1,85 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http:/www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en">
-<head>
-  
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
+<!DOCTYPE html>
+<html>
 
-  <title>Survey</title>
-  <script src="/js/jquery.min.js"></script>
+<head>
+    <meta charset="utf-8" />
+    <title>survey.js Editor Test </title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-debug.js"></script>
+    <script src="https://unpkg.com/survey-knockout"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/worker-json.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/mode-json.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+    <script src="../package/surveyeditor.js"></script>
+    <link rel="stylesheet" href="../package/surveyeditor.css" />
+
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./index.css">
+
+
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet"
+    />
+
+    <script src="https://unpkg.com/sortablejs@1.7.0/Sortable.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/image-picker/0.3.0/image-picker.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/image-picker/0.3.0/image-picker.css" />
+
+    <script src="https://unpkg.com/nouislider@9.2.0"></script>
+    <script src="https://unpkg.com/wnumb@1.1.0"></script>
+    <link href="https://unpkg.com/nouislider@9.2.0/distribute/nouislider.min.css" rel="stylesheet" />
+
+    <script src="https://unpkg.com/signature_pad@2.2.0/dist/signature_pad.min.js"></script>
+
+    <script src="https://rawgit.com/RobinHerbots/Inputmask/4.x/dist/jquery.inputmask.bundle.js"></script>
+    <script src="https://rawgit.com/RobinHerbots/Inputmask/4.x/dist/inputmask/phone-codes/phone.js"></script>
+
+    <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+
+    <script src="https://unpkg.com/icheck@1.0.2"></script>
+    <link rel="stylesheet" href="https://unpkg.com/icheck@1.0.2/skins/square/blue.css">
+
+
+    <script src="https://unpkg.com/jquery-bar-rating"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <!-- Themes -->
+    <link rel="stylesheet" href="https://unpkg.com/jquery-bar-rating@1.2.2/dist/themes/bars-1to10.css" />
+    <link rel="stylesheet" href="https://unpkg.com/jquery-bar-rating@1.2.2/dist/themes/bars-movie.css" />
+    <link rel="stylesheet" href="https://unpkg.com/jquery-bar-rating@1.2.2/dist/themes/bars-square.css" />
+    <link rel="stylesheet" href="https://unpkg.com/jquery-bar-rating@1.2.2/dist/themes/bars-pill.css" />
+    <link rel="stylesheet" href="https://unpkg.com/jquery-bar-rating@1.2.2/dist/themes/bars-reversed.css" />
+    <link rel="stylesheet" href="https://unpkg.com/jquery-bar-rating@1.2.2/dist/themes/bars-horizontal.css" />
+    <link rel="stylesheet" href="https://unpkg.com/jquery-bar-rating@1.2.2/dist/themes/fontawesome-stars.css" />
+    <link rel="stylesheet" href="https://unpkg.com/jquery-bar-rating@1.2.2/dist/themes/css-stars.css" />
+    <link rel="stylesheet" href="https://unpkg.com/jquery-bar-rating@1.2.2/dist/themes/bootstrap-stars.css" />
+    <link rel="stylesheet" href="https://unpkg.com/jquery-bar-rating@1.2.2/dist/themes/fontawesome-stars-o.css" />
+
+    <script src="https://unpkg.com/surveyjs-widgets"></script>
 </head>
 
 <body>
-
-<style type="text/css">
-	.container{
-		width: 70%;
-		margin: 5% 15%;
-	}
-	.input,select{
-		border:1px solid #ccc;
-		height: 2em;
-		margin:5px 0px;
-		padding: 1px 10px;
-		border-radius: 2px;
-		width: 30%;
-	}
-	.miniInput{
-		padding: 2px 5px;
-		background: #f4f4f4;
-		border: 1px solid #ccc;
-		position: relative;
-		left: 2em;
-	}
-	.addmore{
-		padding: 2px 5px;
-		background: #f4f4f4;
-		border-radius:2px;
-		color: black;
-		text-align: center;
-		width: 30%;
-		display: none;
-	}
-	.addmore:hover{
-		cursor: pointer;
-	}
-</style>
-<div class="container">
-	<form method="post" action='{{ route("questions.store") }}'>
-		<div>
-			<select name="section">
-				@foreach($sections as $section)
-					<option value="{{ $section->id }}">{{ $section->name }}</option>
-				@endforeach
-			</select>
-		</div>
-		<div>
-			<input class="input" type="text" name="title" placeholder="Input title">
-		</div>
-		<div>
-			<select name="type" id="type">
-				<option>Select type</option>
-				<option>Drop down</option>
-				<option>Textbox</option>
-				<option>Time selector</option>
-				<option>Date selector</option>
-				<option>Drop down</option>
-				<option>Drop down -- choose one only</option>
-			</select>
-		</div>
-
-		<div class="dynamicDom">
-			<div class="addmore">+</div>
-		</div>
-
-		<div>
-			<label>Questions for each if required?</label>
-			<input type="radio" name="ifForEach" value="true">Yes
-			<input type="radio" name="ifForEach" value="false">No
-		</div>
-		{{ csrf_field() }}
-		<button>Submit</button>
-	</form>
-</div>
-<script>
-(function(){
-    var toggle = {
-        init: function(){
-            this.cacheDom();
-            this.bindEvent();
-            this.render();
-        },
-        cacheDom: function(){
-            this.$type = $("#type");
-            this.$dynamicDom = $(".dynamicDom");
-            this.$addmore = this.$dynamicDom.find(".addmore");
-            // this.$account = this.$nav.find(".myaccount");
-            // this.$showaccount = this.$nav.find(".showaccount");
-        },
-        bindEvent:function(){
-            this.$type.change(function() {
-            	var str = $("#type option:selected" ).text();
-			  	if (str == "Drop down"){
-			  		renderInDom();
-			  		$(".addmore").show();
-			  	}
-			});
-
-			this.$addmore.click(function(){
-				renderInDom();
-			});
-        },
-        render:function(){
-            // this.$showaccount.toggle();
+    <div id="manage" data-bind="template: 'surveys-manage'"></div>
+    <div id="editorElement"></div>
+    <script type="text/javascript">
+        if (!window["%hammerhead%"]) {
+            Survey.Survey.cssType = "bootstrap";
+            Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
+            //Hide json tab and allow to drop only three questions
+            var editorOptions = {
+                questionTypes: ["text", "radiogroup", "dropdown"],
+                showJSONEditorTab: false
+            };
+            var editor = new SurveyEditor.SurveyEditor("editorElement", editorOptions);
         }
-    }
-
-    toggle.init();
-})()
-
-function renderInDom(){
-	var dom = $(".dynamicDom");
-	dom.append("<input type='text' name='dropdownvalues[]' class='miniInput' required><br>");
-}
-</script>
+    </script>
 </body>
+
 </html>
