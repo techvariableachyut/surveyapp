@@ -40,58 +40,23 @@ class QuestionsController extends Controller{
     public function store(Request $request)
     {   
         $json = json_decode($request->input('Json'));
-        $pageno = array();
-        $inputType = array();
-        $questionNo = array();
-        $questionTitle = array();
 
-        foreach ($json as $jsonindex => $jsonvalue) {
-            if($jsonindex === 'pages'){
-                foreach ($jsonvalue as $pagesindex => $pagesvalue) {
-                    $pageno = $pagesvalue->name;
-                    foreach ($pagesvalue->elements as $elementIndex => $elementValue) {
-                        $inputType[] = $elementValue;
-                        $questionNo[] = $elementValue;
-                        $questionTitle[] = $elementValue;
-                        
-                    }
-                }
-            }
+        $question = Questions::find($json->pages[0]->name);
+        if ($question == null) {
+            // dd($json);
+            $newjson = Questions::create([
+                'page' => $json->pages[0]->name,
+                'json' => $request->input('Json')
+            ]);
+        }else{
+            $newjson = Questions::where('page',$json->pages[0]->name)->update([
+                'page' => $json->pages[0]->name,
+                'json' => $request->input('Json')
+            ]);
         }
 
-
-        return response()->json([
-            'pageno' => $pageno,
-            'inputType' => $inputType,
-            'questionNo' => $questionNo,
-            'questionTitle' => $questionTitle
-        ]);
-        // $section = Sections::find($request->input('section'));
-
-        // $str = $section->name;
-        // $split = explode(" ", $str);
-        // $last = $split[count($split)-1];
-
-        // $question = Questions::create([
-        //     "section" => $request->input('section'),
-        //     "title" => $request->input('title'),
-        //     "type" => $request->input('type'),
-        //     "ifForEach" => $request->input('ifForEach')
-        // ]);
-        // $question->update([
-        //     'name' => $last . $question->id
-        // ]);
-        // $type = $request->input('type');
-        // if ($type == "Drop down") {
-        //     $array = array();
-        //     $mI = $request->input('dropdownvalues');
-        //     foreach ($mI as $input) {
-        //         $array[] = ['nameid' => $question->id, 'name' => $input];
-        //     }
-
-        //     DB::table('dropdownvalues')->insert($array);
-        // }
-        // return redirect()->back();
+        return response()->json(['json' => $newjson ]);
+        
     }
 
     /**
