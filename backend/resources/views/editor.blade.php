@@ -25,6 +25,11 @@
     <div class="survey-page-header">
         <div class="sv_main survey-page-header-content">
             <button onclick="window.location = '/'">&lt&nbspBack</button>
+            @if(Auth::guest())
+            <a href="/login" class="btn btn-success btn-sm">Login</a>
+            @else
+                {{ Auth::user()->name }}
+            @endif
         </div>
     </div>
     <div class="sv_main sv_frame sv_default_css">

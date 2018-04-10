@@ -15,10 +15,21 @@ class QuestionsController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $sections = Sections::all();
-        return view('questions.index',compact('sections'));
+    public function index(){
+
+        $newquestion = array();
+
+        $q = Questions::find("page1");
+        $questions = json_decode($q->json);
+
+        foreach ($questions->pages as $index => $question) {
+            // foreach ($question[0] as  $value) {
+                $newquestion[] = $question;
+            // }   
+                  
+        }
+
+        return response()->json(['response' => $newquestion, 'all' => $questions]);
     }
 
     /**
