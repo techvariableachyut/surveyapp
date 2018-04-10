@@ -1,26 +1,21 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('/survey/questions', 'Questions@questions')->name('questions');
-
-Route::resource('sections', 'SectionsController');
-Route::resource('questions', 'QuestionsController');
 // Route::resource('api', 'ApiController');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::get('/create/question', function () {
 	if (Auth::guest()) {
-		return view('/login');
+		return view('auth.login');
 	}
     return view('editor');
 });
-
-
-
 Route::post('/changeJson', 'QuestionsController@store')->name('questions');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('questions', 'QuestionsController');
+Route::resource('survey', 'SurveyController');

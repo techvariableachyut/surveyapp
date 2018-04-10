@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <a href="/create/question" class="btn btn-sm btn-success">Create question</a>
+
+                    <a href="/survey" class="btn btn-sm btn-success">Answer to survey</a>
                 </div>
             </div>
         </div>
