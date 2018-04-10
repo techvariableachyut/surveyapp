@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 10, 2018 at 07:56 AM
+-- Generation Time: Apr 10, 2018 at 08:36 AM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -21,6 +21,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `survey`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `answers`
+--
+
+DROP TABLE IF EXISTS `answers`;
+CREATE TABLE IF NOT EXISTS `answers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `surveyId` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `answer` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -70,20 +85,20 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 DROP TABLE IF EXISTS `questions`;
 CREATE TABLE IF NOT EXISTS `questions` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `section` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `json` json NOT NULL,
-  `page` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `questions`
 --
 
-INSERT INTO `questions` (`id`, `section`, `json`, `page`, `created_at`, `updated_at`) VALUES
-(1, NULL, '{\"pages\": [{\"name\": \"page1\", \"title\": \"There needs to be a title\", \"elements\": [{\"name\": \"question1\", \"type\": \"text\", \"title\": \"Father of the nation?\"}, {\"name\": \"question2\", \"type\": \"checkbox\", \"title\": \"Prime Minister of India?\", \"choices\": [\"item1\", \"item2\", \"item3\"]}, {\"name\": \"question3\", \"type\": \"dropdown\", \"title\": \"President of India?\", \"choices\": [\"item1\", \"item2\", \"item3\"]}], \"description\": \"Description of the country\"}, {\"name\": \"page2\", \"elements\": [{\"name\": \"question4\", \"type\": \"text\", \"title\": \"Mother of the nation?\"}]}], \"title\": \"About Country\"}', 'page1', '2018-04-10 13:01:01', '2018-04-10 13:54:53');
+INSERT INTO `questions` (`id`, `token`, `json`, `created_at`, `updated_at`) VALUES
+(1, 'QmxhIGJsYSBibGE=', '{\"pages\": [{\"name\": \"page1\", \"elements\": [{\"name\": \"question1\", \"type\": \"text\"}, {\"name\": \"question2\", \"type\": \"checkbox\", \"choices\": [\"item1\", \"item2\", \"item3\"]}, {\"name\": \"question3\", \"type\": \"radiogroup\", \"choices\": [\"item1\", \"item2\", \"item3\"]}, {\"name\": \"question4\", \"type\": \"dropdown\", \"choices\": [\"item1\", \"item2\", \"item3\"]}, {\"name\": \"question5\", \"type\": \"dropdown\", \"choices\": [\"item1\", \"item2\", \"item3\"]}]}], \"title\": \"Bla bla bla\"}', '2018-04-10 15:34:31', '2018-04-10 15:35:27'),
+(2, 'VGVzdCB0aGlzIHJlYWwgc2hpdA==', '{\"pages\": [{\"name\": \"page1\"}], \"title\": \"Test this real shit\"}', '2018-04-10 15:36:17', '2018-04-10 15:36:17');
 
 -- --------------------------------------------------------
 

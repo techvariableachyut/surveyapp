@@ -52,16 +52,20 @@ class QuestionsController extends Controller{
     {   
         $json = json_decode($request->input('Json'));
 
-        $question = Questions::find($json->pages[0]->name);
+        if (!$json->title) {
+            return response()->json(['error' => "Title not set."]);
+        }
+        $token = base64_encode($json->title);
+
+        $question = Questions::find($token);
         if ($question == null) {
             // dd($json);
             $newjson = Questions::create([
-                'page' => $json->pages[0]->name,
+                'token' => $token,
                 'json' => $request->input('Json')
             ]);
         }else{
-            $newjson = Questions::where('page',$json->pages[0]->name)->update([
-                'page' => $json->pages[0]->name,
+            $newjson = Questions::where('token',$token)->update([
                 'json' => $request->input('Json')
             ]);
         }
