@@ -33,7 +33,9 @@ Route::get('/lazy/survey/answer', function () {
 	Mail::to($order)->send(new SaveAndContinue($questions));
 });
 
-
+Route::get('/survey/answer/store', function(){
+	return response()->json(['response' => true]);
+});
 
 Route::get('/getSurvey', 'QuestionsController@getSurvey');
 Route::get('/survey/edit', 'QuestionsController@getSurvey');
