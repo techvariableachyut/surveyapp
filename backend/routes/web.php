@@ -13,12 +13,10 @@ Auth::routes();
 Route::get('/home', 'SurveyController@survey');
 
 
-Route::get('/create/question', function () {
-	if (Auth::guest()) {
-		return view('auth.login');
-	}
-    return view('editor');
-});
+Route::get('/create/question', 'QuestionsController@create');
+Route::get('/create/questions/{id}', 'QuestionsController@make')->name('create.questions');
+
+
 Route::post('/changeJson', 'QuestionsController@store')->name('questions');
 Route::resource('questions', 'QuestionsController');
 Route::resource('survey', 'SurveyController');
@@ -32,3 +30,4 @@ Route::get('/lazy/survey/answer', function () {
 
 
 Route::get('/getSurvey', 'QuestionsController@getSurvey');
+Route::get('/survey/edit', 'QuestionsController@getSurvey');

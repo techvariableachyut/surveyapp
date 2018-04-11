@@ -56,7 +56,7 @@ editor.saveSurveyFunc = function(saveNo, callback) {
   var xhr = new XMLHttpRequest();
   xhr.open(
     "POST",
-    Survey.dxSurveyService.serviceUrl + "/changeJson?accessKey=" + accessKey
+    Survey.dxSurveyService.serviceUrl + "/changeJson?accessKey=1"
   );
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhr.onload = function() {
