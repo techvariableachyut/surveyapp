@@ -19,6 +19,8 @@ Route::get('/create/question', function () {
 	}
     return view('editor');
 });
+
+
 Route::post('/changeJson', 'QuestionsController@store')->name('questions');
 Route::resource('questions', 'QuestionsController');
 Route::resource('survey', 'SurveyController');
