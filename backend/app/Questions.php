@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Questions extends Model
 {
     protected $fillable = [
-        'token', 'json'
+        'token','title','json'
     ];
 
     protected $primaryKey = "token";

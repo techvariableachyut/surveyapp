@@ -16,7 +16,9 @@ class SurveyController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('/survey/index');
+        $questions = Questions::all();
+        // dd($questions);
+        return view('survey.lists',compact('questions'));
     }
 
     /**
@@ -83,5 +85,9 @@ class SurveyController extends Controller{
     public function destroy($id)
     {
         //
+    }
+
+    public function survey(){
+        return view('survey.index');
     }
 }

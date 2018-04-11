@@ -10,7 +10,7 @@ Route::get('/', function () {
 // Route::resource('api', 'ApiController');
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'SurveyController@survey');
 
 
 Route::get('/create/question', function () {
@@ -28,3 +28,7 @@ Route::get('/lazy/survey/answer', function () {
 	$questions = \App\Questions::findOrFail("QmxhIGJsYSBibGE=");
 	Mail::to($order)->send(new SaveAndContinue($questions));
 });
+
+
+
+Route::get('/getSurvey', 'QuestionsController@getSurvey');

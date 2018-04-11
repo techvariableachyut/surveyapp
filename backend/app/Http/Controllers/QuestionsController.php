@@ -62,6 +62,7 @@ class QuestionsController extends Controller{
             // dd($json);
             $newjson = Questions::create([
                 'token' => $token,
+                'title' => $json->title,
                 'json' => $request->input('Json')
             ]);
         }else{
@@ -120,4 +121,11 @@ class QuestionsController extends Controller{
     {
         //
     }
+
+    public function getSurvey(Request $request){
+        // $token = base64_encode($id);
+        // $newjson = Questions::find($token);
+        return response()->json(['editquestions' => $request]);
+    }
+
 }
