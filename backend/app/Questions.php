@@ -10,5 +10,4 @@ class Questions extends Model
         'token','title','json'
     ];
 
-    protected $primaryKey = "token";
 }

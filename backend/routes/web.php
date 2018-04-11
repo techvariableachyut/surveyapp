@@ -20,7 +20,7 @@ Route::get('/create/question', function () {
     return view('editor');
 });
 Route::get('/create/question', 'QuestionsController@create');
-Route::get('/create/questions{surveyId?}', 'QuestionsController@make')->name('create.questions');
+Route::get('/create/questions/{surveyId?}', 'QuestionsController@make')->name('create.questions');
 
 
 Route::post('/changeJson', 'QuestionsController@store')->name('questions');

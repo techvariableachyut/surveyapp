@@ -17,7 +17,7 @@ class SurveyController extends Controller{
      */
     public function index(){
         $questions = Questions::all();
-        // dd($questions);
+        //dd($questions);
         return view('survey.lists',compact('questions'));
     }
 

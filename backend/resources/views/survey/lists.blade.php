@@ -22,7 +22,7 @@
                                       <td class="text-truncate"><a href="#">{{ $index + 1 }}</a></td>
                                       <td class="text-truncate">{{ $question->title }}</td>
                                       <td class="text-truncate">
-                                        <a href="" class="btn btn-sm btn-info">view</a> <a href="" class="btn btn-sm btn-warning">Edit</a> <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                        <a href="/create/questions/{{$question->token}}" class="btn btn-sm btn-info">view</a> <a href="/create/questions/{{$question->token}}" class="btn btn-sm btn-warning">Edit</a> <a href="" class="btn btn-sm btn-danger">Delete</a>
                                       </td>
                                   </tr>
                                 @endforeach

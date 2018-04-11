@@ -51,7 +51,7 @@ var surveyId = window.location.pathname.split('/');
 var editor = new SurveyEditor.SurveyEditor("editor");
 // var surveyId = decodeURI(getParams()["id"]);
 // surveyName = decodeURI(getParams()["name"]);
-editor.loadSurvey(surveyId);
+editor.loadSurvey(surveyId[3]);
 editor.saveSurveyFunc = function(saveNo, callback) {
   var xhr = new XMLHttpRequest();
   xhr.open(
