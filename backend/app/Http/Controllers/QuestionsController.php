@@ -39,7 +39,13 @@ class QuestionsController extends Controller{
      */
     public function create()
     {
-        //
+        $param = uniqid();
+        return redirect()->route('create.questions', ['id' => $param]);
+    }
+
+    public function make()
+    {
+        return view('editor');
     }
 
     /**
@@ -50,30 +56,31 @@ class QuestionsController extends Controller{
      */
     public function store(Request $request)
     {   
-        $json = json_decode($request->input('Json'));
+        $key = $_GET['accessKey'];
+        // $json = json_decode($request->input('Json'));
 
-        if (!$json->title) {
-            return response()->json(['error' => "Title not set."]);
-        }
-        $token = base64_encode($json->title);
+        // if (!$json->title) {
+        //     return response()->json(['error' => "Title not set."]);
+        // }
+        // $token = base64_encode($json->title);
 
-        $question = Questions::find($token);
-        if ($question == null) {
-            // dd($json);
-            $newjson = Questions::create([
-                'token' => $token,
-                'title' => $json->title,
-                'json' => $request->input('Json')
-            ]);
-        }else{
-            $newjson = Questions::where('token',$token)->update([
-                'json' => $request->input('Json')
-            ]);
-        }
+        // $question = Questions::find($token);
+        // if ($question == null) {
+        //     // dd($json);
+        //     $newjson = Questions::create([
+        //         'token' => $token,
+        //         'title' => $json->title,
+        //         'json' => $request->input('Json')
+        //     ]);
+        // }else{
+        //     $newjson = Questions::where('token',$token)->update([
+        //         'json' => $request->input('Json')
+        //     ]);
+        // }
 
 
 
-        return response()->json(['json' => $newjson ]);
+        return response()->json(['json' => $key ]);
         
     }
 
@@ -85,8 +92,9 @@ class QuestionsController extends Controller{
      */
     public function show($id)
     {
-        //
+        
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -133,4 +141,7 @@ class QuestionsController extends Controller{
     }
 
 
+    public function vieweditpage(){
+        return view('questions.view');
+    }
 }

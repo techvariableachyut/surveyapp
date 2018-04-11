@@ -47,16 +47,16 @@ function getParams() {
 }
 
 Survey.dxSurveyService.serviceUrl = "";
-var accessKey = "";
+var surveyId = window.location.pathname.split('/');
 var editor = new SurveyEditor.SurveyEditor("editor");
-var surveyId = decodeURI(getParams()["id"]);
-surveyName = decodeURI(getParams()["name"]);
+// var surveyId = decodeURI(getParams()["id"]);
+// surveyName = decodeURI(getParams()["name"]);
 editor.loadSurvey(surveyId);
 editor.saveSurveyFunc = function(saveNo, callback) {
   var xhr = new XMLHttpRequest();
   xhr.open(
     "POST",
-    Survey.dxSurveyService.serviceUrl + "/changeJson?accessKey=" + accessKey
+    Survey.dxSurveyService.serviceUrl + "/changeJson?surveyId="+surveyId[3]
   );
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhr.onload = function() {

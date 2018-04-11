@@ -19,6 +19,8 @@ Route::get('/create/question', function () {
 	}
     return view('editor');
 });
+Route::get('/create/question', 'QuestionsController@create');
+Route::get('/create/questions/{id}', 'QuestionsController@make')->name('create.questions');
 
 
 Route::post('/changeJson', 'QuestionsController@store')->name('questions');
@@ -34,3 +36,4 @@ Route::get('/lazy/survey/answer', function () {
 
 
 Route::get('/getSurvey', 'QuestionsController@getSurvey');
+Route::get('/survey/edit', 'QuestionsController@getSurvey');
