@@ -13,6 +13,12 @@ Auth::routes();
 Route::get('/home', 'SurveyController@survey');
 
 
+Route::get('/create/question', function () {
+	if (Auth::guest()) {
+		return view('auth.login');
+	}
+    return view('editor');
+});
 Route::get('/create/question', 'QuestionsController@create');
 Route::get('/create/questions{surveyId?}', 'QuestionsController@make')->name('create.questions');
 
