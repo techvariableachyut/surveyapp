@@ -1,5 +1,8 @@
 <?php
 
+use App\Mail\SaveAndContinue;
+use Illuminate\Support\Facades\Mail;
+
 Route::get('/', function () {
     return view('home');
 });
@@ -19,3 +22,9 @@ Route::get('/create/question', function () {
 Route::post('/changeJson', 'QuestionsController@store')->name('questions');
 Route::resource('questions', 'QuestionsController');
 Route::resource('survey', 'SurveyController');
+
+Route::get('/lazy/survey/answer', function () {
+	$order = \App\Answers::findOrFail(1);
+	$questions = \App\Questions::findOrFail("QmxhIGJsYSBibGE=");
+	Mail::to($order)->send(new SaveAndContinue($questions));
+});

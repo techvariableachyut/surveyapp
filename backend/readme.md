@@ -57,3 +57,11 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Survey Documentation
+
+**Routes**
+Incomplete survey: {"/lazy/survey/answer"}
+Displays the page to create question: {"/create/question"}
+Stores or updates questions to database: {"/changeJson"}
