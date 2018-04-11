@@ -40,7 +40,7 @@ class QuestionsController extends Controller{
     public function create()
     {
         $param = uniqid();
-        return redirect()->route('create.questions', ['id' => $param]);
+        return redirect()->route('create.questions', ['surveyId' => $param]);
     }
 
     public function make()

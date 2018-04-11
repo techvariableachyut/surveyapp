@@ -14,7 +14,7 @@ Route::get('/home', 'SurveyController@survey');
 
 
 Route::get('/create/question', 'QuestionsController@create');
-Route::get('/create/questions/{id}', 'QuestionsController@make')->name('create.questions');
+Route::get('/create/questions{surveyId?}', 'QuestionsController@make')->name('create.questions');
 
 
 Route::post('/changeJson', 'QuestionsController@store')->name('questions');
