@@ -10,7 +10,10 @@ Route::get('/', function () {
 // Route::resource('api', 'ApiController');
 
 Auth::routes();
-Route::get('/home', 'SurveyController@survey');
+
+Route::get('/surveys', 'SurveyController@survey');
+Route::get('/home', 'SurveyController@home');
+Route::get('/survey/get/questions/{id}', 'SurveyController@questions');
 
 
 Route::get('/create/question', function () {

@@ -90,4 +90,26 @@ class SurveyController extends Controller{
     public function survey(){
         return view('survey.index');
     }
+
+    public function home(Request $request){
+        $questions = Questions::all();
+        //dd($questions);
+        if ($request->ajax()) {
+            return response()->json(['questions' => json_decode($questions)]);
+        }else{
+            return view('survey.home',compact('questions'));   
+        }
+    }
+
+    public function questions($id){
+        $array = array();
+
+        $q = Questions::where('token',$id)->first();
+        $question = json_decode($q->json);
+
+        foreach ($question[0]->elements as $key => $value) {
+            $array[] = $value;
+        }
+        return response()->json(['question' => $array]);
+    }
 }
