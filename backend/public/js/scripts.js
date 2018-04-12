@@ -51,10 +51,11 @@
               answer: {
                 currentPageNo: survey.currentPageNo,
                 data: survey.data,
-                email: $('#emailID').val()
-              }
+              },
+              email: $('#emailID').val()
             })
             .done(res =>  snrmodal.style.display = "none" )
+            .fail(_ => snrmodal.style.display = "none" )
         }else{
             alert('Check your email!')
             return null
