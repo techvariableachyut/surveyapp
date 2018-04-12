@@ -45,3 +45,6 @@ Route::get('/survey/answer/store', function(){
 
 Route::get('/getSurvey', 'QuestionsController@getSurvey');
 Route::get('/survey/edit', 'QuestionsController@getSurvey');
+
+Route::resource('answer', 'AnswerController');
+Route::post('answer/submit', 'AnswerController@store')->name('answer.submit');
