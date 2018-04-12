@@ -10,4 +10,5 @@ class Answers extends Model
         'email', 'surveyId', 'answer'
     ];
 
+    public $timestamps = false;
 }

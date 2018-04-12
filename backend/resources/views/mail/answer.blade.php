@@ -5,7 +5,7 @@ This email has been recived because you have applied to complete your survey for
 
 To complete your survey, click the button below to resume from where you have stopped.
 
-@component('mail::button', ['url' => "/"])
+@component('mail::button', ['url' => $url])
 Complete survey.
 @endcomponent
 

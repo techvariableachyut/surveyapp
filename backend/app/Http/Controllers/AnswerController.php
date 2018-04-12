@@ -35,10 +35,17 @@ class AnswerController extends Controller
     public function store(Request $request)
     {
         $id = $request['surveyId'];
-        $answer = Answers::create([
-            'surveyId' => $id,
-            'answer' => $request['json']
-        ]);
+        $answer = Answers::where('surveyId', $id)->first();
+        if ($answer) {
+            Answers::where('surveyId',$id)->update([
+                'answer' => $request['answer']
+            ]);
+        }else{
+            $answer = Answers::create([
+                'surveyId' => $id,
+                'answer' => $request['answer']
+            ]);
+        }
         if (!$answer) {
             return response()->json(['response' => "error"]);
         }

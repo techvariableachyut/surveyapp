@@ -15,8 +15,9 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('email');
             $table->string('surveyId');
-            $table->string('json');
+            $table->string('answer');
             $table->timestamps();
         });
     }
