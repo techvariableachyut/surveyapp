@@ -13226,7 +13226,8 @@ var SurveyModel = /** @class */ (function (_super) {
             onlineStatusModal.style.display = "block";
             this.isCompleted = false
         }else{
-            Confirm()
+            var done = confirm('Are You Sure?');
+            done ? this.isCompleted = true : this.isCompleted = false
         }
     };
 

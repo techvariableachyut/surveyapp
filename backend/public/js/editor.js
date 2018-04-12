@@ -24,7 +24,7 @@ function postEdit() {
   surveyName = $titleEditor.find("input")[0].value;
   setSurveyName(surveyName);
   jQuery
-    .get("/changeName?id=" + surveyId + "&name=" + surveyName, function(data) {
+    .get("/changeSurveyName?id=" + surveyId + "&name=" + surveyName, function(data) {
       surveyId = data.Id;
     })
     .fail(function(error) {
@@ -50,7 +50,7 @@ Survey.dxSurveyService.serviceUrl = "";
 var surveyId = window.location.pathname.split('/');
 var editor = new SurveyEditor.SurveyEditor("editor");
 // var surveyId = decodeURI(getParams()["id"]);
-// surveyName = decodeURI(getParams()["name"]);
+surveyName = surveyId[3];
 editor.loadSurvey(surveyId[3]);
 editor.saveSurveyFunc = function(saveNo, callback) {
   var xhr = new XMLHttpRequest();
@@ -66,7 +66,7 @@ editor.saveSurveyFunc = function(saveNo, callback) {
     }
   };
   xhr.send(
-    JSON.stringify({ Id: surveyId, Json: editor.text, Text: editor.text })
+    JSON.stringify({ surveyId: surveyId[3], Json: editor.text, Text: editor.text, surveyName })
   );
 };
 editor.isAutoSave = true;

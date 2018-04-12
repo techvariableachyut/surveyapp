@@ -1,11 +1,13 @@
-(function(){
+function app(survey,Survey){
     var storageName = "SurveyJS_LoadState";
     Survey
         .StylesManager
         .applyTheme("default");
   
     // The json variaable is available in question.js file
-    window.survey = new Survey.Model(json);
+
+
+    
   
     //Adding new locale into the library.
     //The json variaable is available in config.js file
@@ -114,5 +116,16 @@
 
     $("#surveyElement").Survey({ model: survey, onValidateQuestion: surveyValidateQuestion });
 
-  })()
+}
+
+
+(function(){
+    var json = null;
+    jQuery
+    .get("http://localhost:8000/getSurvey?surveyId=5ace7609477f4", function(data) {
+        json = data;
+        window.survey = new Survey.Model(json);
+        app(window.survey,Survey)
+    })
+})()
   

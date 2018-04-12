@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Sections;
 use App\Questions;
 use App\Dropdownvalues;
@@ -45,6 +46,9 @@ class QuestionsController extends Controller{
 
     public function make()
     {
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
         return view('editor');
     }
 
@@ -56,23 +60,25 @@ class QuestionsController extends Controller{
      */
     public function store(Request $request)
     {   
-        $token = $_GET['surveyId'];
+        $token = $request->input('surveyId');
         $json = json_decode($request->input('Json'));
+        $title = $request->input('surveyName');
 
         if (!$json->pages) {
             return response()->json(['error' => "No data found."]);
         }
-
-        $question = Questions::find($token);
+        
+        $question = Questions::where('token', $token)->count();
+        
         if ($question == null) {
             $newjson = Questions::create([
                 'token' => $token,
-                'title' => $json->title,
+                'title' => $title,
                 'json' =>  json_encode($json->pages)
             ]);
         }else{
             $newjson = Questions::where('token',$token)->update([
-                'title' => $json->title,
+                'title' => $title,
                 'json' => json_encode($json->pages)
             ]);
         }

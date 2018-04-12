@@ -4,17 +4,20 @@ use App\Mail\SaveAndContinue;
 use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
+	if (!Auth::user()) {
+        return redirect('/login');
+    }
     return view('home');
 });
 
 // Route::resource('api', 'ApiController');
 
 Auth::routes();
-
-Route::get('/surveys', 'SurveyController@survey');
-Route::get('/home', 'SurveyController@home');
+// Route::get('/surveys', 'SurveyController@survey');
+// Route::get('/home', 'SurveyController@home');
 Route::get('/survey/get/questions/{id}', 'SurveyController@questions');
 
+Route::get('/monitoring-tool/{surveyToken}', 'SurveyController@survey');
 
 Route::get('/create/question', function () {
 	if (Auth::guest()) {
@@ -28,7 +31,7 @@ Route::get('/create/questions/{surveyId?}', 'QuestionsController@make')->name('c
 
 Route::post('/changeJson', 'QuestionsController@store')->name('questions');
 Route::resource('questions', 'QuestionsController');
-Route::resource('survey', 'SurveyController');
+Route::resource('dashboard', 'SurveyController');
 
 Route::get('/lazy/survey/answer', function () {
 	$order = \App\Answers::findOrFail(1);

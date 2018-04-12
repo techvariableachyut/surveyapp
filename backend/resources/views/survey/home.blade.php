@@ -79,6 +79,7 @@
                                     <th>#Survey</th>
                                     <th>Survey name/title</th>
                                     <th>action</th>
+                                    <th>Link</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -89,6 +90,7 @@
                                       <td class="text-truncate">
                                         <a href="/survey/get/questions/{{$question->token}}" class="btn btn-sm btn-info">view</a> <a href="/survey/get/questions/{{$question->token}}" class="btn btn-sm btn-warning">Edit</a> <a href="" class="btn btn-sm btn-danger">Delete</a>
                                       </td>
+                                      <td><a href="/monitoring-tool/{{ $question->token }}" class="btn btn-sm btn-success">Share survey link</a></td>
                                   </tr>
                                 @endforeach
                             </tbody>

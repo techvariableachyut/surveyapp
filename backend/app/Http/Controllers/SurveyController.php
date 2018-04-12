@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Sections;
 use App\Questions;
 use App\Dropdownvalues;
@@ -16,6 +17,9 @@ class SurveyController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function index(){
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
         $questions = Questions::all();
         //dd($questions);
         return view('survey.lists',compact('questions'));
