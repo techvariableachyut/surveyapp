@@ -51,8 +51,8 @@
               answer: {
                 currentPageNo: survey.currentPageNo,
                 data: survey.data,
-                email: $('#emailID').val()
-              }
+              },
+              email: $('#emailID').val()
             })
             .done(res =>  snrmodal.style.display = "none" )
         }else{
