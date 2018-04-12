@@ -5,7 +5,7 @@ Route::get('/', function () {
 	if (!Auth::user()) {
         return redirect('/login');
     }
-    return view('home');
+    return redirect('/dashboard');
 });
 
 // Route::resource('api', 'ApiController');
@@ -39,7 +39,7 @@ Route::resource('dashboard', 'SurveyController');
 // 	Mail::to($order)->send(new SaveAndContinue($questions));
 // });
 
-Route::get('/lazy/survey/submit/{bl}/{bla}', 'LazyController@emailandstore');
+Route::post('/lazy/survey/submit', 'LazyController@emailandstore');
 
 Route::get('/survey/answer/store', function(){
 	return response()->json(['response' => true]);

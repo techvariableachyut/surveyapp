@@ -10,21 +10,20 @@ use Illuminate\Support\Facades\Mail;
 
 class LazyController extends Controller
 {
-    public function emailandstore($id, $answers){
+    public function emailandstore(){
+        $uid = uniqid();
+        $id = $request['id'];
+        $answers = $request['answers'];
+        $email = $request['email'];
 
-        $answer = Answers::where('surveyId', $id)->first();
-        if ($answer) {
-            Answers::where('surveyId',$id)->update([
-                'answer' => $answers
-            ]);
-        }else{
-            $answer = Answers::create([
+        $user = Answers::create([
                 'surveyId' => $id,
-                'answer' => $answers
-            ]);
-        }
+                'token' => $uuid,
+                'answer' => $answers,
+                'email' => $email
+                'done' => false
+        ]);
 
-        $user = Answers::findOrFail(1);
-        Mail::to($user)->send(new SaveAndContinue($answer));
+        Mail::to($user)->send(new SaveAndContinue($user));
     }
 }

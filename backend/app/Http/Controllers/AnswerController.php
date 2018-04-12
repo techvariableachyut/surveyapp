@@ -34,15 +34,18 @@ class AnswerController extends Controller
      */
     public function store(Request $request)
     {
+        $uniqueid = uniqid();
         $id = $request['surveyId'];
-        $answer = Answers::where('surveyId', $id)->first();
+
+        $answer = Answers::where('token', $uniqueid)->first();
         if ($answer) {
-            Answers::where('surveyId',$id)->update([
+            Answers::where('token',$uniqueid)->update([
                 'answer' => $request['answer']
             ]);
         }else{
             $answer = Answers::create([
                 'surveyId' => $id,
+                'token' => $uniqueid,
                 'answer' => $request['answer']
             ]);
         }

@@ -1,19 +1,7 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.basic')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="/app-assets/css/bootstrap.css" rel="stylesheet" type="text/css">
-    </head>
-<body>
-
-<div class="container">
-    <div class="row justify-content-center">
+@section('content')
+    <section class="flexbox-container">
         <div class="col-md-8 offset-md-2">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
@@ -83,10 +71,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-
-</body>
-</html>
+    </section>
+@endsection
 
