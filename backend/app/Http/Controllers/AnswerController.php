@@ -2,27 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\Sections;
-use App\Questions;
-use App\Dropdownvalues;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class SurveyController extends Controller{
-    
+class AnswerController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-        if (!Auth::user()) {
-            return redirect('/login');
-        }
-        $questions = Questions::all();
-        //dd($questions);
-        return view('survey.lists',compact('questions'));
+    public function index()
+    {
+        //
     }
 
     /**
@@ -42,8 +33,16 @@ class SurveyController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        
+    {
+        $id = $request['surveyId'];
+        $answer = Answers::create([
+            'surveyId' => $id,
+            'answer' => $request['json']
+        ]);
+        if (!$answer) {
+            return response()->json(['response' => "error"]);
+        }
+
     }
 
     /**
@@ -89,31 +88,5 @@ class SurveyController extends Controller{
     public function destroy($id)
     {
         //
-    }
-
-    public function survey(){
-        return view('survey.index');
-    }
-
-    public function home(Request $request){
-        $questions = Questions::all();
-        //dd($questions);
-        if ($request->ajax()) {
-            return response()->json(['questions' => json_decode($questions)]);
-        }else{
-            return view('survey.home',compact('questions'));   
-        }
-    }
-
-    public function questions($id){
-        $array = array();
-
-        $q = Questions::where('token',$id)->first();
-        $question = json_decode($q->json);
-
-        foreach ($question[0]->elements as $key => $value) {
-            $array[] = $value;
-        }
-        return response()->json(['question' => $array]);
     }
 }

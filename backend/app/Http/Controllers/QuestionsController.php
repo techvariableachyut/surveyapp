@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Sections;
 use App\Questions;
 use App\Dropdownvalues;
@@ -45,6 +46,9 @@ class QuestionsController extends Controller{
 
     public function make()
     {
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
         return view('editor');
     }
 

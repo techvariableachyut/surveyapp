@@ -4,13 +4,20 @@ use App\Mail\SaveAndContinue;
 use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
+	if (!Auth::user()) {
+        return redirect('/login');
+    }
     return view('home');
 });
 
 // Route::resource('api', 'ApiController');
 
 Auth::routes();
-Route::get('/monitoring-tool/{surveyId}', 'SurveyController@survey');
+// Route::get('/surveys', 'SurveyController@survey');
+// Route::get('/home', 'SurveyController@home');
+Route::get('/survey/get/questions/{id}', 'SurveyController@questions');
+
+Route::get('/monitoring-tool/{surveyToken}', 'SurveyController@survey');
 
 Route::get('/create/question', function () {
 	if (Auth::guest()) {
@@ -40,3 +47,6 @@ Route::get('/survey/answer/store', function(){
 
 Route::get('/getSurvey', 'QuestionsController@getSurvey');
 Route::get('/survey/edit', 'QuestionsController@getSurvey');
+
+Route::resource('answer', 'AnswerController');
+Route::post('answer/submit', 'AnswerController@store')->name('answer.submit');
