@@ -45,16 +45,16 @@
     var scmspan1 = document.getElementsByClassName("close")[2];
     scmspan.onclick = function() {
         scmmodal.style.display = "none";
-        window.location.href = window.location.protocol+'//'+window.location.host
+        window.location.href = window.location.protocol+'//'+window.location.host +  window.location.pathname
     }
     scmspan1.onclick = function() {
         scmmodal.style.display = "none";
-        window.location.href = window.location.protocol+'//'+window.location.host
+        window.location.href = window.location.protocol+'//'+window.location.host +  window.location.pathname
     }
     window.onclick = function(event) {
         if (event.target == scmmodal) {
             scmmodal.style.display = "none";
-            window.location.href = window.location.protocol+'//'+window.location.host
+            window.location.href = window.location.protocol+'//'+window.location.host + window.location.pathname
         }
     }
 

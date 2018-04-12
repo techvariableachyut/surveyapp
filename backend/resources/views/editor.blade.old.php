@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <title>SurveyJS Editor</title>
     {{ csrf_field() }}
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+     <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <!-- <script src="/js/bootstrap.min.js"></script> -->
     
     <script src="/js/knockout-debug.js"></script>
     <script src="/js/survey.ko.js"></script>
@@ -20,7 +18,7 @@
 
 <body>
     <div class="survey-page-header">
-        <div class="sv_main survey-page-header-content">
+        <!-- <div class="sv_main survey-page-header-content">
             <button onclick="window.location = '/'">&lt&nbspBack</button>
             @if(Auth::guest())
             <a href="/login" class="btn btn-success btn-sm">Login</a>
@@ -33,7 +31,7 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
-        </div>
+        </div> -->
     </div>
     <div class="sv_main sv_frame sv_default_css">
         <div class="sv_custom_header">

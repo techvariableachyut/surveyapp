@@ -10,8 +10,7 @@ Route::get('/', function () {
 // Route::resource('api', 'ApiController');
 
 Auth::routes();
-Route::get('/home', 'SurveyController@survey');
-
+Route::get('/monitoring-tool/', 'SurveyController@survey');
 
 Route::get('/create/question', function () {
 	if (Auth::guest()) {
@@ -25,7 +24,7 @@ Route::get('/create/questions/{surveyId?}', 'QuestionsController@make')->name('c
 
 Route::post('/changeJson', 'QuestionsController@store')->name('questions');
 Route::resource('questions', 'QuestionsController');
-Route::resource('survey', 'SurveyController');
+Route::resource('dashboard', 'SurveyController');
 
 Route::get('/lazy/survey/answer', function () {
 	$order = \App\Answers::findOrFail(1);
