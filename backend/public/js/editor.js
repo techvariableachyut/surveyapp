@@ -23,15 +23,29 @@ function postEdit() {
   var $titleEditor = jQuery("#sjs_editor_title_edit");
   surveyName = $titleEditor.find("input")[0].value;
   setSurveyName(surveyName);
-  jQuery
-    .get("/changeSurveyName?id=" + surveyId + "&name=" + surveyName, function(data) {
-      surveyId = data.Id;
-    })
-    .fail(function(error) {
-      surveyName = oldName;
+  // jQuery
+  //   .get("/changeSurveyName?id=" + surveyId + "&name=" + surveyName, function(data) {
+  //     surveyId = data.Id;
+  //   })
+  //   .fail(function(error) {
+  //     surveyName = oldName;
+  //     setSurveyName(surveyName);
+  //     alert(JSON.stringify(error));
+  //   });
+
+    // $.post("/changeSurveyName?id=" + surveyId[3] + "&name=" + surveyName, function( data ) {
+    //   $( ".result" ).html( data );
+    // });
+    $.post( "/changeSurveyName", 
+      { 
+        surveyId: surveyId[3], 
+        name: surveyName 
+      })
+    .done(function( data ) {
       setSurveyName(surveyName);
-      alert(JSON.stringify(error));
+      // alert( "Data Loaded: " + data );
     });
+
 }
 
 function getParams() {

@@ -131,15 +131,37 @@ class QuestionsController extends Controller{
     public function getSurvey(Request $request){
         $token = $_GET['surveyId'];
         $questions = Questions::where('token',$token)->first();
-
         if ($questions == null) {
             $newjson = NUll;
         }else{
             $newjson = json_decode($questions->json);
+            $title = $questions->title;
         }
+        return response()->json(['pages' => $newjson, 'title'=> $title ,'showProgressBar' => 'bottom' ]);
+    }
 
-        return response()->json(['pages' => $newjson]);
-        // return response()->json($_GET['start']);
+
+
+    /**
+     * Change survey title.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function changeSurveyName(Request $request)
+    {   
+        $token = $request->input('surveyId');
+        $title = $request->input('name');
+
+        if (Questions::where('token', $token)->count()) {
+            Questions::where('token',$token)->update([
+                'title' => $title
+            ]);
+            return response()->json('done');
+        }else{
+            return response()->json('error');
+        }
+        
         
     }
 

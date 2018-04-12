@@ -5,9 +5,7 @@ function app(survey,Survey){
         .applyTheme("default");
   
     // The json variaable is available in question.js file
-
-
-    
+  
   
     //Adding new locale into the library.
     //The json variaable is available in config.js file
@@ -40,8 +38,6 @@ function app(survey,Survey){
     //Load the initial state
     //For Non Optional section
     loadState(survey);
-
-
     function saveState(survey) {
         var res = {
             currentPageNo: survey.currentPageNo,
@@ -113,7 +109,6 @@ function app(survey,Survey){
     //Load the initial state
     //For Optional section
     loadState(survey);
-
     $("#surveyElement").Survey({ model: survey, onValidateQuestion: surveyValidateQuestion });
 
 }
@@ -121,8 +116,9 @@ function app(survey,Survey){
 
 (function(){
     var json = null;
+    var surveyId = window.location.pathname.split('/');
     jQuery
-    .get("http://localhost:8000/getSurvey?surveyId=5ace7609477f4", function(data) {
+    .get("/getSurvey?surveyId="+surveyId[2], function(data) {
         json = data;
         window.survey = new Survey.Model(json);
         app(window.survey,Survey)
