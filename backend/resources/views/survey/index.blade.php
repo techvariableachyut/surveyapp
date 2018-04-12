@@ -22,17 +22,20 @@
             <span class="close">&times;</span>
             <h2 class="modal_title">Save and Continue Later</h2>
             <i>Please supply an email address to save your progress. A unique link will be emailed to you that will allow you to return where you left off.</i>
-            <div class="modal_input_group">
-               <label class="modal_input_label" for="name">Email</label> 
-               <input class="modal_input" type="text" name="" id="">
-            </div>
-            <div class="modal_input_group">
-                <label class="modal_input_label" for="email">Verify Email</label> 
-                <input class="modal_input" type="text" name="" id="">
-            </div>
-            <div class="modal_input_group">
-                <button class="modal_btn">Save</button>
-            </div>
+            <form  id="saveLater" action="">
+                <div class="modal_input_group">
+                <label class="modal_input_label" for="name">Email</label> 
+                <input  class="modal_input" type="email" name="" id="emailID">
+                </div>
+                <div class="modal_input_group">
+                    <label class="modal_input_label" for="email">Verify Email</label> 
+                    <input class="modal_input" type="email" name="" id="emailIDCnf">
+                </div>
+                <div class="modal_input_group">
+                    <button type="submit"  class="modal_btn">Save</button>
+                </div>
+            </form>
+
         </div>
     </div>
 

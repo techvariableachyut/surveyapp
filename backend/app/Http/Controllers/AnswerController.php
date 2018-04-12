@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Answers;
 
 class AnswerController extends Controller
 {
@@ -37,22 +38,13 @@ class AnswerController extends Controller
         $uniqueid = uniqid();
         $id = $request['surveyId'];
 
-        $answer = Answers::where('token', $uniqueid)->first();
-        if ($answer) {
-            Answers::where('token',$uniqueid)->update([
-                'answer' => $request['answer']
-            ]);
-        }else{
-            $answer = Answers::create([
-                'surveyId' => $id,
-                'token' => $uniqueid,
-                'answer' => $request['answer']
-            ]);
-        }
-        if (!$answer) {
-            return response()->json(['response' => "error"]);
-        }
-
+        $uniqueid = uniqid();
+        $answer = Answers::create([
+            'surveyId' => $id,
+            'token' => $uniqueid,
+            'done' => 1,
+            'answer' => json_encode($request['answer'])
+        ]);
     }
 
     /**

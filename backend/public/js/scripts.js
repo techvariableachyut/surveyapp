@@ -38,6 +38,29 @@
         }
     }
 
+    
+    var saveLater = document.getElementById("saveLater");
+
+    $( "#saveLater" ).submit(function( event ) { 
+        event.preventDefault();
+        var surveyId = window.location.pathname.split('/');
+        if($('#emailID').val() === $('#emailIDCnf').val() ){
+            $.post( "/lazy/survey/submit", 
+            { 
+              surveyId: surveyId[2], 
+              answer: {
+                currentPageNo: survey.currentPageNo,
+                data: survey.data,
+                email: $('#emailID').val()
+              }
+            })
+            .done(res =>  snrmodal.style.display = "none" )
+        }else{
+            alert('Check your email!')
+            return null
+        }
+
+    });
 
 
     var scmmodal = document.getElementById('scmModal');
@@ -63,6 +86,9 @@
     online_status_btn.onclick = function() {
         onlineStatusModal.style.display = "none";
     }
+
+
+
 
 })()
 

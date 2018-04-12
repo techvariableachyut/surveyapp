@@ -50,3 +50,7 @@ Route::get('/survey/edit', 'QuestionsController@getSurvey');
 
 Route::resource('answer', 'AnswerController');
 Route::post('answer/submit', 'AnswerController@store')->name('answer.submit');
+
+
+
+
