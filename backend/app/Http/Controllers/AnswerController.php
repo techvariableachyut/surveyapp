@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Answers;
 
 class AnswerController extends Controller
 {
@@ -35,14 +36,14 @@ class AnswerController extends Controller
     public function store(Request $request)
     {
         $id = $request['surveyId'];
+        $uniqueid = uniqid();
         $answer = Answers::create([
             'surveyId' => $id,
-            'answer' => $request['json']
+            'token' => $uniqueid,
+            'done' => 1,
+            'answer' => json_encode($request['answer'])
         ]);
-        if (!$answer) {
-            return response()->json(['response' => "error"]);
-        }
-
+        
     }
 
     /**

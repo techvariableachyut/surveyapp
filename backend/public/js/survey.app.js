@@ -13227,9 +13227,28 @@ var SurveyModel = /** @class */ (function (_super) {
             this.isCompleted = false
         }else{
             var done = confirm('Are You Sure?');
-            done ? this.isCompleted = true : this.isCompleted = false
+            if(done){
+                submitAnswer()
+                this.isCompleted = true 
+            }else{
+                this.isCompleted = false
+            }
         }
     };
+
+
+    function submitAnswer(){
+        console.log(survey.data)
+        var surveyId = window.location.pathname.split('/');
+        $.post( "/answer/submit", 
+        { 
+          surveyId: surveyId[2], 
+          answer: {
+            currentPageNo: survey.currentPageNo,
+            data: survey.data
+          }
+        })
+    }
 
     function Confirm() { 
         var cnfModal = document.getElementById('cnfModal')

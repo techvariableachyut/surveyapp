@@ -35,11 +35,7 @@ Route::post('/changeSurveyName', 'QuestionsController@changeSurveyName');
 Route::resource('questions', 'QuestionsController');
 Route::resource('dashboard', 'SurveyController');
 
-Route::get('/lazy/survey/answer', function () {
-	$order = \App\Answers::findOrFail(1);
-	$questions = \App\Questions::findOrFail("QmxhIGJsYSBibGE=");
-	Mail::to($order)->send(new SaveAndContinue($questions));
-});
+Route::post('/lazy/survey/submit', 'LazyController@emailandstore');
 
 Route::get('/survey/answer/store', function(){
 	return response()->json(['response' => true]);
@@ -50,3 +46,7 @@ Route::get('/survey/edit', 'QuestionsController@getSurvey');
 
 Route::resource('answer', 'AnswerController');
 Route::post('answer/submit', 'AnswerController@store')->name('answer.submit');
+
+
+
+
