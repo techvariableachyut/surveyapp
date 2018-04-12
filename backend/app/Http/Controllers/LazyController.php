@@ -10,17 +10,16 @@ use Illuminate\Support\Facades\Mail;
 
 class LazyController extends Controller
 {
-    
+
     public function emailandstore(Request $request){
         $uuid = uniqid();
         $id = $request['surveyId'];
-        $answers = json_encode($request['answers']);
         $email = $request['email'];
 
         $user = Answers::create([
                 'surveyId' => $id,
-                'uniqueid' => $uuid,
-                'answer' => $answers,
+                'token' => $uuid,
+                'answer' => json_encode($request['answer']),
                 'email' => $email,
                 'done' => 0
         ]);
