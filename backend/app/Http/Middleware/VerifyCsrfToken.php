@@ -15,6 +15,7 @@ class VerifyCsrfToken extends Middleware
         'changeJson',
         'survey/answer/store',
         'changeSurveyName',
-        'answer/submit'
+        'answer/submit',
+        '/lazy/survey/submit'
     ];
 }

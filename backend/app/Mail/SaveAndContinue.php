@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Questions;
+use App\Answers;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -12,15 +12,15 @@ class SaveAndContinue extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $questions;
+    public $answers;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Questions $questions)
+    public function __construct(Answers $answers)
     {
-        $this->questions = $questions;
+        $this->answers = $answers;
     }
 
     /**

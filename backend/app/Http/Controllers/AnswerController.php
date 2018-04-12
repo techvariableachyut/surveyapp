@@ -43,7 +43,6 @@ class AnswerController extends Controller
             'done' => 1,
             'answer' => json_encode($request['answer'])
         ]);
-        
     }
 
     /**
