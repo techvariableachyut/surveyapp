@@ -40,3 +40,5 @@ Route::post('answer/submit', 'AnswerController@store')->name('answer.submit');
 Route::get('/survey/results', "CompleteSurveyController@getall");
 Route::get('/survey/answer/{id}', "CompleteSurveyController@getanswers");
 
+Route::get('/survey/answer/user/{surveyid}/{token}', "CompleteSurveyController@getanswersfromuser");
+

@@ -33,6 +33,9 @@
                                       		}
                                       	?>
                                       </td>
+                                      <td>
+                                        <a href="/survey/answer/user/{{$a->surveyId}}/{{$a->token}}">View</a>
+                                      </td>
                                   </tr>
                                 @endforeach
                             </tbody>
