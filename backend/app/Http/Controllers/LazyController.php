@@ -16,14 +16,29 @@ class LazyController extends Controller
         $id = $request['surveyId'];
         $email = $request['email'];
 
-        $user = Answers::create([
-                'surveyId' => $id,
-                'token' => $uuid,
-                'answer' => json_encode($request['answer']),
-                'email' => $email,
-                'done' => 0
-        ]);
+        $check = Answers::where('email',$email)->where('done',false)->first();
 
-        Mail::to($user)->send(new SaveAndContinue($user));
+
+        if ($check == null) {
+            $user = Answers::create([
+                    'surveyId' => $id,
+                    'token' => $uuid,
+                    'answer' => json_encode($request['answer']),
+                    'email' => $email,
+                    'done' => 0
+            ]);
+
+            $this->mailpotha($user);   
+        }else{
+            $user = Answers::where('email',$email)->where('done',false)
+                        ->update(['answer' => json_encode($request['answer']) ]);
+
+            $this->mailpotha($check);
+        }
+
+    }
+
+    private function mailpotha($modeltuAse){
+        Mail::to($modeltuAse)->send(new SaveAndContinue($modeltuAse));
     }
 }

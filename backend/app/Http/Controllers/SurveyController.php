@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Answers;
 use App\Sections;
 use App\Questions;
 use App\Dropdownvalues;
@@ -115,5 +116,14 @@ class SurveyController extends Controller{
             $array[] = $value;
         }
         return response()->json(['question' => $array]);
+    }
+
+
+    public function resume($surveyId, $surveyToken){
+        $answer = Answers::where('surveyId',$surveyId)->where('token',$surveyToken)->first();
+        $answers = json_decode($answer->answer);
+        // dd($answers);
+
+        return view('answer.resume',compact('answers'));
     }
 }
