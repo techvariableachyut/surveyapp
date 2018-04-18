@@ -4,48 +4,37 @@ function app(survey,Survey){
         .StylesManager
         .applyTheme("default");
   
-    // The json variaable is available in question.js file
-  
-  
-    //Adding new locale into the library.
+    // The json variaable is available in question.js file 
+    // Adding new locale into the library.
     //The json variaable is available in config.js file
+
     var mycustomSurveyStrings = config;
     Survey.surveyLocalization.locales["my"] = mycustomSurveyStrings;
     survey.locale = "my";
 
     function loadState(survey) {
-        var storageSt = localStorage.getItem(storageName) || "";
-        var res = {};
-        if (storageSt){
-            res = JSON.parse(storageSt); 
-        }else {
-            res = {
-                currentPageNo: 0,
-                data: {}
-            };
-        }
+        res = JSON.parse(__answer__.answer);
         //Set the loaded data into the survey.
         if (res.currentPageNo >= 0 ) 
             survey.currentPageNo = res.currentPageNo;
         if (res.data) 
             survey.data = res.data;
-
-        console.log(res.currentPageNo);
         window.location.hash = "section" + (survey.currentPageNo + 1);
     }
 
     //Load the initial state
     //For Non Optional section
     loadState(survey);
-    function saveState(survey) {
-        var res = {
-            currentPageNo: survey.currentPageNo,
-            data: survey.data
-        };
-        //Here should be the code to save the data into your database
-        localStorage
-            .setItem(storageName, JSON.stringify(res));
-    }
+
+    // function saveState(survey) {
+    //     var res = {
+    //         currentPageNo: survey.currentPageNo,
+    //         data: survey.data
+    //     };
+    //     //Here should be the code to save the data into your database
+    //     localStorage
+    //         .setItem(storageName, JSON.stringify(res));
+    // }
     
     survey
         .onCurrentPageChanged
@@ -85,42 +74,20 @@ function app(survey,Survey){
         gotoPageByHash(window.location.hash);
     } 
   
-    /**
-     *  Custom Validation start
-     */
-    /**
-     * 
-     * News Sources custom  validation 
-     */
-    function surveyValidateQuestion(s, options) {
-        if (options.name == 'price01') {
-            s.data.price01 != s.data.price02 + s.data.price03 + s.data.price04 ? 
-                options.error = "Error" : options.error = null;
-        }
-        // if(options.name == 'img'){
-        //     options.error = "Error" 
-        // }
-    }
-    /**
-     *  Custom Validation End
-     */
-
     //Load the initial state
     //For Optional section
     loadState(survey);
-    $("#surveyElement").Survey({ model: survey, onValidateQuestion: surveyValidateQuestion });
+    $("#surveyElement").Survey({ model: survey });
 
 }
 
 
 (function(){
-    var json = null;
-    var surveyId = window.location.pathname.split('/');
-    jQuery
-    .get("/getSurvey?surveyId="+surveyId[2], function(data) {
-        json = data;
-        window.survey = new Survey.Model(json);
-        app(window.survey,Survey)
-    })
+    var json = {
+        pages: JSON.parse(__question__.json)
+    }
+    window.survey = new Survey.Model(json);
+    app(window.survey,Survey)
 })()
+
   

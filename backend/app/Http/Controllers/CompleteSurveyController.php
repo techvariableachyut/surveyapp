@@ -18,7 +18,7 @@ class CompleteSurveyController extends Controller{
     }
 
     public function getanswers($id){
-    	$answers = Answers::where('surveyId',$id)->get();
+        $answers = Answers::where('surveyId',$id)->get();
         return view('answer.answers',compact('answers'));
     }
 
