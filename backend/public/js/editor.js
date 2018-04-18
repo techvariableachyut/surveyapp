@@ -64,7 +64,7 @@ Survey.dxSurveyService.serviceUrl = "";
 var surveyId = window.location.pathname.split('/');
 var editor = new SurveyEditor.SurveyEditor("editor");
 // var surveyId = decodeURI(getParams()["id"]);
-surveyName = surveyId[3];
+// surveyName = surveyId[3];
 editor.loadSurvey(surveyId[3]);
 editor.saveSurveyFunc = function(saveNo, callback) {
   var xhr = new XMLHttpRequest();

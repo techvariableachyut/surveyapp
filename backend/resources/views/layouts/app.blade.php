@@ -117,6 +117,8 @@
           <li class=" nav-item"><a href="#"><i class="icon-paper"></i><span data-i18n="nav.survey.main" class="menu-title">Survey</span></a>
             <ul class="menu-content">
               <li><a href="/create/question" data-i18n="nav.survey.create" class="menu-item">Create Survey</a></li>
+              <li><a href="#" data-i18n="nav.survey.create" class="menu-item">Show All Responses </a></li>
+              
             </ul>
           </li>
 
