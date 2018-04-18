@@ -74,17 +74,16 @@
                 </div>
             </div>
     </div>
-
    
-    <script src="/js/jquery.js"></script>
-    <script src="/js/jquery-ui.min.js"></script>
-    <script src="/js/survey.app.js"></script>
-    <script src="/js/surveyjs-widgets.js"></script>
-    <script src="/js/homepage.js"></script>
-    <script src="/js/questions.js"></script>
-    <script src="/js/config.js"></script>
-    <script src="/js/survey.js"></script>
-    <script src="/js/scripts.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/survey.app.js"></script>
+<script src="/js/surveyjs-widgets.js"></script>
+<script src="/js/homepage.js"></script>
+<script src="/js/questions.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/survey.js"></script>
+<script src="/js/scripts.js"></script>
 
 
 </body>
