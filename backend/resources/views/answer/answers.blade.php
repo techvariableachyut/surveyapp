@@ -23,15 +23,7 @@
                                       <td class="text-truncate"><a href="#">{{ $index + 1 }}</a></td>
                                       <td class="text-truncate">{{ $a->email }}</td>
                                       <td class="text-truncate">
-                                      	<?php 
-                                      		foreach (json_decode($a->answer) as $key => $answer){
-                                      			if ($key == 'data') {
-                                      				foreach ($answer as $value) {
-                                      					echo $value[0];
-                                      				}
-                                      			}
-                                      		}
-                                      	?>
+                                                done
                                       </td>
                                       <td>
                                         <a href="/survey/answer/user/{{$a->surveyId}}/{{$a->token}}">View</a>

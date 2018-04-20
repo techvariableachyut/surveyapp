@@ -39,6 +39,7 @@ Route::resource('answer', 'AnswerController');
 Route::post('answer/submit', 'AnswerController@store')->name('answer.submit');
 Route::get('/survey/results', "CompleteSurveyController@getall");
 Route::get('/survey/answer/{id}', "CompleteSurveyController@getanswers");
-
 Route::get('/survey/answer/user/{surveyid}/{token}', "CompleteSurveyController@getanswersfromuser");
+Route::post('/survey/copy/{id}', "CopyController@copy");
+Route::get('/survey/delete/{id}', "QuestionsController@destroy");
 
