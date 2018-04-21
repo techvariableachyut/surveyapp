@@ -26,10 +26,8 @@ class QuestionsController extends Controller{
         foreach ($questions->pages as $index => $question) {
             // foreach ($question[0] as  $value) {
                 $newquestion[] = $question;
-            // }   
-                  
+            // }            
         }
-
         return response()->json(['response' => $newquestion, 'all' => $questions]);
     }
 
