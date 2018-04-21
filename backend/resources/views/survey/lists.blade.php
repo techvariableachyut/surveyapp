@@ -161,7 +161,7 @@
                                         <a href="/survey/delete/{{$question->token}}" class="btn btn-sm btn-danger">Delete</a>
                                       </td>
                                        <td><a target="_blank" href="/monitoring-tool/{{ $question->token }}" class="btn btn-sm btn-success">Share survey link</a></td>
-                                       <td><a href="#" onclick="event.preventDefault(); var id= '{{$question->token}}'; copy(id);" class="btn btn-sm btn-success">Duplicate Survey</a></td>
+                                       <td><a href="#" onclick="event.preventDefault(); var id= '{{$question->token}}'; copy(id,{{ $index + 2 }});" class="btn btn-sm btn-success">Duplicate Survey</a></td>
                                   </tr>
                                 @endforeach
                             </tbody>
