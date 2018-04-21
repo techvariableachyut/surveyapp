@@ -37,6 +37,14 @@
     <!-- BEGIN Custom CSS-->
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <!-- END Custom CSS-->
+
+    <script src="/js/knockout-debug.js"></script>
+    <script src="/js/survey.ko.js"></script>
+    <script src="/js/surveyeditor.js"></script>
+
+    <link rel="stylesheet" href="/css/survey.css" />
+    <link rel="stylesheet" href="/css/surveyeditor.css" />
+    <link rel="stylesheet" href="/css/index.css" />
   </head>
   <body data-open="click" data-menu="vertical-menu" data-col="2-columns" class="vertical-layout vertical-menu 2-columns  fixed-navbar">
 
@@ -160,6 +168,7 @@
     <!-- END ROBUST JS-->
     <!-- BEGIN PAGE LEVEL JS-->
     <script src="/app-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+    <script src="/js/editor.js"></script>
     <!-- END PAGE LEVEL JS-->
   </body>
 </html>

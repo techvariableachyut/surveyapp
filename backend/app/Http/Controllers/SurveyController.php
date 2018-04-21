@@ -121,9 +121,11 @@ class SurveyController extends Controller{
 
     public function resume($surveyId, $surveyToken){
         $answer = Answers::where('surveyId',$surveyId)->where('token',$surveyToken)->first();
-        $answers = json_decode($answer->answer);
-        // dd($answers);
+        $question = Questions::where('token',$surveyId)->first();
 
-        return view('answer.resume',compact('answers'));
+        $answers = json_decode($answer->answer);
+        $questions = json_decode($question->json);
+
+        return view('answer.resume',compact('answers','questions'));
     }
 }

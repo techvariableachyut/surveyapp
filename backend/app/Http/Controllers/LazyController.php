@@ -18,7 +18,6 @@ class LazyController extends Controller
 
         $check = Answers::where('email',$email)->where('done',false)->first();
 
-
         if ($check == null) {
             $user = Answers::create([
                     'surveyId' => $id,
