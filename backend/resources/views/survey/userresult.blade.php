@@ -152,6 +152,7 @@
     </div>
 
 
+
     <!-- BEGIN VENDOR JS-->
     <script src="/app-assets/js/core/libraries/jquery.min.js" type="text/javascript"></script>
     <script src="/app-assets/vendors/js/ui/tether.min.js" type="text/javascript"></script>
@@ -188,3 +189,4 @@
     <!-- <script src="/js/scripts.js"></script> -->
   </body>
 </html>
+>>>>>>> f3355274dc3fea6ac92506a808288db34babae1b

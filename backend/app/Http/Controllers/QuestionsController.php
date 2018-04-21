@@ -129,7 +129,8 @@ class QuestionsController extends Controller{
      */
     public function destroy($id)
     {
-        //
+        $old = Questions::where('token', $id)->delete();
+        return redirect()->back();
     }
 
     public function getSurvey(Request $request){
@@ -165,8 +166,6 @@ class QuestionsController extends Controller{
         }else{
             return response()->json('error');
         }
-        
-        
     }
 
 

@@ -147,18 +147,21 @@
                                     <th>Survey name/title</th>
                                     <th>action</th>
                                     <th>Link</th>
+                                    <th>Copy</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="append">
                                 @foreach($questions as $index => $question)
                                   <tr>
-                                      <td class="text-truncate"><a href="#">{{ $index + 1 }}</a></td>
+                                      <td class="text-truncate"><a href="#" id="indexid">{{ $index + 1 }}</a></td>
                                       <td class="text-truncate">{{ $question->title }}</td>
                                       <td class="text-truncate">
                                         <a href="/create/questions/{{$question->token}}/{{$question->title}}" class="btn btn-sm btn-info">view</a> 
-                                        <a href="/create/questions/{{$question->token}}/{{$question->title}}" class="btn btn-sm btn-warning">Edit</a> <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                        <a href="/create/questions/{{$question->token}}/{{$question->title}}" class="btn btn-sm btn-warning">Edit</a> 
+                                        <a href="/survey/delete/{{$question->token}}" class="btn btn-sm btn-danger">Delete</a>
                                       </td>
                                        <td><a target="_blank" href="/monitoring-tool/{{ $question->token }}" class="btn btn-sm btn-success">Share survey link</a></td>
+                                       <td><a href="#" onclick="event.preventDefault(); var id= '{{$question->token}}'; copy(id);" class="btn btn-sm btn-success">Duplicate Survey</a></td>
                                   </tr>
                                 @endforeach
                             </tbody>
@@ -168,3 +171,38 @@
             </div>
         </div>
 @endsection
+
+<script>
+
+function copy(id){
+    $.ajax({ 
+        type: 'POST', 
+        url: "/survey/copy/" + id + "",
+        data:{_token:"{{ Session::token() }}"}
+    })   
+    .done(function(msg){
+        var index = $("#indexid").text();
+        token = "{{ Session::token() }}";
+        $("#append").append(
+            "<tr> \
+                <td class='text-truncate'> \
+                    <a href='#'>"+index+"</a> \
+                </td> \
+                <td class='text-truncate'>"+msg['new']['title']+"</td> \
+                <td class='text-truncate'> \
+                    <a href='/create/questions/"+msg['new']['token']+"' class='btn btn-sm btn-info'>view</a> \
+                    <a href='/create/questions/"+msg['new']['token']+"' class='btn btn-sm btn-warning'>Edit</a> \
+                    <a href='/survey/delete/"+msg['new']['token']+"' class='btn btn-sm btn-danger'>Delete</a> \
+                </td> \
+                <td> \
+                    <a target='_blank' href='' class='btn btn-sm btn-success'>Share survey link</a> \
+                </td> \
+                <td> \
+                    <a href='#' onclick='event.preventDefault(); copy("+msg['new']['token']+")' class='btn btn-sm btn-success'>Duplicate survey</a> \
+                </td> \
+            </tr>"
+        );
+    })
+}
+
+</script>
