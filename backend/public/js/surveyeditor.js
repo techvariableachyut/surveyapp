@@ -8998,6 +8998,7 @@ var SurveyEditor = (function () {
         new __WEBPACK_IMPORTED_MODULE_15_survey_knockout__["dxSurveyService"]().loadSurvey(surveyId, function (success, result, response) {
             if (success && result) {
                 self.text = JSON.stringify(result);
+                
             }
         });
     };
@@ -9006,7 +9007,6 @@ var SurveyEditor = (function () {
          * The Survey JSON as a text. Use it to get Survey JSON or change it.
          */
         get: function () {
-            console.log('gg');
             if (this.koIsShowDesigner())
                 return this.getSurveyTextFromDesigner();
             return this.jsonEditor.text;
