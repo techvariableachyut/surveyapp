@@ -42,21 +42,3 @@ Route::get('/survey/answer/{id}', "CompleteSurveyController@getanswers");
 Route::get('/survey/answer/user/{surveyid}/{token}', "CompleteSurveyController@getanswersfromuser");
 Route::post('/survey/copy/{id}', "CopyController@copy");
 Route::get('/survey/delete/{id}', "QuestionsController@destroy");
-
-Route::get('/create/csv', function () {
-
-	$list = array
-	(
-	"Peter,Griffin,Oslo,Norway",
-	"Glenn,Quagmire,Oslo,Norway",
-	);
-
-	$file = fopen(public_path() . "/csv/contacts.csv","w");
-
-	foreach ($list as $line)
-	  {
-	  fputcsv($file,explode(',',$line));
-	  }
-
-	fclose($file);
-});
