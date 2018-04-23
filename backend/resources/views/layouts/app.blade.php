@@ -35,16 +35,9 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/colors/palette-gradient.css">
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <!-- END Custom CSS-->
-
-    <script src="/js/knockout-debug.js"></script>
-    <script src="/js/survey.ko.js"></script>
-    <script src="/js/surveyeditor.js"></script>
-
-    <link rel="stylesheet" href="/css/survey.css" />
-    <link rel="stylesheet" href="/css/surveyeditor.css" />
-    <link rel="stylesheet" href="/css/index.css" />
+    
   </head>
   <body data-open="click" data-menu="vertical-menu" data-col="2-columns" class="vertical-layout vertical-menu 2-columns  fixed-navbar">
 
@@ -105,9 +98,9 @@
 
     <div data-scroll-to-active="true" class="main-menu menu-fixed menu-dark menu-accordion menu-shadow">
       <!-- main menu header-->
-      <div class="main-menu-header">
+      <!-- <div class="main-menu-header">
         <input type="text" placeholder="Search" class="menu-search form-control round"/>
-      </div>
+      </div> -->
       <!-- / main menu header-->
       <!-- main menu content-->
       <div class="main-menu-content">
@@ -125,7 +118,9 @@
           <li class=" nav-item"><a href="#"><i class="icon-paper"></i><span data-i18n="nav.survey.main" class="menu-title">Survey</span></a>
             <ul class="menu-content">
               <li><a href="/create/question" data-i18n="nav.survey.create" class="menu-item">Create Survey</a></li>
-              <li><a href="/survey/results" data-i18n="nav.survey.create" class="menu-item">Survey Results</a></li>
+              <li><a href="/survey/all" data-i18n="nav.survey.create" class="menu-item">All Survey</a></li>
+              <!-- <li><a href="/survey/results" data-i18n="nav.survey.create" class="menu-item">Survey Responses</a></li> -->
+
             </ul>
           </li>
         </ul>
@@ -149,8 +144,8 @@
 
 
     <!-- BEGIN VENDOR JS-->
-    <script src="/app-assets/js/core/libraries/jquery.min.js" type="text/javascript"></script>
-    <script src="/app-assets/vendors/js/ui/tether.min.js" type="text/javascript"></script>
+    <script src="{{ asset('/app-assets/js/core/libraries/jquery.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/app-assets/vendors/js/ui/tether.min.js') }}" type="text/javascript"></script>
     <script src="/app-assets/js/core/libraries/bootstrap.min.js" type="text/javascript"></script>
     <script src="/app-assets/vendors/js/ui/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
     <script src="/app-assets/vendors/js/ui/unison.min.js" type="text/javascript"></script>
@@ -168,7 +163,10 @@
     <!-- END ROBUST JS-->
     <!-- BEGIN PAGE LEVEL JS-->
     <script src="/app-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
-    <script src="/js/editor.js"></script>
+    
     <!-- END PAGE LEVEL JS-->
+    @yield('script')
+
+    @yield('editscript')
   </body>
 </html>

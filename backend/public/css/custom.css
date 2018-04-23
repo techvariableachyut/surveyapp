@@ -5,9 +5,9 @@
 }
 /* Header Title */
 .sv_main .sv_container .sv_header h3 {
-  font-size: 2.5em;
-  font-weight: bold;
-  color: darkcyan;
+   font-size: 2.5em;
+  /* font-weight: bold; */ */
+  /* color: darkcyan; */
 }
 /* 
   Question Set Title 
@@ -28,16 +28,16 @@
 }
 
 
-
 /* Prograss Bar css */
 .sv_main .sv_container .sv_body .sv_progress {
   height: 0.8em;
 }
+
 /*
 save and resume letter button 
  */
 
-.save_resume{
+/* .save_resume{
   width: 180px;
   height: 50px;
   border-radius: 5px;
@@ -51,7 +51,24 @@ save and resume letter button
   outline: none;
   transition: all 1s;
   
+} */
+
+.save_resume{
+  width: 180px;
+  height: 50px;
+  border-radius: 5px;
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  cursor: pointer;
+  color: rgb(247, 129, 25);
+  background:transparent;
+  border: 1px solid;
+  outline: none;
+  transition: all 1s;
+  
 }
+
 .save_resume.offline{
   border: 1px solid rgba(255, 0, 0, 0.555);
   color: rgba(255, 0, 0, 0.555);

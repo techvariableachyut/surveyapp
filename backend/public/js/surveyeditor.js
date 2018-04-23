@@ -5594,7 +5594,7 @@ var enStrings = {
         newPageName: "page",
         newQuestionName: "question",
         newPanelName: "panel",
-        testSurvey: "Test Survey",
+        testSurvey: "Preview Survey",
         testSurveyAgain: "Test Survey Again",
         testSurveyWidth: "Survey width: ",
         embedSurvey: "Embed Survey",
@@ -8998,6 +8998,7 @@ var SurveyEditor = (function () {
         new __WEBPACK_IMPORTED_MODULE_15_survey_knockout__["dxSurveyService"]().loadSurvey(surveyId, function (success, result, response) {
             if (success && result) {
                 self.text = JSON.stringify(result);
+                
             }
         });
     };
@@ -9006,7 +9007,6 @@ var SurveyEditor = (function () {
          * The Survey JSON as a text. Use it to get Survey JSON or change it.
          */
         get: function () {
-            console.log('gg');
             if (this.koIsShowDesigner())
                 return this.getSurveyTextFromDesigner();
             return this.jsonEditor.text;
@@ -9074,10 +9074,8 @@ var SurveyEditor = (function () {
         this.koState(this.state);
     };
     SurveyEditor.prototype.doSave = function () {
-        console.log('saving.....');
         this.setState("saving");
         if (this.saveSurveyFunc) {
-            console.log('saving.....02');
             this.saveNo++;
             var self = this;
             this.saveSurveyFunc(this.saveNo, function doSaveCallback(no, isSuccess) {

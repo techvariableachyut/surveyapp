@@ -63,8 +63,13 @@ function getParams() {
 Survey.dxSurveyService.serviceUrl = "";
 var surveyId = window.location.pathname.split('/');
 var editor = new SurveyEditor.SurveyEditor("editor");
-// var surveyId = decodeURI(getParams()["id"]);
-// surveyName = surveyId[3];
+var surveyName  = '';
+if(decodeURI(surveyId[4]) == 'undefined'){
+  surveyName  = "Set the Survey Title!"
+}else{
+  surveyName  = decodeURI(surveyId[4]);
+}
+
 editor.loadSurvey(surveyId[3]);
 editor.saveSurveyFunc = function(saveNo, callback) {
   var xhr = new XMLHttpRequest();
@@ -80,7 +85,10 @@ editor.saveSurveyFunc = function(saveNo, callback) {
     }
   };
   xhr.send(
-    JSON.stringify({ surveyId: surveyId[3], Json: editor.text, Text: editor.text, surveyName })
+    JSON.stringify({ 
+      surveyId: surveyId[3], Json: editor.text, 
+      Text: editor.text, 
+      surveyName: JSON.parse(editor.text).title ? JSON.parse(editor.text).title :  jQuery("#sjs_editor_title_edit").find("input")[0].value })
   );
 };
 editor.isAutoSave = true;

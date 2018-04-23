@@ -3,6 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <title>Survey - Gender in News Monitoring Tool</title>
+
+    <link rel="apple-touch-icon" sizes="60x60" href="/app-assets/images/ico/apple-icon-60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/app-assets/images/ico/apple-icon-76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/app-assets/images/ico/apple-icon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/app-assets/images/ico/apple-icon-152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/ico/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="/app-assets/images/ico/favicon-32.png">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="/css/jquery-ui.css" />
     <link type="text/css" rel="stylesheet" href="/css/survey.css" />
@@ -80,8 +88,8 @@
     <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/survey.app.js"></script>
     <script src="/js/surveyjs-widgets.js"></script>
-    <script src="/js/homepage.js"></script>
-    <script src="/js/questions.js"></script>
+    <!-- <script src="/js/homepage.js"></script>
+    <script src="/js/questions.js"></script> -->
     <script src="/js/config.js"></script>
     <script src="/js/survey.js"></script>
     <script src="/js/scripts.js"></script>

@@ -1,10 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="breadcrumb-wrapper col-xs-12">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/survey/all">All Survey</a>
+                </li>
+              </ol>
+        </div>
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Surveys</h4>
+                    <h4 class="card-title">List Of All Survey</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -13,7 +19,7 @@
                                 <tr>
                                     <th>#Survey</th>
                                     <th>Survey name/title</th>
-                                    <th>Answer</th>
+                                    <th>All Responses</th>
                                 </tr>
                             </thead>
                             <tbody>
