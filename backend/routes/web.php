@@ -36,3 +36,4 @@ Route::get('/survey/answer/user/{surveyid}/{token}', "CompleteSurveyController@g
 Route::post('/survey/copy/{id}', "CopyController@copy");
 Route::get('/survey/delete/{id}', "QuestionsController@destroy");
 Route::get('/survey/all', "SurveyController@show");
+Route::get('/answer/create/csv/{token}', "DownloadController@download");
