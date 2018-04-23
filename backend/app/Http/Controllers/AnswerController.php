@@ -76,9 +76,14 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $surveyId = $request['surveyId'];
+        $tokenId = $request['tokenId'];
+        Answers::where([             
+                'surveyId' => $surveyId,
+                'token' => $tokenId
+        ])->update(['answer' => json_encode($request['answer']) ]);
     }
 
     /**

@@ -5,32 +5,33 @@ function app(survey,Survey){
         .applyTheme("orange");
   
     // The json variaable is available in question.js file
-  
-  
     //Adding new locale into the library.
     //The json variaable is available in config.js file
+
     var mycustomSurveyStrings = config;
     Survey.surveyLocalization.locales["my"] = mycustomSurveyStrings;
     survey.locale = "my";
 
     function loadState(survey) {
-        var storageSt = localStorage.getItem(storageName) || "";
-        var res = {};
-        if (storageSt){
-            res = JSON.parse(storageSt); 
-        }else {
-            res = {
-                currentPageNo: 0,
-                data: {}
-            };
+        if(JSON.parse(__answer__.answer)){
+            survey.data = JSON.parse(__answer__.answer).data;
+            survey.currentPageNo = JSON.parse(__answer__.answer).currentPageNo;
+        }else{
+            var storageSt = localStorage.getItem(storageName) || "";
+            var res = {};
+            if (storageSt){
+                res = JSON.parse(storageSt); 
+            }else {
+                res = {
+                    currentPageNo: 0,
+                    data: {}
+                };
+            }
+            if (res.currentPageNo >= 0 ) 
+                survey.currentPageNo = res.currentPageNo;
+            if (res.data) 
+                survey.data = res.data;
         }
-        //Set the loaded data into the survey.
-        if (res.currentPageNo >= 0 ) 
-            survey.currentPageNo = res.currentPageNo;
-        if (res.data) 
-            survey.data = res.data;
-
-        console.log(res.currentPageNo);
         window.location.hash = "section" + (survey.currentPageNo + 1);
     }
 
@@ -97,9 +98,6 @@ function app(survey,Survey){
             s.data.price01 != s.data.price02 + s.data.price03 + s.data.price04 ? 
                 options.error = "Error" : options.error = null;
         }
-        // if(options.name == 'img'){
-        //     options.error = "Error" 
-        // }
     }
     /**
      *  Custom Validation End
@@ -114,13 +112,11 @@ function app(survey,Survey){
 
 
 (function(){
-    var json = null;
-    var surveyId = window.location.pathname.split('/');
-    jQuery
-    .get("/getSurvey?surveyId="+surveyId[2], function(data) {
-        json = data;
-        window.survey = new Survey.Model(json);
-        app(window.survey,Survey)
-    })
+    var json = {
+        title: __question__.title,
+        pages: JSON.parse(__question__.json)
+    }
+    window.survey = new Survey.Model(json);
+    app(window.survey,Survey)
 })()
   

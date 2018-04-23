@@ -31,7 +31,7 @@ class SaveAndContinue extends Mailable
     public function build()
     {
         return $this->markdown('mail.answer')->with([
-                        'url' => "http://survey/resuming-tool/" . $this->answers->surveyId . "/" . $this->answers->token
+                        'url' => "http://survey/resume-survey/" . $this->answers->surveyId . "/" . $this->answers->token
                     ]);
     }
 }

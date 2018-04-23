@@ -5594,7 +5594,7 @@ var enStrings = {
         newPageName: "page",
         newQuestionName: "question",
         newPanelName: "panel",
-        testSurvey: "Test Survey",
+        testSurvey: "Preview Survey",
         testSurveyAgain: "Test Survey Again",
         testSurveyWidth: "Survey width: ",
         embedSurvey: "Embed Survey",
@@ -9074,10 +9074,8 @@ var SurveyEditor = (function () {
         this.koState(this.state);
     };
     SurveyEditor.prototype.doSave = function () {
-        console.log('saving.....');
         this.setState("saving");
         if (this.saveSurveyFunc) {
-            console.log('saving.....02');
             this.saveNo++;
             var self = this;
             this.saveSurveyFunc(this.saveNo, function doSaveCallback(no, isSuccess) {

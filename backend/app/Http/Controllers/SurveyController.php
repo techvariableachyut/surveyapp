@@ -23,7 +23,7 @@ class SurveyController extends Controller{
         }
         $questions = Questions::all();
         //dd($questions);
-        return view('survey.lists',compact('questions'));
+        return view('survey.dashboard',compact('questions'));
     }
 
     /**
@@ -53,9 +53,13 @@ class SurveyController extends Controller{
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
+        $questions = Questions::all();
+        return view('survey.list',compact('questions'));
     }
 
     /**
@@ -123,9 +127,9 @@ class SurveyController extends Controller{
         $answer = Answers::where('surveyId',$surveyId)->where('token',$surveyToken)->first();
         $question = Questions::where('token',$surveyId)->first();
 
-        $answers = json_decode($answer->answer);
-        $questions = json_decode($question->json);
+        // $answers = json_decode($answer->answer);
+        // $questions = json_decode($question->json);
 
-        return view('answer.resume',compact('answers','questions'));
+        return view('answer.resume',compact('answer','question'));
     }
 }

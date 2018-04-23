@@ -26,7 +26,6 @@ class CompleteSurveyController extends Controller{
     public function getanswersfromuser($surveyId,$token){
     	$question = Questions::where('token',$surveyId)->first();
     	$answer =  Answers::where('surveyId',$surveyId)->where('token',$token)->first();
-
     	// dd($question.$answer);
     	return view('survey.userresult',compact('question','answer'));
     }

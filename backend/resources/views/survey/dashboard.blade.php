@@ -157,7 +157,7 @@
                                       <td class="text-truncate">
                                         <a href="/create/questions/{{$question->token}}/{{$question->title}}" class="btn btn-sm btn-info">view</a> 
                                         <a href="/create/questions/{{$question->token}}/{{$question->title}}" class="btn btn-sm btn-warning">Edit</a> 
-                                        <a href="/survey/delete/{{$question->token}}" class="btn btn-sm btn-danger">Delete</a>
+                                        <a onclick="deleteSurvey('{{$question->token}}')" href="#"  class="btn btn-sm btn-danger">Delete</a>
                                       </td>
                                        <td><a target="_blank" href="/monitoring-tool/{{ $question->token }}" class="btn btn-sm btn-success">Share survey link</a></td>
                                        <td><a href="#" onclick="event.preventDefault(); var id= '{{$question->token}}'; copy(id,{{ $index + 2 }});" class="btn btn-sm btn-success">Duplicate Survey</a></td>
@@ -172,7 +172,11 @@
 @endsection
 
 <script>
-
+function deleteSurvey(token){
+    event.preventDefault();
+    var conf = confirm('Are you sure?')
+    conf ? window.location.replace('/survey/delete/'+token) : false
+}
 function copy(id){
     $.ajax({ 
         type: 'POST', 

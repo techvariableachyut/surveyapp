@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="breadcrumb-wrapper col-xs-12">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/survey/all">All Survey</a>
+                </li>
+                <li class="breadcrumb-item"><a href="/survey/answer/{{$question->token}}">Survey - {{$question->title}}</a>
+                </li>
+              </ol>
+        </div>
 <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
@@ -13,7 +21,9 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Status</th>
+                                    <th>View Response</th>
                                     <th>Downlaod</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -27,7 +37,9 @@
                                             Done
                                           @endif
                                       </td>
+                                      <td> <a href="/survey/answer/user/{{$a->surveyId}}/{{$a->token}}">View</a></td>
                                       <td><a href="" class="btn btn-sm">Download</a></td>
+                                      
                                   </tr>
                                 @endforeach
                             </tbody>
