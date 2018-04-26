@@ -16,6 +16,8 @@
     <link type="text/css" rel="stylesheet" href="/css/survey.css" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="/css/custom.css" >
+    <link type="text/css" rel="stylesheet" href="/css/animate.min.css">
+
 </head>
 
 <body>
@@ -24,9 +26,9 @@
     <button class="save_resume" id="snrBtn">Save and Continue Later</button>
 
     <!-- Save and Resume Modal -->
-    <div id="snrModal" class="modal">
+    <div id="snrModal" class="modal ">
         <!-- Modal content -->
-        <div class="modal-content">
+        <div class="modal-content animated bounceIn">
             <span class="close">&times;</span>
             <h2 class="modal_title">Save and Continue Later</h2>
             <i>Please supply an email address to save your progress. A unique link will be emailed to you that will allow you to return where you left off.</i>
