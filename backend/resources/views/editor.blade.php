@@ -42,7 +42,10 @@
 <script src="/js/knockout-debug.js"></script>
 <script src="/js/survey.ko.js"></script>
 <script src="/js/surveyeditor.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/surveyjs-widgets.js"></script>
 
+<link href="/css/jquery-ui.css" type="text/css" rel="stylesheet"/>
 <link rel="stylesheet" href="/css/survey.css" />
 <link rel="stylesheet" href="/css/surveyeditor.css" />
 <link rel="stylesheet" href="/css/index.css" />

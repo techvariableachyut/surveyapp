@@ -11,7 +11,6 @@ class CopyController extends Controller
 {
     public function copy($id){
         $old = Questions::where('token', $id)->first();
-
         $new = Questions::create([
             'token' => uniqid(),
             'title' => $old->title,
