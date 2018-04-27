@@ -164,7 +164,7 @@
                                             <a href="/create/questions/{{$question->token}}/{{$question->title}}" class="btn btn-sm btn-info">view</a> 
                                             <a href="/create/questions/{{$question->token}}/{{$question->title}}" class="btn btn-sm btn-warning">Edit</a> 
                                             <a onclick="deleteSurvey('{{$question->token}}')" href="#"  class="btn btn-sm btn-danger">Delete</a>
-                                            <a href="/answer/create/csv/{{$question->token}}"  class="btn btn-sm btn-danger">Download</a>
+                                            <a href="/answers/csv/all/{{$question->token}}"  class="btn btn-sm btn-default">Download</a>
                                         </td>
                                         <td><a target="_blank" href="/monitoring-tool/{{ $question->token }}" class="btn btn-sm btn-success">Share survey link</a></td>
                                         <td><a href="#" onclick="event.preventDefault(); var id= '{{$question->token}}'; copy(id,'{{ $index + 2 }}','{{ Session::token() }}');" class="btn btn-sm btn-success">Duplicate Survey</a></td>

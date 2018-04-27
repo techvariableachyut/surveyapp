@@ -13,21 +13,22 @@ function copy(token,id,csrfToken){
       var index = $("#indexid").text();
       token = csrfToken;
       $("#append").append(
-          `<tr> 
+          `<tr> \
               <td class='text-truncate'> 
-                  <a href='#'>"+index+"</a> 
+                  <a href='#'>${index}</a> 
               </td> 
-              <td class='text-truncate'>"+msg['new']['title']+"</td> 
+              <td class='text-truncate'>${msg['new']['title']}</td> 
               <td class='text-truncate'> 
-                  <a href='/create/questions/"+msg['new']['token']+"' class='btn btn-sm btn-warning'>Edit</a> 
-                  <a href='/survey/delete/"+msg['new']['token']+"' class='btn btn-sm btn-danger'>Delete</a> 
-                  <a href='#' onclick='event.preventDefault(); copy("+msg['new']['token']+")' class='btn btn-sm btn-success'>Duplicate survey</a>
+                  <a href='/create/questions/${msg['new']['token']}' class='btn btn-sm btn-info'>View</a> 
+                  <a href='/create/questions/${msg['new']['token']}' class='btn btn-sm btn-warning'>Edit</a> 
+                  <a href='#' onclick='deleteSurvey(${msg['new']['token']})' class='btn btn-sm btn-danger'>Delete</a> 
+                  <a href='/answers/csv/all/${msg['new']['token']}' class='btn btn-sm btn-default'>Download</a>
               </td> 
               <td> 
-                  <a target='_blank' href='' class='btn btn-sm btn-success'>Share survey link</a> 
+                  <a target='_blank' href='/monitoring-tool/${msg['new']['token']}' class='btn btn-sm btn-success'>Share survey link</a> 
               </td> 
               <td> 
-                  <a href="/survey/answer/{{$question->token}}">View</a>  
+                  <a href='#' onclick='event.preventDefault(); copy(${msg['new']['token']},${token})' class='btn btn-sm btn-success'>Duplicate Survey</a>  
               </td> 
           </tr>`
       );
