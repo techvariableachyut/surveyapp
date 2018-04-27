@@ -38,6 +38,7 @@ function postEdit() {
 
     $.post( "/changeSurveyName", 
       { 
+        _token:__token__,
         surveyId: surveyId[3], 
         name: surveyName 
       })
@@ -72,9 +73,9 @@ if(decodeURI(surveyId[4]) == 'undefined'){
 
 editor.loadSurvey(surveyId[3]);
 editor.saveSurveyFunc = function(saveNo, callback) {
-  if(jQuery("#sjs_editor_title_edit").find("input")[0].value == ''){
-    alert('Set the Survey Title!')
-  }
+  // if(jQuery("#sjs_editor_title_edit").find("input")[0].value == '' && surveyName == ''){
+  //   alert('Set the Survey Title!')
+  // }
   var xhr = new XMLHttpRequest();
   xhr.open(
     "POST",
