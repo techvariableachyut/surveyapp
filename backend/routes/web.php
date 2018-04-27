@@ -37,3 +37,5 @@ Route::get('/answer/create/csv/{surveyId}/{token}', "DownloadController@download
 Route::post('/survey/answer/update', 'AnswerController@resumecompleteupdate');
 
 Route::post('/answer/submit/complete', 'AnswerController@store');
+
+Route::get('/answers/csv/all/{surveyId}', "DownloadController@downloadall");
