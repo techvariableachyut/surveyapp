@@ -12,11 +12,6 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'changeJson',
-        'survey/answer/store',
-        'changeSurveyName',
-        'answer/submit',
-        '/lazy/survey/submit',
         'answer/update'
     ];
 }

@@ -88,7 +88,8 @@ editor.saveSurveyFunc = function(saveNo, callback) {
     }
   };
   xhr.send(
-    JSON.stringify({ 
+    JSON.stringify({
+      _token:__token__, 
       surveyId: surveyId[3], Json: editor.text, 
       Text: editor.text, 
       surveyName: JSON.parse(editor.text).title ? JSON.parse(editor.text).title :  jQuery("#sjs_editor_title_edit").find("input")[0].value })

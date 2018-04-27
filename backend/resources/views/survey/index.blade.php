@@ -85,7 +85,9 @@
             </div>
     </div>
 
-   
+    <script type="text/javascript">
+        window.__token__ = "{{ Session::token() }}";
+    </script>
     <script src="/js/jquery.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/survey.app.js"></script>
