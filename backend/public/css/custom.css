@@ -134,6 +134,7 @@ save and resume letter button
   margin: auto;
   color: #888;
   margin-bottom: 10px;
+  text-align: center;
 }
 .modal_title.success{
   color: #1ab394;
