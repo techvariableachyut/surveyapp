@@ -74,14 +74,19 @@ class DownloadController extends Controller
         $file = fopen('php://memory', 'w');
         $uniqueid = uniqid();
         
-        $finalarray = array(implode(",",$questionarray),implode(",", $answersarray));
-
+        $finalarray = array(implode(",",$questionarray));
+        
+        foreach ($answersarray as $value) {
+            $finalarray[] = $value;
+        }
 
         $localfile = fopen(public_path() . "/csv/$uniqueid" . ".csv", 'w');
         fwrite($localfile, json_encode($finalarray));
 
         // dd($finalarray);
-        fputcsv($file, $finalarray, ","); 
+        foreach($finalarray as $line){
+            fputcsv($file,explode(',',$line)); 
+        }
         
 
         // reset the file pointer to the start of the file
@@ -160,15 +165,21 @@ class DownloadController extends Controller
         $file = fopen('php://memory', 'w');
         $uniqueid = uniqid();
         
-        $finalarray = array(implode(",",$questionarray),implode(",", $answersarray));
+        $finalarray = array(implode(",",$questionarray));
 
+        foreach ($answersarray as $value) {
+            $finalarray[] = $value;
+        }
+
+        //dd($finalarray);
 
         $localfile = fopen(public_path() . "/csv/$uniqueid" . ".csv", 'w');
         fwrite($localfile, json_encode($finalarray));
 
         // dd($finalarray);
-        fputcsv($file, $finalarray, ","); 
-        
+        foreach($finalarray as $line){
+            fputcsv($file,explode(',',$line)); 
+        }
 
         // reset the file pointer to the start of the file
         fseek($file, 0);

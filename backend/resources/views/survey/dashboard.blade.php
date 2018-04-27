@@ -147,6 +147,7 @@
                                     <th>action</th>
                                     <th>Link</th>
                                     <th>Copy</th>
+                                    <th>Responses</th>
                                 </tr>
                             </thead>
                             <tbody id="append">
@@ -168,6 +169,8 @@
                                         </td>
                                         <td><a target="_blank" href="/monitoring-tool/{{ $question->token }}" class="btn btn-sm btn-success">Share survey link</a></td>
                                         <td><a href="#" onclick="event.preventDefault(); var id= '{{$question->token}}'; copy(id,'{{ $index + 2 }}','{{ Session::token() }}');" class="btn btn-sm btn-success">Duplicate Survey</a></td>
+
+                                        <td><a href="/survey/answer/{{$question->token}}" class="btn btn-sm btn-default">Responses</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
