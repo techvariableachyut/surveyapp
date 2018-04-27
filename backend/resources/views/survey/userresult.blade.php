@@ -29,6 +29,7 @@
     <script>
         window.__question__ = <?= $question ?>;
         window.__answer__ = <?= $answer ?>;
+        window.__token__ = "{{Session::token()}}";
     </script>
 
     <script src="/js/jquery.js"></script>

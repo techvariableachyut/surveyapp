@@ -153,7 +153,13 @@
                                 @foreach($questions as $index => $question)
                                     <tr>
                                         <td class="text-truncate"><a href="#" id="indexid">{{ $index + 1 }}</a></td>
-                                        <td class="text-truncate">{{ $question->title }}</td>
+                                        <td class="text-truncate">
+                                            @if(!$question->title)
+                                                -
+                                            @else
+                                                {{ $question->title }}
+                                            @endif
+                                        </td>
                                         <td class="text-truncate">
                                             <a href="/create/questions/{{$question->token}}/{{$question->title}}" class="btn btn-sm btn-info">view</a> 
                                             <a href="/create/questions/{{$question->token}}/{{$question->title}}" class="btn btn-sm btn-warning">Edit</a> 
@@ -161,7 +167,7 @@
                                             <a href="/answer/create/csv/{{$question->token}}"  class="btn btn-sm btn-danger">Download</a>
                                         </td>
                                         <td><a target="_blank" href="/monitoring-tool/{{ $question->token }}" class="btn btn-sm btn-success">Share survey link</a></td>
-                                        <td><a href="#" onclick="event.preventDefault(); var id= '{{$question->token}}'; copy(id,{{ $index + 2 }});" class="btn btn-sm btn-success">Duplicate Survey</a></td>
+                                        <td><a href="#" onclick="event.preventDefault(); var id= '{{$question->token}}'; copy(id,'{{ $index + 2 }}','{{ Session::token() }}');" class="btn btn-sm btn-success">Duplicate Survey</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

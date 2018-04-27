@@ -20,6 +20,7 @@ class CompleteSurveyController extends Controller{
     public function getanswers($id){
         $answers = Answers::where('surveyId',$id)->get();
         $question = Questions::where('token',$id)->first();
+        //dd($answers);
         return view('answer.answers',compact('answers','question'));
     }
 

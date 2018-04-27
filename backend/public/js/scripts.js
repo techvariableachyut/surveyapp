@@ -47,6 +47,7 @@
         if($('#emailID').val() === $('#emailIDCnf').val() ){
             $.post( "/lazy/survey/submit", 
             { 
+              _token:__token__,  
               surveyId: surveyId[2], 
               answer: {
                 currentPageNo: survey.currentPageNo,

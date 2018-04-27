@@ -13240,13 +13240,14 @@ var SurveyModel = /** @class */ (function (_super) {
     function submitAnswer(){
         console.log(survey.data)
         var surveyId = window.location.pathname.split('/');
-        $.post( "/answer/submit", 
+        $.post( "/answer/submit/complete", 
         { 
-          surveyId: surveyId[2], 
-          answer: {
-            currentPageNo: survey.currentPageNo,
-            data: survey.data
-          }
+            _token: __token__,
+            surveyId: surveyId[2], 
+            answer: {
+                currentPageNo: survey.currentPageNo,
+                data: survey.data
+            }
         })
     }
 

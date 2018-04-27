@@ -1,19 +1,17 @@
 function deleteSurvey(token){
-  event.preventDefault();
   var conf = confirm('Are you sure?')
   conf ? window.location.replace('/survey/delete/'+token) : false
 }
 
 function copy(token,id,csrfToken){
-  event.preventDefault(); 
   $.ajax({
       type: 'POST', 
-      url: "/survey/copy/" + id + "",
+      url: "/survey/copy/" + token + "",
       data:{_token:csrfToken}
   })   
   .done(function(msg){
       var index = $("#indexid").text();
-      token = "{{ Session::token() }}";
+      token = csrfToken;
       $("#append").append(
           `<tr> 
               <td class='text-truncate'> 

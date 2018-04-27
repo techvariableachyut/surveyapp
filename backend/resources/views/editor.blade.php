@@ -39,6 +39,9 @@
     top:20%;
   }
 </style>
+<script type="text/javascript">
+    window.__token__ = "{{ Session::token() }}";
+</script>
 <script src="/js/knockout-debug.js"></script>
 <script src="/js/survey.ko.js"></script>
 <script src="/js/surveyeditor.js"></script>

@@ -22,13 +22,10 @@ Route::post('/changeSurveyName', 'QuestionsController@changeSurveyName');
 Route::resource('questions', 'QuestionsController');
 Route::resource('dashboard', 'SurveyController');
 Route::post('/lazy/survey/submit', 'LazyController@emailandstore');
-Route::get('/survey/answer/store', function(){
-	return response()->json(['response' => true]);
-});
 Route::get('/getSurvey', 'QuestionsController@getSurvey');
 Route::get('/survey/edit', 'QuestionsController@getSurvey');
 Route::resource('answer', 'AnswerController');
-Route::post('answer/submit', 'AnswerController@store')->name('answer.submit');
+Route::post('answer/submit/{id}/{token}', 'AnswerController@store')->name('answer.submit');
 Route::post('answer/update', 'AnswerController@update')->name('answer.update');
 Route::get('/survey/results', "CompleteSurveyController@getall");
 Route::get('/survey/answer/{id}', "CompleteSurveyController@getanswers");
@@ -36,4 +33,7 @@ Route::get('/survey/answer/user/{surveyid}/{token}', "CompleteSurveyController@g
 Route::post('/survey/copy/{id}', "CopyController@copy");
 Route::get('/survey/delete/{id}', "QuestionsController@destroy");
 Route::get('/survey/all', "SurveyController@show");
-Route::get('/answer/create/csv/{token}', "DownloadController@download");
+Route::get('/answer/create/csv/{surveyId}/{token}', "DownloadController@download");
+Route::post('/survey/answer/update', 'AnswerController@resumecompleteupdate');
+
+Route::post('/answer/submit/complete', 'AnswerController@store');

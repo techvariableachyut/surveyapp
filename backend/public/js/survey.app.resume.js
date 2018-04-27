@@ -13242,12 +13242,13 @@ var SurveyModel = /** @class */ (function (_super) {
         var surveyId = window.location.pathname.split('/');
         $.post( "/survey/answer/update", 
         { 
-          surveyId: surveyId[2], 
-          tokenId: surveyId[3], 
-          answer: {
-            currentPageNo: survey.currentPageNo,
-            data: survey.data
-          }
+            surveyId: surveyId[2], 
+            tokenId: surveyId[3],
+            _token:window.__token__, 
+            answer: {
+                currentPageNo: survey.currentPageNo,
+                data: survey.data
+            }
         })
     }
 

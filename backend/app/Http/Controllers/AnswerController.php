@@ -96,4 +96,13 @@ class AnswerController extends Controller
     {
         //
     }
+
+    public function resumecompleteupdate(Request $request){
+        $surveyId = $request['surveyId'];
+        $tokenId = $request['tokenId'];
+        Answers::where([             
+                'surveyId' => $surveyId,
+                'token' => $tokenId
+        ])->update(['answer' => json_encode($request['answer']), 'done' => 1 ]);
+    }
 }

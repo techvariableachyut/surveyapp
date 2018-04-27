@@ -32,7 +32,7 @@ class SaveAndContinue extends Mailable
     {
         $url = env("APP_URL");
         return $this->markdown('mail.answer')->with([
-                        'url' => $url . "/resuming-tool/" . $this->answers->surveyId . "/" . $this->answers->token
+                        'url' => $url . "/resume-survey/" . $this->answers->surveyId . "/" . $this->answers->token
                     ]);
     }
 }

@@ -23,7 +23,11 @@
                                 @foreach($questions as $index => $question)
                                   <tr>
                                       <td class="text-truncate">{{ $index + 1 }}</td>
-                                      <td class="text-truncate"><a href="/create/questions/{{$question->token}}/{{$question->title}}">{{ $question->title }}</a></td>
+                                      <td class="text-truncate"><a href="/create/questions/{{$question->token}}/{{$question->title}}">@if(!$question->title)
+                                                -
+                                      @else
+                                          {{ $question->title }}
+                                      @endif</a></td>
                                       <td class="text-truncate"> 
                                         <a href="/create/questions/{{$question->token}}/{{$question->title}}" class="btn btn-sm btn-warning">Edit</a> 
                                         <a onclick="deleteSurvey('{{$question->token}}');" 
