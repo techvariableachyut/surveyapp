@@ -16,7 +16,7 @@ class LazyController extends Controller
         $id = $request['surveyId'];
         $email = $request['email'];
 
-        $check = Answers::where('email',$email)->where('done',false)->first();
+        $check = Answers::where('email',$email)->where('surveyId',$id)->where('done',false)->first();
 
         if ($check == null) {
             $user = Answers::create([
@@ -29,7 +29,7 @@ class LazyController extends Controller
 
             $this->mailpotha($user);   
         }else{
-            $user = Answers::where('email',$email)->where('done',false)
+            $user = Answers::where('email',$email)->where('surveyId',$id)->where('done',false)
                         ->update(['answer' => json_encode($request['answer']) ]);
 
             $this->mailpotha($check);
