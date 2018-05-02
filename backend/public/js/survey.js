@@ -1,17 +1,16 @@
-function app(survey,Survey){
-    var storageName = "SurveyJS_LoadState";
+function app(survey,Survey,storageName){
+    
     Survey
         .StylesManager
         .applyTheme("orange");
   
     // The json variaable is available in question.js file
-  
-  
     //Adding new locale into the library.
     //The json variaable is available in config.js file
     var mycustomSurveyStrings = config;
     Survey.surveyLocalization.locales["my"] = mycustomSurveyStrings;
     survey.locale = "my";
+
 
     function loadState(survey) {
         var storageSt = localStorage.getItem(storageName) || "";
@@ -63,6 +62,7 @@ function app(survey,Survey){
                     currentPageNo: 0,
                     data: null
                 })
+                
             }else{
                 saveState(survey)
             }
@@ -104,7 +104,6 @@ function app(survey,Survey){
     /**
      *  Custom Validation End
      */
-
     //Load the initial state
     //For Optional section
     loadState(survey);
@@ -116,11 +115,13 @@ function app(survey,Survey){
 (function(){
     var json = null;
     var surveyId = window.location.pathname.split('/');
+    var storageName = surveyId[2];
     jQuery
     .get("/getSurvey?surveyId="+surveyId[2], function(data) {
         json = data;
         window.survey = new Survey.Model(json);
-        app(window.survey,Survey)
+        app(window.survey,Survey,storageName)
     })
+    
 })()
   

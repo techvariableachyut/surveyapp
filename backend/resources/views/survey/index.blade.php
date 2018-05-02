@@ -17,18 +17,39 @@
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="/css/custom.css" >
     <link type="text/css" rel="stylesheet" href="/css/animate.min.css">
+    <link type="text/css" rel="stylesheet" href="/css/jquery-confirm.min.css">
 
 </head>
 
 <body>
     <div class="online_status"></div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">IMS Survey Tool</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" id="snrBtn">Save and Continue Later</a></li>
+                <li><a href="#" id="syncBtn">Sync Survey Data <span id="syncCount" class="badge"></span></a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="syncing hide">Syncing Data .....</div>
     <div id="surveyElement"></div>
-    <button class="save_resume" id="snrBtn">Save and Continue Later</button>
+    <!-- <button class="save_resume" id="snrBtn">Save and Continue Later</button> -->
+   
 
+    <!-- Offline msg  div-->
+
+    <!--  -->
     <!-- Save and Resume Modal -->
     <div id="snrModal" class="modal ">
         <!-- Modal content -->
+        
         <div class="modal-content animated bounceIn">
+            <div class="loader hide"> 
+
+            </div>
             <span class="close">&times;</span>
             <h2 class="modal_title">Save and Continue Later</h2>
             <i>Please supply an email address to save your progress. A unique link will be emailed to you that will allow you to return where you left off.</i>
@@ -50,54 +71,18 @@
     </div>
 
 
-    <!-- Survey Completed Modal -->
-    <div id="scmModal" class="modal thanks">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <h3 class="modal_title success">Thank you for completing the survey!</h3>
-            <div id="scmClose" class="modal_input_group close">
-                <button class="close modal_btn">Close</button>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Confirm Modal -->
-    <div id="cnfModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <h2 class="modal_title">Are You Sure?</h2>
-                <div class="modal_input_group cnf">
-                    <button id="modal_btn_confirm" class="modal_btn cnf">Yes</button>
-                    <button id="modal_btn_cancel" class="modal_btn cnf">Cancel</button>
-                </div>
-            </div>
-    </div>
-
-    <!-- Online Status  Modal -->
-    <div id="onlineStatusModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <i style="color:red;">You don't have Internet connectivity, Please try after sometimes.</i>
-                <div class="modal_input_group">
-                    <button id="online_status_btn" class="modal_btn">Close</button>
-                </div>
-            </div>
-    </div>
-
     <script type="text/javascript">
         window.__token__ = "{{ Session::token() }}";
     </script>
     <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap-notify.min.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/survey.app.js"></script>
     <script src="/js/surveyjs-widgets.js"></script>
-    <!-- <script src="/js/homepage.js"></script>
-    <script src="/js/questions.js"></script> -->
     <script src="/js/config.js"></script>
     <script src="/js/survey.js"></script>
     <script src="/js/scripts.js"></script>
-
+    <script src="/js/jquery-confirm.min.js"></script>
 
 </body>
 </html>

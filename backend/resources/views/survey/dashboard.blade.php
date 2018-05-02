@@ -143,10 +143,9 @@
                             <thead>
                                 <tr>
                                     <th>#Survey</th>
-                                    <th>Survey name/title</th>
-                                    <th>action</th>
+                                    <th>Survey title</th>
+                                    <th>Actions</th>
                                     <th>Link</th>
-                                    <th>Copy</th>
                                     <th>Responses</th>
                                 </tr>
                             </thead>
@@ -162,14 +161,16 @@
                                             @endif
                                         </td>
                                         <td class="text-truncate">
-                                            <a href="/create/questions/{{$question->token}}/{{$question->title}}" class="btn btn-sm btn-info">view</a> 
                                             <a href="/create/questions/{{$question->token}}/{{$question->title}}" class="btn btn-sm btn-warning">Edit</a> 
                                             <a onclick="deleteSurvey('{{$question->token}}')" href="#"  class="btn btn-sm btn-danger">Delete</a>
+                                            <a href="#" onclick="event.preventDefault(); var id= '{{$question->token}}'; copy(id,'{{ $index + 2 }}','{{ Session::token() }}');" class="btn btn-sm btn-success">Make a Copy</a>
                                             <a href="/answers/csv/all/{{$question->token}}"  class="btn btn-sm btn-default">Download</a>
                                         </td>
-                                        <td><a target="_blank" href="/monitoring-tool/{{ $question->token }}" class="btn btn-sm btn-success">Share survey link</a></td>
-                                        <td><a href="#" onclick="event.preventDefault(); var id= '{{$question->token}}'; copy(id,'{{ $index + 2 }}','{{ Session::token() }}');" class="btn btn-sm btn-success">Duplicate Survey</a></td>
-
+                                        <td>
+                                            <a target="_blank" href="/monitoring-tool/{{ $question->token }}" class="btn btn-sm btn-success">
+                                                <i class="icon-android-share-alt"></i>
+                                            </a>
+                                        </td>
                                         <td><a href="/survey/answer/{{$question->token}}" class="btn btn-sm btn-default">Responses</a></td>
                                     </tr>
                                 @endforeach

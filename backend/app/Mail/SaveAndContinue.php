@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Http\Request;
 
 class SaveAndContinue extends Mailable
 {
@@ -28,11 +29,10 @@ class SaveAndContinue extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(Request $request)
     {
-        $url = env("APP_URL");
         return $this->markdown('mail.answer')->with([
-                        'url' => $url . "/resume-survey/" . $this->answers->surveyId . "/" . $this->answers->token
-                    ]);
+            'url' => $request->getSchemeAndHttpHost() . "/resume-survey/" . $this->answers->surveyId . "/" . $this->answers->token
+        ]);
     }
 }

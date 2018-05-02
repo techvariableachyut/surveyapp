@@ -16,6 +16,8 @@
     <link type="text/css" rel="stylesheet" href="/css/survey.css" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="/css/custom.css" >
+    <link type="text/css" rel="stylesheet" href="/css/animate.min.css">
+    
 </head>
 
 <body>
@@ -24,9 +26,9 @@
     <button class="save_resume" id="snrBtn">Save and Continue Later</button>
 
     <!-- Save and Resume Modal -->
-    <div id="snrModal" class="modal">
+    <div id="snrModal" class="modal ">
         <!-- Modal content -->
-        <div class="modal-content">
+        <div class="modal-content animated bounceIn">
             <span class="close">&times;</span>
             <h2 class="modal_title">Save and Continue Later</h2>
             <i>Please supply an email address to save your progress. A unique link will be emailed to you that will allow you to return where you left off.</i>
@@ -89,11 +91,10 @@
         window.__token__ = "{{ Session::token() }}";
     </script>
     <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap-notify.min.js"></script>    
     <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/survey.app.resume.js"></script>
     <script src="/js/surveyjs-widgets.js"></script>
-    <!-- <script src="/js/homepage.js"></script>
-    <script src="/js/questions.js"></script> -->
     <script src="/js/config.js"></script>
     <script src="/js/survey.resume.js"></script>
     <script src="/js/scripts.js"></script>
