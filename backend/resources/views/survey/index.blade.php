@@ -34,7 +34,6 @@
             </ul>
         </div>
     </nav>
-    <div class="syncing hide">Syncing Data .....</div>
     <div id="surveyElement"></div>
     <!-- <button class="save_resume" id="snrBtn">Save and Continue Later</button> -->
    

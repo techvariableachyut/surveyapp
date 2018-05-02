@@ -164,7 +164,7 @@
     <!-- BEGIN PAGE LEVEL JS-->
     <script src="/app-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
     <script>
-      var csrfToken = {{ Session::token() }}
+      var csrfToken = "{{ Session::token() }}";
     </script>
     <script src="/js/surveylist.js"></script>
     <!-- END PAGE LEVEL JS-->

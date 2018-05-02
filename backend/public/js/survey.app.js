@@ -13207,6 +13207,7 @@ var SurveyModel = /** @class */ (function (_super) {
             $.confirm({
                 title: 'Confirm Submission!',
                 content: `You don't have Internet connectivity, survey data will be stored in your browser.`,                
+                theme: 'dark',
                 buttons: {
                     confirm: function () {
                         confirmed()
@@ -13221,6 +13222,7 @@ var SurveyModel = /** @class */ (function (_super) {
             $.confirm({
                 title: 'Confirm Submission!',
                 content: 'Are you Sure!',
+                theme: 'dark',
                 buttons: {
                     confirm: function () {
                         submitAnswer()

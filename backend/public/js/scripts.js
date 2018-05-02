@@ -93,7 +93,7 @@
                     $('.loader').addClass('hide' )
                     snrmodal.style.display = "none"
                     $.notify({
-                        message: `We have sent you the mail on ${$('#emailID').val()}`
+                        message: `We have sent you an email at ${$('#emailID').val()}, with a link to continue the survey from where you left.` 
                     },{
                         type: 'success'
                     });
@@ -150,15 +150,23 @@
                             ${JSON.parse(localStorage.getItem(AllOfflineSurveyDataStorage)).length} 
                             stored survey data, do you want to sync to server?
                             `,
+                        theme: 'dark',
                         buttons: {
                             proceed: function () {
                                 $.confirm({
                                     title: 'Confirm!',
                                     content: 'Are You Sure?',
+                                    theme: 'dark',
                                     buttons: {
                                         yes: function () {
-                                            $('.syncing').removeClass('hide')
-                                            $('.syncing').addClass('show' )
+                                            var notify = $.notify('<strong>Saving...</strong> Do not close this page.', {
+                                                allow_dismiss: false,
+                                                showProgressbar: true
+                                            });
+                                            
+                                            setTimeout(function() {
+                                                notify.update({'type': 'success', 'message': '<strong>Success</strong> Your survey has been saved!', 'progress': 50 });
+                                            }, 4000);
                                         },
                                         cancel: function () {
                                             $.alert('Canceled!');
@@ -173,14 +181,14 @@
                     });
                 }else{
                     $.notify({
-                        message: "You don't have data for sync!"
+                        message: "At present, there is no data/responses to sync."
                     },{
                         type: 'warning'
                     });
                 }
             }else{
                 $.notify({
-                    message: "You don't have data for sync!"
+                    message: "At present, there is no data/responses to sync."
                 },{
                     type: 'warning'
                 });   
