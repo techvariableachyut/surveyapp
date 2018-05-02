@@ -1,7 +1,7 @@
 @component('mail::message')
 # Survey on board. 
 
-This email has been recived because you have applied to complete your survey for later. Worry not, your incomplete survey has been saved.
+This email has been received because you have applied to complete your survey for later. Worry not, your incomplete survey has been saved.
 
 To complete your survey, click the button below to resume from where you have stopped.
 
