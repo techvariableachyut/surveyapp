@@ -108,11 +108,10 @@ class AnswerController extends Controller
 
     public function storeMany(Request $request){
         $array = json_decode($request['data']);
-
         foreach ($array as $key => $value) {
             Answers::create([
                 'token' => $value->surveyId,
-                'json' => json_decode($value->data)
+                'json' => json_decode($value)
             ]);
         }
     }

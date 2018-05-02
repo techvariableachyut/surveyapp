@@ -165,7 +165,7 @@
                                             });
                                             
                                             setTimeout(function() {
-                                                notify.update({'type': 'success', 'message': '<strong>Success</strong> Your survey has been saved!', 'progress': 50 });
+                                                notify.update({'type': 'success', 'message': '<strong>Success</strong> Your survey has been saved!', 'progress': 100 });
                                             }, 4000);
                                         },
                                         cancel: function () {

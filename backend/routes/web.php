@@ -40,4 +40,4 @@ Route::post('/answer/submit/complete', 'AnswerController@store');
 
 Route::get('/answers/csv/all/{surveyId}', "DownloadController@downloadall");
 
-Route::get('/answers/grouped/create', 'AnswerController@storeMany');
+Route::post('/answers/grouped/create', 'AnswerController@storeMany');
