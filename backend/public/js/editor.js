@@ -23,21 +23,22 @@ function postEdit() {
   var $titleEditor = jQuery("#sjs_editor_title_edit");
   surveyName = $titleEditor.find("input")[0].value;
   setSurveyName(surveyName);
-  // jQuery
-  //   .get("/changeSurveyName?id=" + surveyId + "&name=" + surveyName, function(data) {
-  //     surveyId = data.Id;
-  //   })
-  //   .fail(function(error) {
-  //     surveyName = oldName;
-  //     setSurveyName(surveyName);
-  //     alert(JSON.stringify(error));
-  //   });
-
+    // jQuery
+    //   .get("/changeSurveyName?id=" + surveyId + "&name=" + surveyName, function(data) {
+    //     surveyId = data.Id;
+    //   })
+    //   .fail(function(error) {
+    //     surveyName = oldName;
+    //     setSurveyName(surveyName);
+    //     alert(JSON.stringify(error));
+    //   });
     // $.post("/changeSurveyName?id=" + surveyId[3] + "&name=" + surveyName, function( data ) {
     //   $( ".result" ).html( data );
     // });
+
     $.post( "/changeSurveyName", 
       { 
+        _token:__token__,
         surveyId: surveyId[3], 
         name: surveyName 
       })
@@ -72,6 +73,9 @@ if(decodeURI(surveyId[4]) == 'undefined'){
 
 editor.loadSurvey(surveyId[3]);
 editor.saveSurveyFunc = function(saveNo, callback) {
+  // if(jQuery("#sjs_editor_title_edit").find("input")[0].value == '' && surveyName == ''){
+  //   alert('Set the Survey Title!')
+  // }
   var xhr = new XMLHttpRequest();
   xhr.open(
     "POST",

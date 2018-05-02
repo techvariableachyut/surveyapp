@@ -13196,46 +13196,64 @@ var SurveyModel = /** @class */ (function (_super) {
         }
     };
 
-    // Edited by @Achyut Deka 
-    // SurveyModel.prototype.setCompleted = function () {
-    //     this.isCompleted = true;
-    // };
-    // Object.defineProperty(SurveyModel.prototype, "processedCompletedHtml", {
-    //     /**
-    //      * Returns the html for completed 'Thank you' page.
-    //      * @see completedHtml
-    //      */
-    //     get: function () {
-    //         if (this.completedHtml) {
-    //             return this.processHtml(this.completedHtml);
-    //         }
-    //         return "<h3>" + this.getLocString("completingSurvey") + "</h3>";
-    //     },
-    //     enumerable: true,
-    //     configurable: true
-    // });
-
-    SurveyModel.prototype.achyut = function () {
-        this.isCompleted = true
-        this.setCompleted()
-    };
+    // Edited by @Achyut kr Deka 
 
     SurveyModel.prototype.setCompleted = function () {
-        if(!window.navigator.onLine){
-            var onlineStatusModal = document.getElementById('onlineStatusModal');
-            onlineStatusModal.style.display = "block";
-            this.isCompleted = false
-        }else{
-            var done = confirm('Are You Sure?');
-            if(done){
-                submitAnswer()
-                this.isCompleted = true 
-            }else{
-                this.isCompleted = false
-            }
-        }
+        surveySubmit()
     };
 
+    function surveySubmit(){
+        if(!window.navigator.onLine){
+            $.confirm({
+                title: 'Confirm Submission!',
+                content: `You don't have Internet connectivity, survey data will be stored in your browser.`,                
+                buttons: {
+                    confirm: function () {
+                        confirmed()
+                    },
+                    cancel: function () {
+                        //
+                    }
+                }
+            });
+
+        }else{
+            $.confirm({
+                title: 'Confirm Submission!',
+                content: 'Are you Sure!',
+                buttons: {
+                    confirm: function () {
+                        submitAnswer()
+                    },
+                    cancel: function () {
+                        //
+                    }
+                }
+            });
+        }
+    }
+
+    function confirmed(){
+        var AllOfflineSurveyDataStorage = 'AllOfflineSurveyDataStorage'
+        $.notify({
+            message: `Survey data stored in your Local Storage. Please Sync when you will online.`
+        },{
+            type: 'warning'
+        });
+        var surveyId = window.location.pathname.split('/');
+        var allData = localStorage.getItem(AllOfflineSurveyDataStorage) ? JSON.parse(localStorage.getItem(AllOfflineSurveyDataStorage)) : []
+        var allOfflineSurvey = [...allData,{
+            surveyId: surveyId[2], 
+            currentPageNo: survey.currentPageNo,
+            data: survey.data
+        }]
+     
+        localStorage
+            .setItem( AllOfflineSurveyDataStorage ,JSON.stringify(allOfflineSurvey));
+
+        $('#syncCount').html(JSON.parse(localStorage.getItem(AllOfflineSurveyDataStorage)).length)
+        survey.clear()
+    }
 
     function submitAnswer(){
         console.log(survey.data)
@@ -13249,23 +13267,24 @@ var SurveyModel = /** @class */ (function (_super) {
                 data: survey.data
             }
         })
+        .done(()=>{
+            $.notify({
+                message: `Submited successfully`
+            },{
+                type: 'success'
+            });
+            survey.clear()
+        })
+        .fail(_=>{
+            $.notify({
+                message: `Something Went Wrong!`
+            },{
+                type: 'danger'
+            });
+        })
     }
 
-    function Confirm() { 
-        var cnfModal = document.getElementById('cnfModal')
-        // var cnfBtn = document.getElementById('modal_btn_confirm')
-        // var canBtn = document.getElementById('modal_btn_cancel')
-        cnfModal.style.display = "block";
-        // cnfBtn.onclick = function() {
-        //     cb(true)
-        //     cnfModal.style.display = "none";
-        // }
-        // canBtn.onclick = function() {
-        //     cb(false)
-        //     cnfModal.style.display = "none";
-        // }   
-    }
-    
+    // Edited by @Achyut kr Deka 
 
     Object.defineProperty(SurveyModel.prototype, "processedCompletedHtml", {
         /**
@@ -13276,12 +13295,10 @@ var SurveyModel = /** @class */ (function (_super) {
             var scmmodal = document.getElementById('scmModal');
             var snrBtn = document.getElementById('snrBtn')
             if (this.completedHtml) {
-                // return this.processHtml(this.completedHtml);
                 scmmodal.style.display = "block";
             }
             snrBtn.style.display = "none"
-            scmmodal.style.display = "block";
-           
+            scmmodal.style.display = "block";      
         },
         enumerable: true,
         configurable: true

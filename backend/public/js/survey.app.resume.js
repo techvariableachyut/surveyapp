@@ -13222,8 +13222,11 @@ var SurveyModel = /** @class */ (function (_super) {
 
     SurveyModel.prototype.setCompleted = function () {
         if(!window.navigator.onLine){
-            var onlineStatusModal = document.getElementById('onlineStatusModal');
-            onlineStatusModal.style.display = "block";
+           $.notify({
+                message: `You don't have Internet connectivity, Please try after sometimes.`
+            },{
+                type: 'danger'
+            });
             this.isCompleted = false
         }else{
             var done = confirm('Are You Sure?');
