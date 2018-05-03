@@ -42,7 +42,7 @@ class AnswerController extends Controller
         $answer = Answers::create([
             'surveyId' => $id,
             'token' => $uniqueid,
-            'done' => 1,
+            'done' => "Completed",
             'answer' => json_encode($request['answer'])
         ]);
     }
@@ -83,7 +83,7 @@ class AnswerController extends Controller
         Answers::where([             
                 'surveyId' => $surveyId,
                 'token' => $tokenId
-        ])->update(['answer' => json_encode($request['answer']) ]);
+        ])->update(['answer' => json_encode($request['answer']), 'done' => 'Reviewed' ]);
     }
 
     /**
@@ -103,18 +103,20 @@ class AnswerController extends Controller
         Answers::where([             
                 'surveyId' => $surveyId,
                 'token' => $tokenId
-        ])->update(['answer' => json_encode($request['answer']), 'done' => 1 ]);
+        ])->update(['answer' => json_encode($request['answer']), 'done' => "Completed" ]);
     }
 
     public function storeMany(Request $request){
         $uniqueid = uniqid();
-        $array = json_decode($request['data']);
+        $array = $request['data'];
+
         foreach ($array as $key => $value) {
+
             Answers::create([
                 'surveyId' => $value->surveyId,
                 'token' => $uniqueid,
                 'answer' => json_encode(array("currentPageNo" => $value->currentPageNo, "data" => $value->data)),
-                'done' => true 
+                'done' => "Completed" 
             ]);
         }
     

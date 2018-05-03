@@ -8,7 +8,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/survey/get/questions/{id}', 'SurveyController@questions');
 Route::get('/monitoring-tool/{surveyToken}', 'SurveyController@survey');
-Route::get('/monitoring-tool/{surveyToken}/{surveyID?}', 'SurveyController@resume');
+Route::get('/monitoring-tool/{surveyToken}/{questionToken?}', 'SurveyController@resume');
 Route::get('/create/question', function () {
 	if (Auth::guest()) {
 		return view('auth.login');
@@ -26,9 +26,10 @@ Route::get('/getSurvey', 'QuestionsController@getSurvey');
 Route::get('/survey/edit', 'QuestionsController@getSurvey');
 Route::resource('answer', 'AnswerController');
 Route::post('answer/submit/{id}/{token}', 'AnswerController@store')->name('answer.submit');
-Route::post('answer/update', 'AnswerController@update')->name('answer.update');
+Route::post('/answer/update', 'AnswerController@update');
 Route::get('/survey/results', "CompleteSurveyController@getall");
 Route::get('/survey/answer/{id}', "CompleteSurveyController@getanswers");
+Route::get('/survey/reviewed/{id}', "CompleteSurveyController@getreviewed");
 Route::get('/survey/answer/user/{surveyid}/{token}', "CompleteSurveyController@getanswersfromuser");
 Route::post('/survey/copy/{id}', "CopyController@copy");
 Route::get('/survey/delete/{id}', "QuestionsController@destroy");

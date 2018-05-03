@@ -13,8 +13,6 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">{{$question->title}}</h4>
-
-                    <a href="/survey/reviewed/{{$question->token}}" class="btn btn-sm btn-default">Reviewed</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
