@@ -42,7 +42,7 @@ class AnswerController extends Controller
         $answer = Answers::create([
             'surveyId' => $id,
             'token' => $uniqueid,
-            'done' => 1,
+            'done' => "Completed",
             'answer' => json_encode($request['answer'])
         ]);
     }
@@ -83,7 +83,7 @@ class AnswerController extends Controller
         Answers::where([             
                 'surveyId' => $surveyId,
                 'token' => $tokenId
-        ])->update(['answer' => json_encode($request['answer']) ]);
+        ])->update(['answer' => json_encode($request['answer']), 'done' => 'Reviewed' ]);
     }
 
     /**
@@ -103,23 +103,21 @@ class AnswerController extends Controller
         Answers::where([             
                 'surveyId' => $surveyId,
                 'token' => $tokenId
-        ])->update(['answer' => json_encode($request['answer']), 'done' => 1 ]);
+        ])->update(['answer' => json_encode($request['answer']), 'done' => "Completed" ]);
     }
 
     public function storeMany(Request $request){
         $uniqueid = uniqid();
-
-        $array = json_decode('[{"surveyId":"5adb93c6e8c82","currentPageNo":7,"data":{"section":["Section_Images"],"question2":"Monitor 2","question3":"Chin","question4":"8 Days","question5":"43c424","question6":"item2","question7":"item3","question8":"item4","question9":"item1","question10":"item2","question11":"item2","question39":"05/01/2018","question13":"7","question14":"item3","question15":"2","question16":"02:42","question17":"15:24","question18":"item2","question19":"3242`2c424c4","news_topics":"Science","question40":"Other (please specify)*"}},{"surveyId":"5ae8b6ac9fac0","currentPageNo":3,"data":{"question1":"fsfsadfdasf","question2":"item2","question3":"sdfsaf"}},{"surveyId":"5ae8b6ac9fac0","currentPageNo":3,"data":{"question1":"sfsdfsa","question2":"item2","question3":"dsf","question4":"dsafa","question5":"dfdsafsf"}},{"surveyId":"5ae8b6ac9fac0","currentPageNo":3,"data":{"question1":"dsfsf","question2":"item3"}},{"surveyId":"5ae8b6ac9fac0","currentPageNo":3,"data":{"question1":"esadfdsf","question2":"item2"}}]');
+        $array = $request['data'];
 
         foreach ($array as $key => $value) {
-            dd(json_encode(array("currentPageNo" => $value->currentPageNo, "data" => $value->data)));
 
-            // Answers::create([
-            //     'surveyId' => $value->surveyId,
-            //     'token' => $uniqueid,
-            //     'answer' => json_encode(array("currentPageNo" => $value->currentPageNo, "data" => $value->data)),
-            //     'done' => true 
-            // ]);
+            Answers::create([
+                'surveyId' => $value->surveyId,
+                'token' => $uniqueid,
+                'answer' => json_encode(array("currentPageNo" => $value->currentPageNo, "data" => $value->data)),
+                'done' => "Completed" 
+            ]);
         }
     
     }

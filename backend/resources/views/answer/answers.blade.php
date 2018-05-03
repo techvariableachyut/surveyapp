@@ -31,11 +31,7 @@
                                   <tr>
                                       <td class="text-truncate"><a href="#">{{ $index + 1 }}</a></td>
                                       <td class="text-truncate">
-                                          @if($a->done == false)
-                                            Incomplete
-                                          @else
-                                            Done
-                                          @endif
+                                          {{ $a->done }}
                                       </td>
                                       <td> <a href="/survey/answer/user/{{$a->surveyId}}/{{$a->token}}">View</a></td>
                                       <td><a href="/answer/create/csv/{{ $a->surveyId }}/{{ $a->token }}" class="btn btn-sm">Download</a></td>

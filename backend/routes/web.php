@@ -26,7 +26,7 @@ Route::get('/getSurvey', 'QuestionsController@getSurvey');
 Route::get('/survey/edit', 'QuestionsController@getSurvey');
 Route::resource('answer', 'AnswerController');
 Route::post('answer/submit/{id}/{token}', 'AnswerController@store')->name('answer.submit');
-Route::post('answer/update', 'AnswerController@update')->name('answer.update');
+Route::post('/answer/update', 'AnswerController@update');
 Route::get('/survey/results', "CompleteSurveyController@getall");
 Route::get('/survey/answer/{id}', "CompleteSurveyController@getanswers");
 Route::get('/survey/answer/user/{surveyid}/{token}', "CompleteSurveyController@getanswersfromuser");
