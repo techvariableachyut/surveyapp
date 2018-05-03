@@ -72,6 +72,7 @@
 
     <script type="text/javascript">
         window.__token__ = "{{ Session::token() }}";
+        window.__page__ = "survey"
     </script>
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap-notify.min.js"></script>

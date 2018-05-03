@@ -107,12 +107,16 @@ class AnswerController extends Controller
     }
 
     public function storeMany(Request $request){
+        $uniqueid = uniqid();
         $array = json_decode($request['data']);
         foreach ($array as $key => $value) {
             Answers::create([
-                'token' => $value->surveyId,
-                'json' => json_decode($value)
+                'surveyId' => $value->surveyId,
+                'token' => $uniqueid,
+                'answer' => json_encode(array("currentPageNo" => $value->currentPageNo, "data" => $value->data)),
+                'done' => true 
             ]);
         }
+    
     }
 }

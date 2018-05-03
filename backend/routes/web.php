@@ -8,7 +8,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/survey/get/questions/{id}', 'SurveyController@questions');
 Route::get('/monitoring-tool/{surveyToken}', 'SurveyController@survey');
-Route::get('/resume-survey/{surveyId}/{surveyToken}', 'SurveyController@resume');
+Route::get('/monitoring-tool/{surveyToken}/{surveyID?}', 'SurveyController@resume');
 Route::get('/create/question', function () {
 	if (Auth::guest()) {
 		return view('auth.login');

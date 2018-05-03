@@ -70,7 +70,7 @@ class DownloadController extends Controller
                 }
             }
         }
-        dd($answersarray);
+
         $file = fopen('php://memory', 'w');
         $uniqueid = uniqid();
         
