@@ -30,4 +30,11 @@ class CompleteSurveyController extends Controller{
     	// dd($question.$answer);
     	return view('survey.userresult',compact('question','answer'));
     }
+
+    public function getreviewed($id){
+        $answers = Answers::where('surveyId',$id)->where('done','Reviewed')->simplePaginate(10);
+        $question = Questions::where('token',$id)->first();
+        //dd($answers);
+        return view('answer.reviewed',compact('answers','question'));
+    }
 }
