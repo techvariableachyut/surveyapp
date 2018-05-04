@@ -36,9 +36,6 @@ Route::get('/survey/delete/{id}', "QuestionsController@destroy");
 Route::get('/survey/all', "SurveyController@show");
 Route::get('/answer/create/csv/{surveyId}/{token}', "DownloadController@download");
 Route::post('/survey/answer/update', 'AnswerController@resumecompleteupdate');
-
 Route::post('/answer/submit/complete', 'AnswerController@store');
-
 Route::get('/answers/csv/all/{surveyId}', "DownloadController@downloadall");
-
 Route::get('/answers/grouped/create', 'AnswerController@storeMany');

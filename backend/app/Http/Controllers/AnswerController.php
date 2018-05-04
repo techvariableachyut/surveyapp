@@ -107,6 +107,7 @@ class AnswerController extends Controller
     }
 
     public function storeMany(Request $request){
+        
         $uniqueid = uniqid();
         $array = $request['data'];
 

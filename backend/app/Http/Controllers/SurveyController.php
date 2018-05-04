@@ -111,8 +111,11 @@ class SurveyController extends Controller{
     }
 
     public function questions($id){
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
+        
         $array = array();
-
         $q = Questions::where('token',$id)->first();
         $question = json_decode($q->json);
 
