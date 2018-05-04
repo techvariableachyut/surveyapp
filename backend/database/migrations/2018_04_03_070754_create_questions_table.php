@@ -15,10 +15,9 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("section");
-            $table->string("type");
-            $table->string("name");
+            $table->string("token");
             $table->string("title");
+            $table->text("json");
             $table->timestamps();
         });
     }

@@ -176,6 +176,12 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        <div style="padding: 5%;">
+                            @if(count($questions) == 0)
+                                No results for any kind of Survey found. <a href="/create/question" class="btn btn-sm btn-info">Create Survey</a>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

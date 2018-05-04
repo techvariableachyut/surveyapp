@@ -42,6 +42,11 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div style="padding: 5%;">
+                            @if(count($answers) == 0)
+                                No responses has been yet made to this Survey. Yet you can visit reviewed if there are any. View <a href="/survey/reviewed/{{$question->token}}" class="btn btn-sm btn-default">Reviewed</a>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
