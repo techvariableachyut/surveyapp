@@ -2,7 +2,11 @@
 @section('content')
 
         <!-- Survey Content start -->
-            <div class="survey-page-header"></div>
+            <div class="survey-page-header">
+                <span id="surveyid">
+                    Survey Id : {{ $surveyId }}
+                </span>
+            </div>
             <div class="sv_main sv_frame sv_default_css">
                 <div class="sv_custom_header">
                 </div>
