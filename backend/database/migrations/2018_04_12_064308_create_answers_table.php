@@ -19,7 +19,7 @@ class CreateAnswersTable extends Migration
             $table->string('surveyId');
             $table->string('token');
             $table->string('done');
-            $table->string('answer');
+            $table->text('answer');
             $table->timestamps();
         });
     }
