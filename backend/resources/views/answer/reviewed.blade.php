@@ -11,10 +11,21 @@
         </div>
 <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">
+                <!-- <div class="card-header">
                     <h4 class="card-title">{{$question->title}}</h4>
-                </div>
+                </div> -->
                 <div class="card-body">
+
+
+                <div class="card-block">
+                        <p>
+                        {{$question->title}} 
+                            <span class="float-xs-right">
+                                <a href="/survey/answer/{{$question->token}}"><i class="icon-arrow-left2"></i> All Non Reviewed Surveys </a>
+                            </span>
+                        </p>
+                    </div>
+
                     <div class="table-responsive">
                         <table class="table table-hover mb-0">
                             <thead>

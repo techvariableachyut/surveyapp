@@ -109,9 +109,7 @@ class AnswerController extends Controller
     public function storeMany(Request $request){
         $uniqueid = uniqid();
         $array = $request['data'];
-
         foreach ($array as $key => $value) {
-
             Answers::create([
                 'surveyId' => $value->surveyId,
                 'token' => $uniqueid,

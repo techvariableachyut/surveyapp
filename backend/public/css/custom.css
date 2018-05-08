@@ -309,9 +309,6 @@ ul,li{
 }
 
 
-
-
-
 [data-notify="container"][class*="alert-pastel-"] {
 	background-color: rgb(255, 255, 238);
 	border-width: 0px;
@@ -337,3 +334,11 @@ ul,li{
 	font-weight: 400;
 }
 
+.sv_p_container{
+  background-color: #c7c6c6;
+}
+
+.sv_q_other input{
+  margin: 2px;
+  border: 1px solid;
+}

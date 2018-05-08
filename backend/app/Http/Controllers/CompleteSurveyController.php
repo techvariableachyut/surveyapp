@@ -20,21 +20,18 @@ class CompleteSurveyController extends Controller{
     public function getanswers($id){
         $answers = Answers::where('surveyId',$id)->where('done','Completed')->simplePaginate(10);
         $question = Questions::where('token',$id)->first();
-        //dd($answers);
         return view('answer.answers',compact('answers','question'));
     }
 
     public function getanswersfromuser($surveyId,$token){
     	$question = Questions::where('token',$surveyId)->first();
     	$answer =  Answers::where('surveyId',$surveyId)->where('token',$token)->first();
-    	// dd($question.$answer);
     	return view('survey.userresult',compact('question','answer'));
     }
 
     public function getreviewed($id){
         $answers = Answers::where('surveyId',$id)->where('done','Reviewed')->simplePaginate(10);
         $question = Questions::where('token',$id)->first();
-        //dd($answers);
         return view('answer.reviewed',compact('answers','question'));
     }
 }

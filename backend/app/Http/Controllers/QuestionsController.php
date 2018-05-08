@@ -42,12 +42,12 @@ class QuestionsController extends Controller{
         return redirect()->route('create.questions', ['surveyId' => $param]);
     }
 
-    public function make()
+    public function make($surveyId)
     {
         if (!Auth::user()) {
             return redirect('/login');
         }
-        return view('editor');
+        return view('editor',compact('surveyId'));
     }
 
     /**

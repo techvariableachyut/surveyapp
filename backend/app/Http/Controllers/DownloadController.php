@@ -64,7 +64,7 @@ class DownloadController extends Controller
                                     $temp[] = "User did not answer";
                                 }
                             }
-                            $answersarray[] = implode(",",$temp);
+                            $answersarray[] = implode("#",$temp);
                         }
                     }
                 }
@@ -74,7 +74,7 @@ class DownloadController extends Controller
         $file = fopen('php://memory', 'w');
         $uniqueid = uniqid();
         
-        $finalarray = array(implode(",",$questionarray));
+        $finalarray = array(implode("#",$questionarray));
         
         foreach ($answersarray as $value) {
             $finalarray[] = $value;
@@ -85,7 +85,7 @@ class DownloadController extends Controller
 
         // dd($finalarray);
         foreach($finalarray as $line){
-            fputcsv($file,explode(',',$line)); 
+            fputcsv($file,explode('#',$line)); 
         }
         
 
@@ -155,7 +155,7 @@ class DownloadController extends Controller
                                     $temp[] = "User did not answer";
                                 }
                             }
-                            $answersarray[] = implode(",",$temp);
+                            $answersarray[] = implode("#",$temp);
                         }
                     }
                 }
@@ -165,7 +165,7 @@ class DownloadController extends Controller
         $file = fopen('php://memory', 'w');
         $uniqueid = uniqid();
         
-        $finalarray = array(implode(",",$questionarray));
+        $finalarray = array(implode("#",$questionarray));
 
         foreach ($answersarray as $value) {
             $finalarray[] = $value;

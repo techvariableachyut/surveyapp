@@ -174,24 +174,32 @@
                                     theme: 'dark',
                                     buttons: {
                                         yes: function () {
+                                            var notify = $.notify('<strong>Saving...</strong> Do not close this page.', {
+                                                allow_dismiss: false,
+                                                showProgressbar: true
+                                            });
                                             $.post( "/answers/grouped/create", 
                                             { 
                                                 _token:__token__,  
                                                 data: localStorage.getItem('AllOfflineSurveyDataStorage')
                                             })
                                             .done(_=>{
+
+                                                setTimeout(function() {
+                                                    notify.update({'type': 'success', 'message': '<strong>Success</strong> Your survey has been saved!', 'progress': 100 });
+                                                }, 4000);
+
                                                 localStorage
                                                     .setItem( AllOfflineSurveyDataStorage ,JSON.stringify([]));
                                                 $('#syncCount').html(0)
                                             })
-                                            var notify = $.notify('<strong>Saving...</strong> Do not close this page.', {
-                                                allow_dismiss: false,
-                                                showProgressbar: true
-                                            });
-                                            
-                                            setTimeout(function() {
-                                                notify.update({'type': 'success', 'message': '<strong>Success</strong> Your survey has been saved!', 'progress': 100 });
-                                            }, 4000);
+                                            .fail(_=>{
+
+                                                setTimeout(function() {
+                                                    notify.update({'type': 'danger', 'message': '<strong>Sorry</strong>Something Went Wrong! ', 'progress': 100 });
+                                                }, 4000);
+
+                                            })
                                         },
                                         cancel: function () {
                                             //

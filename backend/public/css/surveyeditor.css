@@ -1142,6 +1142,7 @@
   background: rgba(0, 0, 0, 0.3);
   z-index: 999; }
   .svd_container .modal .modal-dialog {
+    top: 5% !important;
     max-width: 600px; }
   .svd_container .modal .modal-body {
     max-height: 75vh;

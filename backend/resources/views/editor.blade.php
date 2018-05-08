@@ -23,6 +23,8 @@
                                 </span>
                             </span>
                         </h3>
+                        <div><a href="/monitoring-tool/<?= $surveyId ?>/" target="_blank">Preview</a></div>
+
                     </div>
                     <div class="sv_body">
                         <div id="editor"></div>
@@ -35,9 +37,12 @@
 
 @section('editscript')
 <style>
-  .svd_container .modal .modal-dialog{
-    top:20%;
-  }
+  .sv_main.sv_frame .sv_container .sv_header{
+    padding-top: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
 </style>
 <script type="text/javascript">
     window.__token__ = "{{ Session::token() }}"; 
