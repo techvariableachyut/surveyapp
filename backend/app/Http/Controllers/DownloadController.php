@@ -28,8 +28,8 @@ class DownloadController extends Controller
                         $questionarray[] = $questiontitle;
                     }
 
-                    if (!preg_match("/string/",$questiontitle)) {
-                        if($index == "name"){
+                    if($index == "name"){
+                        if (!preg_match("/string/",$questiontitle)) {
                             $questionnames[] = $questiontitle;
                         }
                     }
@@ -180,7 +180,7 @@ class DownloadController extends Controller
 
         // dd($finalarray);
         foreach($finalarray as $line){
-            fputcsv($file,explode(',',$line)); 
+            fputcsv($file,explode('#',$line)); 
         }
 
         // reset the file pointer to the start of the file

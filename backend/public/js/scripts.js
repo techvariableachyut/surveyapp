@@ -109,6 +109,10 @@
                     },{
                         type: 'pastel-info',
                         delay: 10000,
+                        placement: {
+                            from: 'bottom',
+                            align: 'right'
+                        },
                         template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
                             '<span data-notify="title">{1}</span>' +
                             '<span data-notify="message">{2}</span>' +
@@ -138,11 +142,6 @@
         }
 
     });
-
-    // Preventing from reload
-    // window.onbeforeunload = function() {
-    //     return "";
-    // }
 
 
     // data sync code
@@ -194,11 +193,9 @@
                                                 $('#syncCount').html(0)
                                             })
                                             .fail(_=>{
-
                                                 setTimeout(function() {
-                                                    notify.update({'type': 'danger', 'message': '<strong>Sorry</strong>Something Went Wrong! ', 'progress': 100 });
+                                                    notify.update({'type': 'danger', 'message': '<strong>Sorry</strong> Something Went Wrong! ', 'progress': 100 });
                                                 }, 4000);
-
                                             })
                                         },
                                         cancel: function () {
@@ -229,5 +226,12 @@
         }  
 
     })
+
+
+    //Preventing from reload
+    // window.onbeforeunload = function() {
+    //     return "";
+    // }
+
 })()
 
