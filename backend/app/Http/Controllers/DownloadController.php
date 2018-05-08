@@ -106,6 +106,11 @@ class DownloadController extends Controller
 
     private function downloadfile($finalarray){
         $file = fopen('php://memory', 'w');
+
+        if(!is_dir(public_path() . "/csv")){
+            mkdir(public_path() . "/csv", 0777);
+        }
+
         $uniqueid = uniqid();
 
         $localfile = fopen(public_path() . "/csv/$uniqueid" . ".csv", 'w');
