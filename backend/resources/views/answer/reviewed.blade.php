@@ -51,6 +51,12 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        <div style="padding: 5%;">
+                            @if(count($answers) == 0)
+                                No reviewed responses.
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

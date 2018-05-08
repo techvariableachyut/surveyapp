@@ -28,9 +28,12 @@ class DownloadController extends Controller
                         $questionarray[] = $questiontitle;
                     }
 
-                    if($index == "name"){
-                        $questionnames[] = $questiontitle;
+                    if (!preg_match("/string/",$questiontitle)) {
+                        if($index == "name"){
+                            $questionnames[] = $questiontitle;
+                        }
                     }
+
                 }
             }
         }
@@ -48,7 +51,7 @@ class DownloadController extends Controller
                             foreach ($questionnames as $qnames) {
                                 $iftrue = false;
                                 foreach ($answer as $aindex => $realanswer) {
-                                    if($qnames == $aindex){
+                                    if($qnames == $aindex && !preg_match("/string/",$aindex)){
                                         $iftrue = true;
                                         if (is_array($realanswer)) {
                                             $temp[] = $realanswer[0];
@@ -70,7 +73,7 @@ class DownloadController extends Controller
                 }
             }
         }
-        
+
         $file = fopen('php://memory', 'w');
         $uniqueid = uniqid();
         
@@ -79,11 +82,10 @@ class DownloadController extends Controller
         foreach ($answersarray as $value) {
             $finalarray[] = $value;
         }
-
+        
         $localfile = fopen(public_path() . "/csv/$uniqueid" . ".csv", 'w');
         fwrite($localfile, json_encode($finalarray));
-
-        // dd($finalarray);
+        
         foreach($finalarray as $line){
             fputcsv($file,explode('#',$line)); 
         }

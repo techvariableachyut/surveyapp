@@ -17,7 +17,9 @@ class QuestionsController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function index(){
-
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
         $newquestion = array();
 
         $q = Questions::find("page1");
@@ -58,6 +60,9 @@ class QuestionsController extends Controller{
      */
     public function store(Request $request)
     {   
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
         $token = $request->input('surveyId');
         $json = json_decode($request->input('Json'));
         $title = $request->input('surveyName');
@@ -127,6 +132,9 @@ class QuestionsController extends Controller{
      */
     public function destroy($id)
     {
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
         $old = Questions::where('token', $id)->delete();
         return redirect()->back();
     }
@@ -153,6 +161,9 @@ class QuestionsController extends Controller{
      */
     public function changeSurveyName(Request $request)
     {   
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
         $token = $request->input('surveyId');
         $title = $request->input('name');
 

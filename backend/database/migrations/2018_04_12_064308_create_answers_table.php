@@ -17,6 +17,8 @@ class CreateAnswersTable extends Migration
             $table->increments('id');
             $table->string('email');
             $table->string('surveyId');
+            $table->string('token');
+            $table->string('done');
             $table->string('answer');
             $table->timestamps();
         });

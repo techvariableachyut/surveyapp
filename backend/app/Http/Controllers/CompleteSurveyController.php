@@ -18,18 +18,27 @@ class CompleteSurveyController extends Controller{
     }
 
     public function getanswers($id){
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
         $answers = Answers::where('surveyId',$id)->where('done','Completed')->simplePaginate(10);
         $question = Questions::where('token',$id)->first();
         return view('answer.answers',compact('answers','question'));
     }
 
     public function getanswersfromuser($surveyId,$token){
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
     	$question = Questions::where('token',$surveyId)->first();
     	$answer =  Answers::where('surveyId',$surveyId)->where('token',$token)->first();
     	return view('survey.userresult',compact('question','answer'));
     }
 
     public function getreviewed($id){
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
         $answers = Answers::where('surveyId',$id)->where('done','Reviewed')->simplePaginate(10);
         $question = Questions::where('token',$id)->first();
         return view('answer.reviewed',compact('answers','question'));

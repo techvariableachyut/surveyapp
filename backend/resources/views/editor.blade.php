@@ -2,7 +2,6 @@
 @section('content')
 
         <!-- Survey Content start -->
-            <div class="survey-page-header"></div>
             <div class="sv_main sv_frame sv_default_css">
                 <div class="sv_custom_header">
                 </div>
