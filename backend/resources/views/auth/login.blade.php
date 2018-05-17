@@ -11,9 +11,10 @@
         <div class="card border-grey border-lighten-3 m-0">
             <div class="card-header no-border">
                 <div class="card-title text-xs-center">
-                    <div class="p-1"><img src="/app-assets/images/logo/logo.png" alt="branding logo"></div>
+                    <div class="p-1">
+                        <h1>IMS survey tool</h1>
+                    </div>
                 </div>
-                <h6 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2"><span>Login with Robust</span></h6>
             </div>
             <div class="card-body collapse in">
                 <div class="card-block">
@@ -24,8 +25,8 @@
                                 <i class="icon-head"></i>
                             </div>
                             @if ($errors->has('email'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('email') }}</strong>
+                                <span class="invalid-feedback label label-warning">
+                                    <i>{{ $errors->first('email') }}</i>
                                 </span>
                             @endif
                         </fieldset>
@@ -37,8 +38,8 @@
                             </div>
 
                             @if ($errors->has('password'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('password') }}</strong>
+                                <span class="invalid-feedback label label-warning">
+                                    <i>{{ $errors->first('password') }}</i>
                                 </span>
                             @endif
                         </fieldset>
@@ -49,7 +50,7 @@
                                     <label for="remember-me"> Remember Me</label>
                                 </fieldset>
                             </div>
-                            <div class="col-md-6 col-xs-12 text-xs-center text-md-right"><a href="recover-password.html" class="card-link">Forgot Password?</a></div>
+
                         </fieldset>
                         {{ csrf_field() }}
                         <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="icon-unlock2"></i> Login</button>

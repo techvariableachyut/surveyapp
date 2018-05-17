@@ -93,13 +93,20 @@ function app(survey,Survey,storageName){
      * News Sources custom  validation 
      */
     function surveyValidateQuestion(s, options) {
-        if (options.name == 'price01') {
-            s.data.price01 != s.data.price02 + s.data.price03 + s.data.price04 ? 
-                options.error = "Error" : options.error = null;
+        if (options.name == 'question020') {        
+            parseInt( s.data.question020 ) != parseInt(s.data.question022) + parseInt(s.data.question023) + parseInt(s.data.question024) + parseInt(s.data.question025) ? 
+                options.error = " Total Number of News Source Not Match! " : options.error = null;
         }
-        // if(options.name == 'img'){
-        //     options.error = "Error" 
-        // }
+
+        if (options.name == 'question054') {
+            parseInt(s.data.question054) != parseInt(s.data.question055) + parseInt(s.data.question056) + parseInt(s.data.question057) + parseInt(s.data.question058) ? 
+                options.error = " Total Number of Reporter Not Match!  " : options.error = null;
+        }
+
+        if (options.name == 'question059') {
+            parseInt(s.data.question059) != parseInt(s.data.question060) + parseInt(s.data.question061) + parseInt(s.data.question062)  + parseInt(s.data.question063) ? 
+                options.error = " Total Number of Anchor Not Match!  " : options.error = null;
+        }
     }
     /**
      *  Custom Validation End

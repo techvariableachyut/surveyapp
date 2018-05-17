@@ -13206,7 +13206,8 @@ var SurveyModel = /** @class */ (function (_super) {
         if(!window.navigator.onLine){
             $.confirm({
                 title: 'Confirm Submission!',
-                content: `You don't have Internet connectivity, survey data will be stored in your browser.`,                
+                content: `At present, you don't have internet connectivity; survey data will be stored in your browser.`,                
+                theme: 'dark',
                 buttons: {
                     confirm: function () {
                         confirmed()
@@ -13221,6 +13222,7 @@ var SurveyModel = /** @class */ (function (_super) {
             $.confirm({
                 title: 'Confirm Submission!',
                 content: 'Are you Sure!',
+                theme: 'dark',
                 buttons: {
                     confirm: function () {
                         submitAnswer()
@@ -13236,10 +13238,17 @@ var SurveyModel = /** @class */ (function (_super) {
     function confirmed(){
         var AllOfflineSurveyDataStorage = 'AllOfflineSurveyDataStorage'
         $.notify({
-            message: `Survey data stored in your Local Storage. Please Sync when you will online.`
+            title: 'Survey Completed',
+            message: `Survey responses have been stored in your browser. Please sync the data as soon as you are online!` 
         },{
-            type: 'warning'
+            type: 'pastel-info',
+            delay: 10000,
+            template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+                '<span data-notify="title">{1}</span>' +
+                '<span data-notify="message">{2}</span>' +
+            '</div>'
         });
+
         var surveyId = window.location.pathname.split('/');
         var allData = localStorage.getItem(AllOfflineSurveyDataStorage) ? JSON.parse(localStorage.getItem(AllOfflineSurveyDataStorage)) : []
         var allOfflineSurvey = [...allData,{
@@ -13255,25 +13264,54 @@ var SurveyModel = /** @class */ (function (_super) {
         survey.clear()
     }
 
+
     function submitAnswer(){
-        console.log(survey.data)
         var surveyId = window.location.pathname.split('/');
-        $.post( "/answer/submit/complete", 
+        var url = surveyId[3] ? "/survey/answer/update" :  "/answer/submit/complete";
+        var surveyId = window.location.pathname.split('/');
+        var notify = $.notify('<strong>Saving...</strong> Do not close this page.', {
+            allow_dismiss: false,
+            showProgressbar: true
+        });
+
+        $.post( url, 
         { 
-            _token: __token__,
+            _token: window.__token__,
             surveyId: surveyId[2], 
+            tokenId: surveyId[3] ? surveyId[3] : null ,
             answer: {
                 currentPageNo: survey.currentPageNo,
                 data: survey.data
             }
         })
         .done(()=>{
-            $.notify({
-                message: `Submited successfully`
-            },{
-                type: 'success'
+
+            notify.update({
+                'type': 'success', 
+                'message': '<strong>Success</strong> Your survey has been saved!', 
+                'progress': 100 
             });
+
             survey.clear()
+            localStorage.removeItem(surveyId[2]);
+
+            $.confirm({
+                icon: 'fa fa-smile',
+                theme: 'modern',
+                title: 'Submitted successfully!!!',
+                content: `Would you like to start again.`,
+                buttons: {
+                    yes: function () {
+                        if(surveyId[3] ){
+                            history.pushState({},'', '/monitoring-tool/'+surveyId[2]);
+                        }
+                    },
+                    no: function(){
+                        //
+                    }
+                }
+            });
+            
         })
         .fail(_=>{
             $.notify({

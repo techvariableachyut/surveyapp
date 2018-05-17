@@ -47,31 +47,59 @@ class DownloadController extends Controller
     private function renderQuestion($question){
         foreach (json_decode($question->json) as $questions) {
             foreach ($questions->elements as $e) {
-                foreach ($e as $index => $questiontitle) {
-                    if ($index == "title") {
-                        $this->questionarray[] = $questiontitle;
-                    }
 
-                    if ($index == "label") {
-                        $this->questionarray[] = $questiontitle;
-                    }
+                if(preg_match("/question/",$e->name)){
 
-                    if($index == "name"){
-                        if (preg_match("/section/",$questiontitle)) {
-                        }else{
-                            $this->questionnames[] = $questiontitle;
+                    $this->questionnames[] = $e->name;
+                    $this->questionarray[] = $e->title;
+                    
+                    if($e->type == 'paneldynamic'){
+                        foreach ($e->templateElements as $val ) {
+                            $this->questionarray[] = $val->title;                            
+                            $this->questionnames[] = $val->name;
+                        }
+                    }
+                    if($e->type == 'multipletext'){
+                        foreach ($e->items as  $val) {
+                            $this->questionarray[] = $val->title;
+                            $this->questionnames[] = $val->name;
                         }
                     }
                 }
+                
+                // foreach ($e as $index => $questiontitle) {
+                //     if(preg_match("/question/",$e->name)){
+                //         $this->questionnames[] = $questiontitle;
+                //         $this->questionnames[] = $questiontitle;
+                //     }
+                    
+                //     if ($index == "title") {
+                //         $this->questionarray[] = $questiontitle;
+                //     }
+
+                //     if ($index == "label") {
+                //         $this->questionarray[] = $questiontitle;
+                //     }
+
+                //     if($index == "name"){
+                //         if (preg_match("/section/",$questiontitle) ) {
+                //         }else{
+                //             $this->questionnames[] = $questiontitle;
+                //         }
+                //     }
+                // }
+
             }
+            
         }
+        dd($this->questionarray);
     }
 
     private function renderAnswer($a){
         //get the questions of survey
         $answers = json_decode($a);
         $questionnames = $this->questionnames;
-
+        dd($questionnames);
         foreach (json_decode($answers[0]->answer) as $answersindex => $answer) {
             if ($answersindex == "data") {
                 $temp = array();   
@@ -82,8 +110,7 @@ class DownloadController extends Controller
                             $iftrue = true;
                         }
                     }
-
-
+                    
                     if($iftrue == true){
                         if (is_array($realanswer)) {
                             $temp[] = $realanswer[0];

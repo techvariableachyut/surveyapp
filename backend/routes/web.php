@@ -8,7 +8,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/survey/get/questions/{id}', 'SurveyController@questions');
 Route::get('/monitoring-tool/{surveyToken}', 'SurveyController@survey');
-Route::get('/resume-survey/{surveyId}/{surveyToken}', 'SurveyController@resume');
+Route::get('/monitoring-tool/{surveyToken}/{questionToken?}', 'SurveyController@resume');
 Route::get('/create/question', function () {
 	if (Auth::guest()) {
 		return view('auth.login');
@@ -38,4 +38,4 @@ Route::get('/answer/create/csv/{surveyId}/{token}', "DownloadController@download
 Route::post('/survey/answer/update', 'AnswerController@resumecompleteupdate');
 Route::post('/answer/submit/complete', 'AnswerController@store');
 Route::get('/answers/csv/all/{surveyId}', "DownloadController@downloadall");
-Route::get('/answers/grouped/create', 'AnswerController@storeMany');
+Route::post('/answers/grouped/create', 'AnswerController@storeMany');

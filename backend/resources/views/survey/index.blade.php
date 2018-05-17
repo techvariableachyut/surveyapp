@@ -34,7 +34,6 @@
             </ul>
         </div>
     </nav>
-    <div class="syncing hide">Syncing Data .....</div>
     <div id="surveyElement"></div>
     <!-- <button class="save_resume" id="snrBtn">Save and Continue Later</button> -->
    
@@ -73,6 +72,7 @@
 
     <script type="text/javascript">
         window.__token__ = "{{ Session::token() }}";
+        window.__page__ = "survey"
     </script>
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap-notify.min.js"></script>

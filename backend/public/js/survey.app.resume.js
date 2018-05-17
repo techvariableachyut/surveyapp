@@ -13239,7 +13239,6 @@ var SurveyModel = /** @class */ (function (_super) {
         }
     };
 
-
     function surveyUpdateAnswer(){
         console.log(survey.data)
         var surveyId = window.location.pathname.split('/');

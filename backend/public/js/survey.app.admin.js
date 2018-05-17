@@ -13197,39 +13197,45 @@ var SurveyModel = /** @class */ (function (_super) {
     };
 
     // Edited by @Achyut Deka 
-    // SurveyModel.prototype.setCompleted = function () {
-    //     this.isCompleted = true;
-    // };
-    // Object.defineProperty(SurveyModel.prototype, "processedCompletedHtml", {
-    //     /**
-    //      * Returns the html for completed 'Thank you' page.
-    //      * @see completedHtml
-    //      */
-    //     get: function () {
-    //         if (this.completedHtml) {
-    //             return this.processHtml(this.completedHtml);
-    //         }
-    //         return "<h3>" + this.getLocString("completingSurvey") + "</h3>";
-    //     },
-    //     enumerable: true,
-    //     configurable: true
-    // });
-
-
     SurveyModel.prototype.setCompleted = function () {
-
-            var done = confirm('Are You Sure?');
-            if(done){
-                submitAnswer()
-                this.isCompleted = true 
-            }else{
-                this.isCompleted = false
-            }
-    
+        surveySubmit()
     };
 
+    function surveySubmit(){
+        if(!window.navigator.onLine){
+            $.confirm({
+                title: 'Confirm Submission!',
+                content: `At present, you don't have internet connectivity; survey data will be stored in your browser.`,                
+                theme: 'dark',
+                buttons: {
+                    confirm: function () {
+                        //
+                    },
+                    cancel: function () {
+                        //
+                    }
+                }
+            });
 
+        }else{
+            $.confirm({
+                title: 'Confirm Submission!',
+                content: 'Are you Sure!',
+                theme: 'dark',
+                buttons: {
+                    confirm: function () {
+                        submitAnswer()
+                    },
+                    cancel: function () {
+                        //
+                    }
+                }
+            });
+        }
+    }
+    
     function submitAnswer(){
+
         var S = window.location.pathname.split('/');
         $.post( "/answer/update", 
         { 
@@ -13240,6 +13246,24 @@ var SurveyModel = /** @class */ (function (_super) {
                 currentPageNo: survey.currentPageNo,
                 data: survey.data
             }
+        })
+        .done(()=>{
+            $.notify({
+                message: `Reviewd successfully!!!`
+            },{
+                type: 'success'
+            });  
+            
+            setTimeout(() => {
+                location.replace('/survey/answer/'+S[4])
+            }, 1200);
+        })
+        .fail(_=>{
+            $.notify({
+                message: `Something Went Wrong!`
+            },{
+                type: 'danger'
+            });
         })
     }
 

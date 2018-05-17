@@ -24,7 +24,7 @@ class LazyController extends Controller
                     'token' => $uuid,
                     'answer' => json_encode($request['answer']),
                     'email' => $email,
-                    'done' => 0
+                    'done' => 'Incomplete'
             ]);
 
             $this->mailpotha($user);   
