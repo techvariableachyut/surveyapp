@@ -44,6 +44,9 @@
 <script type="text/javascript">
     window.__token__ = "{{ Session::token() }}"; 
 </script>
+
+<script src="/js/select2.min.js"></script>
+<link href="/css/select2.min.css" rel="stylesheet"/>
 <script src="/js/knockout-debug.js"></script>
 <script src="/js/survey.ko.js"></script>
 <script src="/js/surveyeditor.js"></script>
@@ -53,6 +56,7 @@
 <link rel="stylesheet" href="/css/survey.css" />
 <link rel="stylesheet" href="/css/surveyeditor.css" />
 <link rel="stylesheet" href="/css/index.css" />
+
 <script src="/js/editor.js"></script>
 
 @endsection

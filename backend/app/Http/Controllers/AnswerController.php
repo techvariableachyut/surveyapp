@@ -37,7 +37,6 @@ class AnswerController extends Controller
     {
         $uniqueid = uniqid();
         $id = $request['surveyId'];
-
         $uniqueid = uniqid();
         $answer = Answers::create([
             'surveyId' => $id,
@@ -106,8 +105,8 @@ class AnswerController extends Controller
         ])->update(['answer' => json_encode($request['answer']), 'done' => "Completed" ]);
     }
 
-    public function storeMany(Request $request){
-        
+
+    public function storeMany(Request $request){ 
         $uniqueid = uniqid();
         $array = json_decode($request['data']);
         foreach ($array as $key => $value) {
@@ -118,6 +117,6 @@ class AnswerController extends Controller
                 'done' => "Completed" 
             ]);
         }
-    
     }
+    
 }
