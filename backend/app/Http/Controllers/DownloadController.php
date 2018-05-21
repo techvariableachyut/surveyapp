@@ -12,32 +12,33 @@ class DownloadController extends Controller
     private $questionnames = array();
     private $questionarray = array();
     private $answersarray = array();
+    private $extractedAnswersarray = array();
 
     public function download(Request $request,$surveyId,$token){
-        $answers = Answers::where('token',$token)->get();
+           
+        /**
+        * Get survey with given token
+        * Get Answers of the given token 
+        */           
+        $answer = Answers::where('token',$token)->get();
         $question = Questions::where('token',$surveyId)->first();
 
-        $this->renderQuestion($question);
-        $this->renderAnswer($answers);
-        
-        $finalarray = array(implode("#",$this->questionarray));
-        
-        foreach ($this->answersarray as $value) {
-            $finalarray[] = $value;
-        }
-        $this->downloadfile($finalarray);
-    }
-
-    public function downloadall(Request $request,$surveyId){
-        $answers = Answers::where('surveyId',$surveyId)->get();
-        $question = Questions::where('token',$surveyId)->first();
+        /**
+        * Render questions and answer
+        */ 
 
         $this->renderQuestion($question);
-        $this->renderAnswer($answers);
+        $this->renderAnswer($answer);
+        
+        /**
+        * Sequence questions and answer
+        */ 
+
+        $this->sequenceQuestionAnswer();
+        
 
         $finalarray = array(implode("#",$this->questionarray));
-        
-        foreach ($this->answersarray as $value) {
+        foreach ($this->extractedAnswersarray as $value) {
             $finalarray[] = $value;
         }
 
@@ -45,91 +46,96 @@ class DownloadController extends Controller
     }
 
     private function renderQuestion($question){
-        foreach (json_decode($question->json) as $questions) {
-            foreach ($questions->elements as $e) {
 
+        foreach (json_decode($question->json) as $questions) {
+
+            foreach ($questions->elements as $e) {
                 if(preg_match("/question/",$e->name)){
 
-                    $this->questionnames[] = $e->name;
-                    $this->questionarray[] = $e->title;
+                    $this->questionarray[$e->name] = $e->title;
                     
                     if($e->type == 'paneldynamic'){
                         foreach ($e->templateElements as $val ) {
-                            $this->questionarray[] = $val->title;                            
-                            $this->questionnames[] = $val->name;
+                            $this->questionarray[$val->name] = $val->title;
                         }
                     }
                     if($e->type == 'multipletext'){
                         foreach ($e->items as  $val) {
-                            $this->questionarray[] = $val->title;
-                            $this->questionnames[] = $val->name;
+                            $this->questionarray[$val->name] = $val->title;
                         }
                     }
                 }
-                
-                // foreach ($e as $index => $questiontitle) {
-                //     if(preg_match("/question/",$e->name)){
-                //         $this->questionnames[] = $questiontitle;
-                //         $this->questionnames[] = $questiontitle;
-                //     }
-                    
-                //     if ($index == "title") {
-                //         $this->questionarray[] = $questiontitle;
-                //     }
-
-                //     if ($index == "label") {
-                //         $this->questionarray[] = $questiontitle;
-                //     }
-
-                //     if($index == "name"){
-                //         if (preg_match("/section/",$questiontitle) ) {
-                //         }else{
-                //             $this->questionnames[] = $questiontitle;
-                //         }
-                //     }
-                // }
 
             }
-            
-        }
-        dd($this->questionarray);
+        }     
     }
 
     private function renderAnswer($a){
-        //get the questions of survey
-        $answers = json_decode($a);
-        $questionnames = $this->questionnames;
-        dd($questionnames);
-        foreach (json_decode($answers[0]->answer) as $answersindex => $answer) {
-            if ($answersindex == "data") {
-                $temp = array();   
-                foreach ($questionnames as $qnames) {
-                    $iftrue = false;
-                    foreach ($answer as $aindex => $realanswer) {
-                        if($qnames == $aindex){
-                            $iftrue = true;
-                        }
-                    }
-                    
-                    if($iftrue == true){
-                        if (is_array($realanswer)) {
-                            $temp[] = $realanswer[0];
+        $count = 0;
+        foreach ($a as $answer) {
+            $temp = array();
+            foreach (json_decode($answer->answer) as $index => $value) {
+                if ($index == "data") {
+                    foreach ($value as $index => $qAnswer) {
+                        if ($index === "section") {
+                            
                         }else{
-                            $temp[] = $realanswer;
+                            if(is_array($qAnswer)){
+                                foreach ($qAnswer[0] as $qI => $qA) {
+                                    $temp[$qI] = $qA;
+                                }
+                            }else{
+                                $temp[$index] = $qAnswer;
+                            }
                         }
                     }
-
-                    if($iftrue !== true){
-                        $temp[] = "User did not answer";
-                    }
-
                 }
-                $this->answersarray[] = implode("#",$temp);
             }
-        }
 
+            $this->answersarray[] = $temp;
+        }
     }
 
+    private function sequenceQuestionAnswer(){
+        $questions = $this->questionarray;
+        $answers = $this->answersarray;
+
+        foreach ($answers as $aIndex => $a) {
+            $temp = array();
+            foreach ($questions as $qIndex =>  $q) {
+                $iftrue = false;
+                $val = "";
+                foreach ($a as $arrayindex => $answer) {
+                    if($qIndex == $arrayindex){
+                        $iftrue = true;
+                        $val = $answer;
+                    }
+                }
+
+                if($iftrue == true){
+                    $temp[] = $val;
+                }else{
+                    $temp[] = "no response";
+                }
+            }
+            $this->extractedAnswersarray[] = implode("#",$temp);
+        }
+    }
+    // public function downloadall(Request $request,$surveyId){
+    //     $answers = Answers::where('surveyId',$surveyId)->get();
+    //     $question = Questions::where('token',$surveyId)->first();
+
+    //     $this->renderQuestion($question);
+    //     $this->renderAnswer($answers);
+
+    //     $finalarray = array(implode("#",$this->questionarray));
+        
+    //     foreach ($this->answersarray as $value) {
+    //         $finalarray[] = $value;
+    //     }
+
+    //     $this->downloadfile($finalarray);
+    // }
 
     private function downloadfile($finalarray){
         $file = fopen('php://memory', 'w');
