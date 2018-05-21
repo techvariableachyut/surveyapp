@@ -67,27 +67,6 @@ class DownloadController extends Controller
                     }
                 }
                 
-                // foreach ($e as $index => $questiontitle) {
-                //     if(preg_match("/question/",$e->name)){
-                //         $this->questionnames[] = $questiontitle;
-                //         $this->questionnames[] = $questiontitle;
-                //     }
-                    
-                //     if ($index == "title") {
-                //         $this->questionarray[] = $questiontitle;
-                //     }
-
-                //     if ($index == "label") {
-                //         $this->questionarray[] = $questiontitle;
-                //     }
-
-                //     if($index == "name"){
-                //         if (preg_match("/section/",$questiontitle) ) {
-                //         }else{
-                //             $this->questionnames[] = $questiontitle;
-                //         }
-                //     }
-                // }
 
             }
             

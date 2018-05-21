@@ -1,5 +1,5 @@
 {
-  "title": "Set the Survey Title! cpy",
+  "title": "Digital Gender and Media Monitoring Tool",
   "pages": [
    {
     "name": "intro",
@@ -7,7 +7,7 @@
      {
       "type": "html",
       "name": "home-into",
-      "html": "<div class=\"sg-content\" id=\"sg-skipnav-target\">\n<div class=\"sg-question-set\">   \n\n  <div id=\"sgE-3565872-1-2-box\" class=\"sg-question sg-type-instruction \">\n    <div class=\"sg-instructions\">\n    <span style=\"font-size:16px;\"><strong>Welcome to the Digital Gender and Media Monitoring Tool</strong></span> \n    </div>\n  </div>\n\n  <div id=\"sgE-3565872-1-3-box\" class=\"sg-question sg-type-instruction \">\n    <div class=\"sg-instructions\">\n      This tool is in sections. The first six sections are compulsory, as these provide the basic information on gender gaps in the media. By answering these questions in our \n      monitoring wherever we are we contribute to a global body of knowledge on gender and the media. Sections 7 to 14 are optional. These delve into a greater level of detail on topics, \n      and include images (for newspaper monitoring) and advertisements, which is slightly different to news. Pop up boxes give definitions where this is important and relevant.\n    </div>\n  </div>\n\n\n<div id=\"sgE-3565872-1-4-box\" class=\"sg-question sg-type-instruction \">\n    <div class=\"sg-instructions\">\n      <strong>Menu</strong><br>\n      The survey is split up into the following sections. You will be asked which sections you will be completing at the start of each response.&nbsp;\n    <br>\n    <br>\n    <table border=\"1\" cellpadding=\"0\" cellspacing=\"0\">\n      <tbody><tr><td style=\"width:132px;\"><strong>Section</strong></td>\n        <td style=\"width:189px;\"><strong>&nbsp; Detail</strong></td>\n        <td style=\"width:207px;\"><strong>&nbsp; Status</strong></td>\n      </tr><tr><td style=\"width:132px;\">Section 1</td>\n        <td style=\"width:189px;\">&nbsp; Administrative Information</td>\n        <td style=\"width:207px;\">&nbsp; Compulsory</td>\n      </tr><tr><td style=\"width:132px;\">Section 2</td>\n        <td style=\"width:189px;\">&nbsp; News Sources</td>\n        <td style=\"width:207px;\">&nbsp; Compulsory</td>\n      </tr><tr><td style=\"width:132px;\">Section 3</td>\n        <td style=\"width:189px;\">&nbsp; News Topics</td>\n        <td style=\"width:207px;\">&nbsp; Compulsory</td>\n      </tr><tr><td style=\"width:132px;\">Section 4</td>\n        <td style=\"width:189px;\">&nbsp; Reporters</td>\n        <td style=\"width:207px;\">&nbsp; Compulsory</td>\n      </tr><tr><td style=\"width:132px;\">Section 5</td>\n        <td style=\"width:189px;\">&nbsp; Gender Analysis</td>\n        <td style=\"width:207px;\">&nbsp; Compulsory</td>\n      </tr><tr><td style=\"width:132px;\">Section 6</td>\n        <td style=\"width:189px;\">&nbsp; Images </td>\n        <td style=\"width:207px;\">&nbsp; Optional</td>\n      </tr><tr><td style=\"width:132px;\">Section 7</td>\n        <td style=\"width:189px;\">&nbsp; Social media</td>\n        <td style=\"width:207px;\">&nbsp; Optional</td>\n      </tr><tr><td style=\"width:132px;\">Section 8</td>\n        <td style=\"width:189px;\">&nbsp; Gender based violence</td>\n        <td style=\"width:207px;\">&nbsp; Optional</td>\n<tr><td style=\"width:132px;\">Section 9</td>\n        <td style=\"width:189px;\">&nbsp; Peace and conflict</td>\n        <td style=\"width:207px;\">&nbsp; Optional</td>\n      </tr>\n      </tr><tr><td style=\"width:132px;\">Section 10</td>\n        <td style=\"width:189px;\">&nbsp; Elections and political participation </td>\n        <td style=\"width:207px;\">&nbsp; Optional</td>\n      </tr><tr><td style=\"width:132px;\">Section 11</td>\n        <td style=\"width:189px;\">&nbsp; Diversity and minorities</td>\n        <td style=\"width:207px;\">&nbsp; Optional</td>\n      </tr>\n      <tr><td style=\"width:132px;\">Section 12</td>\n      <td style=\"width:189px;\">&nbsp; Advertising</td>\n      <td style=\"width:207px;\">&nbsp; Optional</td>\n    </tr>\n      </tbody></table>\n      <br>\n      The tool makes use of “skip patterns” i.e. the tool will display (or hide) questions based on previous selections. The navigation bar will give an indication of the different sections of the data capturing tool and the user's current position in the data capturing process. When you finishing capturing data for each story or advertisement submit your input to allow the system to save your entry. Instruction to \"Save and Continue Later\" are provided below in case you are not able to complete the entry in one go. \n    </div>\n\n  </div>\n\n  <div id=\"sgE-3565872-1-6-box\" class=\"sg-question sg-type-instruction \">\n    <div class=\"sg-instructions\">\n    <h2>\n      <span style=\"font-size:14px;\">After completing page 1 (so when on page 2) on the top, you will see a “Save and Continue later” band:</span></h2>\n      <br><span style=\"font-size:14px;\">If you want to go check something and return later, they can click on this and enter your email address:</span><br>\n      <h2><span style=\"font-size:14px;\">Once you have entered your email address twice, whatever you have entered in the application form thus far will be saved and you will receive an email with a link to continue. Kindly note that the email may be sent to your Junk mail box depending on your security settings. Email example:</span></h2>\n      <br><span style=\"font-size:14px;\">You can then click on the link and continue where you left off.</span>  \n    </div>\n  </div> \n\n</div>\n</div>"
+      "html": "<div class=\"sg-content\" id=\"sg-skipnav-target\">\n    <div class=\"sg-question-set\">   \n    \n      <div id=\"sgE-3565872-1-2-box\" class=\"sg-question sg-type-instruction \">\n        <div class=\"sg-instructions\">\n          <span style=\"font-size:18px;\">\n            <strong>Welcome to the Digital Gender and Media Monitoring Tool</strong>\n          </span> \n        </div>\n      </div>\n    \n      <div id=\"sgE-3565872-1-3-box\" class=\"sg-question sg-type-instruction \">\n        <div class=\"sg-instructions\">\n     This tool is in sections. The first five sections are compulsory, as these provide the\n    basic information on gender gaps in the media. By answering these questions in our\n    monitoring wherever we are we contribute to a global body of knowledge on gender and\n    the media. Sections 6 to 12 are optional. These delve into a greater level of detail on\n    topics, and include images (for newspaper monitoring) and advertisements, which is\n    slightly different to news.\n        </div>\n      </div>\n    \n    \n    <div id=\"sgE-3565872-1-4-box\" class=\"sg-question sg-type-instruction \">\n        <div class=\"sg-instructions\">\n            <br>\n            <span style=\"font-size:16px;\">\n              <strong>Menu</strong>\n            </span>\n            <br><br>\n          The survey is split up into the following sections. You will be asked which sections you will be completing at the start of each response.&nbsp;\n        <br>\n        <br>\n        <table border=\"1\" cellpadding=\"0\" cellspacing=\"0\">\n          <tbody><tr><td style=\"width:132px;\"><strong>Section</strong></td>\n            <td style=\"width:189px;\"><strong>&nbsp; Detail</strong></td>\n            <td style=\"width:207px;\"><strong>&nbsp; Status</strong></td>\n          </tr><tr><td style=\"width:132px;\">Section 1</td>\n            <td style=\"width:189px;\">&nbsp; Administrative Information</td>\n            <td style=\"width:207px;\">&nbsp; Compulsory</td>\n          </tr><tr><td style=\"width:132px;\">Section 2</td>\n            <td style=\"width:189px;\">&nbsp; News Sources</td>\n            <td style=\"width:207px;\">&nbsp; Compulsory</td>\n          </tr><tr><td style=\"width:132px;\">Section 3</td>\n            <td style=\"width:189px;\">&nbsp; News Topics</td>\n            <td style=\"width:207px;\">&nbsp; Compulsory</td>\n          </tr><tr><td style=\"width:132px;\">Section 4</td>\n            <td style=\"width:189px;\">&nbsp; Reporters</td>\n            <td style=\"width:207px;\">&nbsp; Compulsory</td>\n          </tr><tr><td style=\"width:132px;\">Section 5</td>\n            <td style=\"width:189px;\">&nbsp; Gender Analysis</td>\n            <td style=\"width:207px;\">&nbsp; Compulsory</td>\n          </tr><tr><td style=\"width:132px;\">Section 6</td>\n            <td style=\"width:189px;\">&nbsp; Images </td>\n            <td style=\"width:207px;\">&nbsp; Optional</td>\n          </tr><tr><td style=\"width:132px;\">Section 7</td>\n            <td style=\"width:189px;\">&nbsp; Social media</td>\n            <td style=\"width:207px;\">&nbsp; Optional</td>\n          </tr><tr><td style=\"width:132px;\">Section 8</td>\n            <td style=\"width:189px;\">&nbsp; Gender based violence</td>\n            <td style=\"width:207px;\">&nbsp; Optional</td>\n          <tr><td style=\"width:132px;\">Section 9</td>\n            <td style=\"width:189px;\">&nbsp; Peace and conflict</td>\n            <td style=\"width:207px;\">&nbsp; Optional</td>\n          </tr>\n          </tr><tr><td style=\"width:132px;\">Section 10</td>\n            <td style=\"width:189px;\">&nbsp; Elections and political participation </td>\n            <td style=\"width:207px;\">&nbsp; Optional</td>\n          </tr><tr><td style=\"width:132px;\">Section 11</td>\n            <td style=\"width:189px;\">&nbsp; Diversity and minorities</td>\n            <td style=\"width:207px;\">&nbsp; Optional</td>\n          </tr>\n          <tr><td style=\"width:132px;\">Section 12</td>\n          <td style=\"width:189px;\">&nbsp; Advertising</td>\n          <td style=\"width:207px;\">&nbsp; Optional</td>\n        </tr>\n          </tbody></table>\n          <br>\n          The tool makes use of “skip patterns” i.e. the tool will display (or hide) questions based\n    on previous selections. The navigation bar will give an indication of the different\n    sections of the data capturing tool and the user&#39;s current position in the data capturing\n    process. When you finishing capturing data for each story or advertisement submit your\n    input to allow the system to save your entry.\n        </div>\n    \n      </div>\n    \n      <div id=\"sgE-3565872-1-6-box\" class=\"sg-question sg-type-instruction \">\n        <div class=\"sg-instructions\">\n            <br>\n            <span style=\"font-size:16px;\">\n              <strong>Save and Continue</strong>\n            </span>\n            <br><br>\n    If you are not able to complete the entry in one go you can &quot;Save and Continue Later&quot;.\n    After completing Section 1 (so when on Section 2) on the top, you will see a “Save and\n    Continue later” button. If you want to go check something and return later, click on this\n    and enter your email address twice and save.\n    Whatever you have entered in the application form thus far will be saved and you will\n    receive an email with a link to continue. Kindly note that the email may be sent to your\n    Junk mail box depending on your security settings. You can then click on the link and\n    continue where you left off.\n    \n        </div>\n      </div> \n    \n    \n    \n      <div id=\"sgE-3565872-1-6-box\" class=\"sg-question sg-type-instruction \">\n        <div class=\"sg-instructions\">\n          <br>\n          <span style=\"font-size:16px;\">\n            <strong>Offline Version</strong>\n          </span>\n          <br><br>\n    The tool can be used online or offline. If online every response submitted will be sent\n    directly to the online database.\n    If offline, the responses submitted will be saved within your browser and can be synced\n    to the online database when you are back online. This can be done by selecting the\n    “Sync Survey Data” button in the top right corner of the page. The number beside the\n    button indicates the number of responses submitted offline that need to be synced once\n    you are back online.\n    For example, Sync Survey Data (5) indicates you have submitted five responses offline\n    and these need to be synced so that they are uploaded to the online database.\n    \n        </div>\n      </div> \n    \n    \n    \n    </div>\n    </div>"
      }
     ]
    },
@@ -276,7 +276,7 @@
      {
       "type": "datepicker",
       "name": "question512",
-      "title": "Date",
+      "title": "Date of publication",
       "isRequired": true,
       "placeHolder": "DD/MM/YYYY"
      },
@@ -503,6 +503,7 @@
      {
       "type": "dropdown",
       "name": "question021",
+      "visibleIf": "{question020} > \"0\"",
       "title": "If there is only one female source, is the source Aung San Su Kyi?",
       "isRequired": true,
       "choices": [
@@ -513,6 +514,7 @@
      {
       "type": "dropdown",
       "name": "question022",
+      "visibleIf": "{question020} > \"0\"",
       "title": "How many female sources in the story?",
       "isRequired": true,
       "choices": [
@@ -532,6 +534,7 @@
      {
       "type": "dropdown",
       "name": "question023",
+      "visibleIf": "{question020} > \"0\"",
       "title": "How many male sources in the story?",
       "isRequired": true,
       "choices": [
@@ -551,6 +554,7 @@
      {
       "type": "dropdown",
       "name": "question024",
+      "visibleIf": "{question020} > \"0\"",
       "title": "How many trans-gender sources in the story?",
       "isRequired": true,
       "choices": [
@@ -570,6 +574,7 @@
      {
       "type": "dropdown",
       "name": "question025",
+      "visibleIf": "{question020} > \"0\"",
       "title": "How many sources where the sex is unknown?",
       "isRequired": true,
       "choices": [
@@ -647,16 +652,6 @@
        },
        {
         "type": "dropdown",
-        "name": "question028",
-        "title": "Are there any local female experts mentioned in the story?",
-        "isRequired": true,
-        "choices": [
-         "No",
-         "Yes"
-        ]
-       },
-       {
-        "type": "dropdown",
         "name": "question31",
         "title": "Is the person directly quoted?",
         "isRequired": true,
@@ -690,7 +685,7 @@
          "Not sure",
          "Subject",
          "Spokesperson",
-         "Expert or commentator",
+         "Expert or Commentator",
          "Personal experience",
          "Eye witness",
          "Popular opinion"
@@ -779,15 +774,29 @@
         "title": "Does the story identify the person either as a victim or survivor?",
         "isRequired": true,
         "choices": [
-         "Yes",
-         "No"
+         {
+          "value": "victim",
+          "text": "Victim"
+         },
+         {
+          "value": "survivor",
+          "text": "Survivor"
+         },
+         {
+          "value": "both",
+          "text": "Both"
+         },
+         {
+          "value": "neither",
+          "text": "Neither"
+         }
         ]
        },
        {
         "type": "dropdown",
         "name": "question36",
-        "visibleIf": "{question2[0].question35} = \"Yes\"",
-        "title": "The story identifies the person as a victim of:",
+        "visibleIf": "{question2[0].question35} = \"victim\" or {question2[0].question35} = \"both\"",
+        "title": "Victim of",
         "isRequired": true,
         "hasOther": true,
         "choices": [
@@ -806,59 +815,67 @@
        {
         "type": "dropdown",
         "name": "question37",
-        "visibleIf": "{question2[0].question35} = \"Yes\"",
-        "title": "The story identifies the person as a survivor of:",
+        "visibleIf": "{question2[0].question35} = \"survivor\" or {question2[0].question35} = \"both\"",
+        "title": "Survivor of",
         "isRequired": true,
         "hasOther": true,
         "choices": [
          "Not applicable",
          "Survivor of an accident, natural disaster, poverty.",
-         "Victim of domestic violence (including rape or murder)",
-         "Victim of non-domestic sexual violence, rape, assault, etc. (sexual violence only)",
-         "Victim of other non-domestic crime, robbery, assault, murder, organised crime, human trafficking etc.",
+         {
+          "value": "Victim of domestic violence (including rape or murder)",
+          "text": "Survivor of domestic violence (including rape or murder)"
+         },
+         {
+          "value": "Victim of non-domestic sexual violence, rape, assault, etc. (sexual violence only)",
+          "text": "Survivor of non-domestic sexual violence, rape, assault, etc. (sexual violence only)"
+         },
+         {
+          "value": "Victim of other non-domestic crime, robbery, assault, murder, organised crime, human trafficking etc.",
+          "text": "Survivor of other non-domestic crime, robbery, assault, murder, organised crime, human trafficking etc."
+         },
          "Survivor of violation based on religion, tradition.",
          "Survivor of war, terrorism, vigilantism, state violence.",
-         "Survivor of discrimination based on gender, race, ethnicity, age, religion, ability, etc.",
-         "Survivor of human trafficking"
+         "Survivor of discrimination based on gender, race, ethnicity, age, religion, ability, etc."
         ],
         "otherText": "Other (please specify)*"
+       },
+       {
+        "type": "multipletext",
+        "name": "question38",
+        "visibleIf": "{panel.question026} = \"Female\"  and ( {panel.question030} = \"Expert or Commentator\"  or {panel.question030} = \"Spokesperson\" )",
+        "title": "Female Expert",
+        "isRequired": true,
+        "items": [
+         {
+          "name": "question39",
+          "placeHolder": "Name",
+          "title": "Name",
+          "maxLength": 10
+         },
+         {
+          "name": "question40",
+          "placeHolder": "Position",
+          "title": "Position",
+          "maxLength": 10
+         },
+         {
+          "name": "question41",
+          "placeHolder": "Organisation",
+          "title": "Organization",
+          "maxLength": 10
+         },
+         {
+          "name": "question42",
+          "placeHolder": "Area of expertise",
+          "title": "Area of Expertise",
+          "maxLength": 20
+         }
+        ]
        }
       ],
       "maxPanelCount": 10,
       "panelsState": "collapsed"
-     },
-     {
-      "type": "multipletext",
-      "name": "question38",
-      "visibleIf": "{question38}= 'Yes'",
-      "title": "Female Expert",
-      "isRequired": true,
-      "items": [
-       {
-        "name": "question39",
-        "placeHolder": "Name",
-        "title": "Name",
-        "maxLength": 10
-       },
-       {
-        "name": "question40",
-        "placeHolder": "Position",
-        "title": "Position",
-        "maxLength": 10
-       },
-       {
-        "name": "question41",
-        "placeHolder": "Organisation",
-        "title": "Organization",
-        "maxLength": 10
-       },
-       {
-        "name": "question42",
-        "placeHolder": "Area of expertise",
-        "title": "Area of Expertise",
-        "maxLength": 20
-       }
-      ]
      }
     ],
     "title": "Section 2: News Sources\n"
@@ -952,8 +969,7 @@
        "Climate change, global warming",
        "Environment, pollution",
        "Water and sanitation",
-       "MDGs, Sustainable",
-       "Development Goals, Post 2015 agenda"
+       "MDGs, Sustainable Development Goals, Post 2015 agenda"
       ],
       "otherText": "Other (please specify)*"
      },
@@ -1039,7 +1055,6 @@
        "Women in politics",
        "Peace negotiations, treaties",
        "Other domestic politics,",
-       "government etc",
        "Global partnerships",
        "Foreign/ international politics, UN Peace Keeping",
        "National defence, military spending, internal security."
@@ -1085,6 +1100,7 @@
      {
       "type": "dropdown",
       "name": "question055",
+      "visibleIf": "{question054} > \"0\"",
       "title": "How many reporters are clearly female?",
       "isRequired": true,
       "choices": [
@@ -1103,6 +1119,7 @@
      {
       "type": "dropdown",
       "name": "question056",
+      "visibleIf": "{question054} > \"0\"",
       "title": "How many reporters are clearly male?",
       "isRequired": true,
       "choices": [
@@ -1121,6 +1138,7 @@
      {
       "type": "dropdown",
       "name": "question057",
+      "visibleIf": "{question054} > \"0\"",
       "title": "How many reporters are clearly transgender?",
       "isRequired": true,
       "choices": [
@@ -1139,6 +1157,7 @@
      {
       "type": "dropdown",
       "name": "question058",
+      "visibleIf": "{question054} > \"0\"",
       "title": "For how many reporters is the sex unclear/unknown?",
       "isRequired": true,
       "choices": [
@@ -1175,6 +1194,7 @@
      {
       "type": "dropdown",
       "name": "question060",
+      "visibleIf": "{question059} > \"0\"",
       "title": "How many presenters/anchors are clearly female?",
       "isRequired": true,
       "choices": [
@@ -1193,6 +1213,7 @@
      {
       "type": "dropdown",
       "name": "question061",
+      "visibleIf": "{question059} > \"0\"",
       "title": "How many presenters/anchors are clearly male?",
       "isRequired": true,
       "choices": [
@@ -1211,6 +1232,7 @@
      {
       "type": "dropdown",
       "name": "question062",
+      "visibleIf": "{question059} > \"0\"",
       "title": "How many presenters/anchors are clearly transgender?",
       "isRequired": true,
       "choices": [
@@ -1229,6 +1251,7 @@
      {
       "type": "dropdown",
       "name": "question063",
+      "visibleIf": "{question059} > \"0\"",
       "title": "For how many presenters/anchors is the sex unclear/unknown?",
       "isRequired": true,
       "choices": [
@@ -1352,8 +1375,68 @@
      {
       "type": "dropdown",
       "name": "question59",
-      "visibleIf": "{question071} <= \"10\" and {question071} > \"0\"",
+      "visibleIf": "{question071} <= \"10\" and {question071} > \"0\" ",
       "title": "How many women are represented in the picture?",
+      "isRequired": true,
+      "choices": [
+       "0",
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "7",
+       "8",
+       "9",
+       "10"
+      ]
+     },
+     {
+      "type": "dropdown",
+      "name": "question61",
+      "visibleIf": "({question071} <= \"10\" and {question071} > \"0\" and {question59} > \"0\" ) ",
+      "title": "How many women are named in the caption?",
+      "isRequired": true,
+      "choices": [
+       "0",
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "7",
+       "8",
+       "9",
+       "10"
+      ]
+     },
+     {
+      "type": "dropdown",
+      "name": "question62",
+      "visibleIf": "({question071} <= \"10\" and {question071} > \"0\" and {question59} > \"0\" ) ",
+      "title": "How many women are central to the image?",
+      "isRequired": true,
+      "choices": [
+       "0",
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "7",
+       "8",
+       "9",
+       "10"
+      ]
+     },
+     {
+      "type": "dropdown",
+      "name": "question64",
+      "visibleIf": "({question071} <= \"10\" and {question071} > \"0\" and {question59} > \"0\" ) ",
+      "title": "How many women appear to be a victim?",
       "isRequired": true,
       "choices": [
        "0",
@@ -1392,28 +1475,8 @@
      {
       "type": "dropdown",
       "name": "question61",
-      "visibleIf": "{question071} <= \"10\" and {question071} > \"0\"",
-      "title": "How many women are named in the caption?",
-      "isRequired": true,
-      "choices": [
-       "0",
-       "1",
-       "2",
-       "3",
-       "4",
-       "5",
-       "6",
-       "7",
-       "8",
-       "9",
-       "10"
-      ]
-     },
-     {
-      "type": "dropdown",
-      "name": "question62",
-      "visibleIf": "{question071} <= \"10\" and {question071} > \"0\"",
-      "title": "How many women are central to the image?",
+      "visibleIf": "({question071} <= \"10\" and {question071} > \"0\" and {question60} > \"0\" ) ",
+      "title": "How many men are named in the caption?",
       "isRequired": true,
       "choices": [
        "0",
@@ -1432,7 +1495,7 @@
      {
       "type": "dropdown",
       "name": "question63",
-      "visibleIf": "{question071} <= \"10\" and {question071} > \"0\"",
+      "visibleIf": "({question071} <= \"10\" and {question071} > \"0\" and {question60} > \"0\" ) ",
       "title": "How many men are central to the image?",
       "isRequired": true,
       "choices": [
@@ -1451,28 +1514,8 @@
      },
      {
       "type": "dropdown",
-      "name": "question64",
-      "visibleIf": "{question071} <= \"10\" and {question071} > \"0\"",
-      "title": "How many women appear to be a victim?",
-      "isRequired": true,
-      "choices": [
-       "0",
-       "1",
-       "2",
-       "3",
-       "4",
-       "5",
-       "6",
-       "7",
-       "8",
-       "9",
-       "10"
-      ]
-     },
-     {
-      "type": "dropdown",
       "name": "question65",
-      "visibleIf": "{question071} <= \"10\" and {question071} > \"0\"\"",
+      "visibleIf": "({question071} <= \"10\" and {question071} > \"0\" and {question60} > \"0\" ) ",
       "title": "How many men appear to be a victim?",
       "isRequired": true,
       "choices": [
@@ -1506,6 +1549,44 @@
          "Male",
          "Female",
          "Trans",
+         "Not clear"
+        ]
+       },
+       {
+        "type": "dropdown",
+        "name": "question2690",
+        "title": "What is the perceived occupation of the person in the picture?",
+        "hasOther": true,
+        "choices": [
+         "Academic expert, lecturer,  teacher",
+         "Activist or worker in civil society organisation, NGO, trade union.",
+         "Agriculture, mining, fishing, forestry",
+         "Business person, exec manager, stock broker",
+         "Child, young person",
+         "Criminal or suspect",
+         "Celebrity, artist, actor, writer, singer, TV personality.",
+         "Doctor, dentist, health specialist",
+         "Domestic worker",
+         "Politician, minister, MP, government spokesperson",
+         "Government employee, public servant",
+         "Member of ethnic organisation",
+         "Health worker, social worker, child care worker.",
+         "Home maker",
+         "Lawyer, judge, magistrate, legal advocate.",
+         "Factory Worker",
+         "Media professional, journalist, film maker",
+         "Police, military, para-military",
+         "Retired person, pensioner.",
+         "Religious figure/ traditional figure",
+         "Royalty, monarch, deposed monarch",
+         "Scientist/ technology/ engineer",
+         "Sex worker",
+         "Sportsperson",
+         "Tradesperson, artisan, labourer, truck driver",
+         "Student, pupil, school child",
+         "Unemployed",
+         "Villager or resident (community member)",
+         "Youth",
          "Not clear"
         ]
        },
@@ -1656,24 +1737,6 @@
       ]
      },
      {
-      "type": "dropdown",
-      "name": "question073",
-      "title": "How many perpetrators are there?",
-      "isRequired": true,
-      "choices": [
-       "0",
-       "1",
-       "2",
-       "3",
-       "4",
-       "5",
-       {
-        "value": "10",
-        "text": "More than 5"
-       }
-      ]
-     },
-     {
       "type": "paneldynamic",
       "name": "question3",
       "visibleIf": "{question072} > \"0\"",
@@ -1702,6 +1765,24 @@
          "Yes, including a photo.",
          "No, their identity is adequately protected."
         ]
+       }
+      ]
+     },
+     {
+      "type": "dropdown",
+      "name": "question073",
+      "title": "How many perpetrators are there?",
+      "isRequired": true,
+      "choices": [
+       "0",
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       {
+        "value": "10",
+        "text": "More than 5"
        }
       ]
      },
@@ -1987,35 +2068,97 @@
       "otherText": "Other (please specific)*"
      },
      {
-      "type": "dropdown",
-      "name": "question95",
-      "title": "Number of images",
-      "isRequired": true,
-      "choices": [
-       "0",
-       "1",
-       "2",
-       "3",
-       "4",
-       "5",
-       "6",
-       "7",
-       "8",
-       "9",
-       "10"
-      ]
+      "type": "text",
+      "name": "question1",
+      "title": "How many people in the image?",
+      "isRequired": true
      },
      {
-      "type": "dropdown",
-      "name": "question96",
-      "title": "Sex of people in images",
+      "type": "paneldynamic",
+      "name": "question14",
+      "visibleIf": "{question1} > \"0\"",
+      "title": "For each person in the image",
       "isRequired": true,
-      "choices": [
-       "Female",
-       "Male",
-       "Trans",
-       "Not clear"
-      ]
+      "templateElements": [
+        {
+         "type": "dropdown",
+         "name": "question6614",
+         "title": "What is the sex of the person in the picture?",
+         "isRequired": true,
+         "choices": [
+          "Male",
+          "Female",
+          "Trans",
+          "Not clear"
+         ]
+        },
+        {
+         "type": "dropdown",
+         "name": "question26914",
+         "title": "What is the perceived occupation of the person in the picture?",
+         "hasOther": true,
+         "choices": [
+          "Academic expert, lecturer,  teacher",
+          "Activist or worker in civil society organisation, NGO, trade union.",
+          "Agriculture, mining, fishing, forestry",
+          "Business person, exec manager, stock broker",
+          "Child, young person",
+          "Criminal or suspect",
+          "Celebrity, artist, actor, writer, singer, TV personality.",
+          "Doctor, dentist, health specialist",
+          "Domestic worker",
+          "Politician, minister, MP, government spokesperson",
+          "Government employee, public servant",
+          "Member of ethnic organisation",
+          "Health worker, social worker, child care worker.",
+          "Home maker",
+          "Lawyer, judge, magistrate, legal advocate.",
+          "Factory Worker",
+          "Media professional, journalist, film maker",
+          "Police, military, para-military",
+          "Retired person, pensioner.",
+          "Religious figure/ traditional figure",
+          "Royalty, monarch, deposed monarch",
+          "Scientist/ technology/ engineer",
+          "Sex worker",
+          "Sportsperson",
+          "Tradesperson, artisan, labourer, truck driver",
+          "Student, pupil, school child",
+          "Unemployed",
+          "Villager or resident (community member)",
+          "Youth",
+          "Not clear"
+         ]
+        },
+        {
+         "type": "dropdown",
+         "name": "question6714",
+         "visibleIf": "{question071} <= \"10\"",
+         "title": "What is the age of the person in the picture?",
+         "isRequired": true,
+         "choices": [
+          "Not sure",
+          "12 and under",
+          "13-18",
+          "19-34",
+          "35-49",
+          "50-64",
+          "65 and above"
+         ]
+        }
+       ]
+     },
+     {
+      "type": "text",
+      "name": "question12",
+      "title": "How many males in the image?",
+      "isRequired": true
+     },
+     {
+      "type": "text",
+      "name": "question13",
+      "title": "How many females in the image?",
+      "isRequired": true
      },
      {
       "type": "dropdown",
