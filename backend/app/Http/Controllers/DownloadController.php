@@ -51,7 +51,12 @@ class DownloadController extends Controller
 
             foreach ($questions->elements as $e) {
                 if(preg_match("/question/",$e->name)){
-                    $this->questionarray[$e->name] = $e->title;
+                    if(!$e->title){
+
+                    }else{
+                        $this->questionarray[$e->name] = $e->title;
+                    }
+                    
                     if($e->type == 'paneldynamic'){
                         foreach ($e->templateElements as $val ) {
                             $this->questionarray[$val->name] = $val->title;
@@ -123,12 +128,16 @@ class DownloadController extends Controller
     public function downloadall(Request $request,$surveyId){
         $answers = Answers::where('surveyId',$surveyId)->get();
         $question = Questions::where('token',$surveyId)->first();
+
         $this->renderQuestion($question);
         $this->renderAnswer($answers);
+
         $finalarray = array(implode("#",$this->questionarray));
+        
         foreach ($this->answersarray as $value) {
             $finalarray[] = $value;
         }
+
         $this->downloadfile($finalarray);
     }
 
