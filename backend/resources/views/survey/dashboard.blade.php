@@ -131,11 +131,6 @@
             </div>
         </div>
     </div>
-
-    <div class="col-xl-4 col-lg-12">
-    <canvas id="testchart" class="height-400 block" ></canvas>
-
-    </div>
 </div>
         <div class="col-lg-12">
             <div class="card">
@@ -162,7 +157,7 @@
                                             @if(!$question->title)
                                                 -
                                             @else
-                                                {{ $question->title }}
+                                                <a href="#">{{ $question->title }}</a>
                                             @endif
                                         </td>
                                         <td class="text-truncate">

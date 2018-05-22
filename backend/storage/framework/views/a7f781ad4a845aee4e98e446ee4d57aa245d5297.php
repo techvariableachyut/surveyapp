@@ -130,11 +130,6 @@
             </div>
         </div>
     </div>
-
-    <div class="col-xl-4 col-lg-12">
-    <canvas id="testchart" class="height-400 block" ></canvas>
-
-    </div>
 </div>
         <div class="col-lg-12">
             <div class="card">
@@ -161,8 +156,7 @@
                                             <?php if(!$question->title): ?>
                                                 -
                                             <?php else: ?>
-                                                <?php echo e($question->title); ?>
-
+                                                <a href="#"><?php echo e($question->title); ?></a>
                                             <?php endif; ?>
                                         </td>
                                         <td class="text-truncate">
