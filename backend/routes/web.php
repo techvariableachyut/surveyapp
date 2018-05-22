@@ -64,4 +64,4 @@ Route::get('/administrative/gender/stereotype/challenge', 'AdministrativeControl
 //Route::get('/administrative', 'AdministrativeController@responsesSubmitted');
 //Route::get('/administrative', 'AdministrativeController@responsesSubmitted');
 
-Route::get('/survey/info', 'ElaborateSurvey@elaborate');
+Route::get('/survey/info/{id}', 'ElaborateSurvey@elaborate');

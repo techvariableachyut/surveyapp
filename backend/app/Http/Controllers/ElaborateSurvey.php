@@ -39,14 +39,14 @@ class ElaborateSurvey extends Controller{
     private $reporterMale = 0;
     private $reporterTrans = 0;
 
-    public function elaborate(){
-        $this->getMonitor();
-        $this->countall();
-        $this->genderStereotypeChallenge();
-        $this->imageGenderProportion();
-        $this->genderSources();
-        $this->presenterGenderProportion();
-        $this->reporterGenderProportion();
+    public function elaborate($surveyId){
+        $this->getMonitor($surveyId);
+        $this->countall($surveyId);
+        $this->genderStereotypeChallenge($surveyId);
+        $this->imageGenderProportion($surveyId);
+        $this->genderSources($surveyId);
+        $this->presenterGenderProportion($surveyId);
+        $this->reporterGenderProportion($surveyId);
 
         $one = $this->monitor1;
         $two = $this->monitor2;
@@ -80,8 +80,8 @@ class ElaborateSurvey extends Controller{
         return view("elaborate.index",compact('one','two','three','four','five','six','seven','eight','nine','ten','reviewed','completed','count','challenges','reinforces','imageGenderFemale','imageGenderMale','imageGenderTrans','genderSourcesFemale','genderSourcesMale','genderSourcesTrans','presenterFemale','presenterMale','presenterTrans','reporterMale','reporterFemale','reporterTrans'));
     }
 
-    private function countall(){
-        $answers = DB::table('answers')->where('surveyId','5adb93c6e8c82')->select('done')->get();
+    private function countall($surveyId){
+        $answers = DB::table('answers')->where('surveyId',$surveyId)->select('done')->get();
         $this->count = count($answers);
 
         foreach ($answers as $key => $value) {
@@ -95,9 +95,9 @@ class ElaborateSurvey extends Controller{
         }
     }
 
-    private function getMonitor(){
+    private function getMonitor($surveyId){
 
-        $db = DB::table('answers_')->where('surveyId','5adb93c6e8c82')->whereIn('answer',['Monitor 1','Monitor 2','Monitor 3','Monitor 4','Monitor 5','Monitor 6','Monitor 7','Monitor 8','Monitor 9','Monitor 10'])->get();
+        $db = DB::table('answers_')->where('surveyId',$surveyId)->whereIn('answer',['Monitor 1','Monitor 2','Monitor 3','Monitor 4','Monitor 5','Monitor 6','Monitor 7','Monitor 8','Monitor 9','Monitor 10'])->get();
 
         foreach ($db as $answer) {
             if ($answer->answer == "Monitor 1") {
@@ -133,9 +133,9 @@ class ElaborateSurvey extends Controller{
         }
     }
 
-    public function genderStereotypeChallenge(){
+    public function genderStereotypeChallenge($surveyId){
 
-        $getanswer = DB::table('answers_')->where('name',"question067")->where('surveyId',"5adb93c6e8c82")->get();
+        $getanswer = DB::table('answers_')->where('name',"question067")->where('surveyId',$surveyId)->get();
         
         foreach ($getanswer as $index => $gender) {
             if ($gender->answer == "Challenges stereotypes") {
@@ -148,8 +148,8 @@ class ElaborateSurvey extends Controller{
     }
 
 
-    public function imageGenderProportion(){
-        $getanswer = DB::table('answers_')->where('surveyId',"5adb93c6e8c82")->whereIn('name',["question62","question63","question071"])->get();
+    public function imageGenderProportion($surveyId){
+        $getanswer = DB::table('answers_')->where('surveyId',$surveyId)->whereIn('name',["question62","question63","question071"])->get();
 
         foreach ($getanswer as $index => $gender) {
             if ($gender->name == "question62") {
@@ -164,9 +164,9 @@ class ElaborateSurvey extends Controller{
         } 
     }
 
-    private function genderSources(){
+    private function genderSources($surveyId){
 
-        $getanswer = DB::table('answers_')->where('surveyId',"5adb93c6e8c82")->whereIn('name',["question022","question023","question024"])->get();
+        $getanswer = DB::table('answers_')->where('surveyId',$surveyId)->whereIn('name',["question022","question023","question024"])->get();
 
         foreach ($getanswer as $index => $gender) {
             if ($gender->name == "question022") {
@@ -185,9 +185,9 @@ class ElaborateSurvey extends Controller{
         }
     }
 
-    public function presenterGenderProportion(){
+    public function presenterGenderProportion($surveyId){
 
-        $getanswer = DB::table('answers_')->where('surveyId',"5adb93c6e8c82")->whereIn('name',["question060","question061","question062"])->get();
+        $getanswer = DB::table('answers_')->where('surveyId',$surveyId)->whereIn('name',["question060","question061","question062"])->get();
 
         foreach ($getanswer as $index => $gender) {
             if ($gender->name == "question060") {
@@ -203,9 +203,9 @@ class ElaborateSurvey extends Controller{
     }
 
 
-    public function reporterGenderProportion(){
+    public function reporterGenderProportion($surveyId){
 
-        $getanswer = DB::table('answers_')->where('surveyId',"5adb93c6e8c82")->whereIn('name',["question055","question056","question057"])->get();
+        $getanswer = DB::table('answers_')->where('surveyId',$surveyId)->whereIn('name',["question055","question056","question057"])->get();
 
         foreach ($getanswer as $index => $gender) {
             if ($gender->name == "question055") {
