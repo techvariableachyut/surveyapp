@@ -51,8 +51,11 @@ class DownloadController extends Controller
 
             foreach ($questions->elements as $e) {
                 if(preg_match("/question/",$e->name)){
+                    if(!$e->title){
 
-                    $this->questionarray[$e->name] = $e->title;
+                    }else{
+                        $this->questionarray[$e->name] = $e->title;
+                    }
                     
                     if($e->type == 'paneldynamic'){
                         foreach ($e->templateElements as $val ) {
@@ -121,21 +124,22 @@ class DownloadController extends Controller
             $this->extractedAnswersarray[] = implode("#",$temp);
         }
     }
-    // public function downloadall(Request $request,$surveyId){
-    //     $answers = Answers::where('surveyId',$surveyId)->get();
-    //     $question = Questions::where('token',$surveyId)->first();
 
-    //     $this->renderQuestion($question);
-    //     $this->renderAnswer($answers);
+    public function downloadall(Request $request,$surveyId){
+        $answers = Answers::where('surveyId',$surveyId)->get();
+        $question = Questions::where('token',$surveyId)->first();
 
-    //     $finalarray = array(implode("#",$this->questionarray));
+        $this->renderQuestion($question);
+        $this->renderAnswer($answers);
+
+        $finalarray = array(implode("#",$this->questionarray));
         
-    //     foreach ($this->answersarray as $value) {
-    //         $finalarray[] = $value;
-    //     }
+        foreach ($this->answersarray as $value) {
+            $finalarray[] = $value;
+        }
 
-    //     $this->downloadfile($finalarray);
-    // }
+        $this->downloadfile($finalarray);
+    }
 
     private function downloadfile($finalarray){
         $file = fopen('php://memory', 'w');
