@@ -7,8 +7,8 @@
                 <div class="card-block">
                     <div class="media">
                         <div class="media-body text-xs-left">
-                            <h3 class="pink">278</h3>
-                            <span>New Projects</span>
+                            <h3 class="pink"><?= count($questions) ?></h3>
+                            <span>Total Surveys</span>
                         </div>
                         <div class="media-right media-middle">
                             <i class="icon-bag2 pink font-large-2 float-xs-right"></i>
@@ -24,8 +24,8 @@
                 <div class="card-block">
                     <div class="media">
                         <div class="media-body text-xs-left">
-                            <h3 class="teal">156</h3>
-                            <span>New Clients</span>
+                            <h3 class="teal"><?= count($answers) ?></h3>
+                            <span>Total Responses</span>
                         </div>
                         <div class="media-right media-middle">
                             <i class="icon-user1 teal font-large-2 float-xs-right"></i>
@@ -41,8 +41,8 @@
                 <div class="card-block">
                     <div class="media">
                         <div class="media-body text-xs-left">
-                            <h3 class="deep-orange">64.89 %</h3>
-                            <span>Conversion Rate</span>
+                            <h3 class="deep-orange"><?php echo e($completed); ?></h3>
+                            <span>Completed</span>
                         </div>
                         <div class="media-right media-middle">
                             <i class="icon-diagram deep-orange font-large-2 float-xs-right"></i>
@@ -58,8 +58,8 @@
                 <div class="card-block">
                     <div class="media">
                         <div class="media-body text-xs-left">
-                            <h3 class="cyan">423</h3>
-                            <span>Support Tickets</span>
+                            <h3 class="cyan"><?php echo e($reviewed); ?></h3>
+                            <span>Reviewed</span>
                         </div>
                         <div class="media-right media-middle">
                             <i class="icon-ios-help-outline cyan font-large-2 float-xs-right"></i>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Answers;
 use App\Questions;
 use Illuminate\Http\Request;
+// use NestedJsonFlattener\Flattener\Flattener;
 
 class DownloadController extends Controller
 {   
@@ -84,9 +85,13 @@ class DownloadController extends Controller
                             
                         }else{
                             if(is_array($qAnswer)){
-                                foreach ($qAnswer[0] as $qI => $qA) {
-                                    $temp[$qI] = $qA;
+                                $a = "";
+                                foreach ($qAnswer as $qI => $qA) {
+                                    foreach($qA as $ii => $aa){
+                                        $a = $a . "\r\n" . $this->questionarray[$ii] . " => " . $aa;
+                                    }
                                 }
+                                $temp[$index] = $a;
                             }else{
                                 $temp[$index] = $qAnswer;
                             }
@@ -132,13 +137,17 @@ class DownloadController extends Controller
         $this->renderQuestion($question);
         $this->renderAnswer($answers);
 
-        $finalarray = array(implode("#",$this->questionarray));
+
+        $this->sequenceQuestionAnswer();
         
-        foreach ($this->answersarray as $value) {
+
+        $finalarray = array(implode("#",$this->questionarray));
+        foreach ($this->extractedAnswersarray as $value) {
             $finalarray[] = $value;
         }
 
         $this->downloadfile($finalarray);
+              
     }
 
     private function downloadfile($finalarray){
