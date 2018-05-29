@@ -12,72 +12,14 @@ use Illuminate\Support\Facades\DB;
 
 class ElaborateSurvey extends Controller{
     private $count;
-    private $monitor1;
-    private $monitor2;
-    private $monitor3;
-    private $monitor4;
-    private $monitor5;
-    private $monitor6;
-    private $monitor7;
-    private $monitor8;
-    private $monitor9;
-    private $monitor10;
-    private $completed = 0;
-    private $reviewed = 0;
-    private $challenges = 0;
-    private $reinforces = 0;
-    private $imageGenderFemale = 0;
-    private $imageGenderMale = 0;
-    private $imageGenderTrans = 0;
-    private $genderSourcesFemale = 0;
-    private $genderSourcesMale = 0;
-    private $genderSourcesTrans = 0;
-    private $presenterFemale = 0;
-    private $presenterMale = 0;
-    private $presenterTrans = 0;
-    private $reporterFemale = 0;
-    private $reporterMale = 0;
-    private $reporterTrans = 0;
 
     public function elaborate($surveyId){
-        $this->getMonitor($surveyId);
-        $this->countall($surveyId);
-        $this->genderStereotypeChallenge($surveyId);
-        $this->imageGenderProportion($surveyId);
-        $this->genderSources($surveyId);
-        $this->presenterGenderProportion($surveyId);
-        $this->reporterGenderProportion($surveyId);
-
-        $one = $this->monitor1;
-        $two = $this->monitor2;
-        $three = $this->monitor3;
-        $four = $this->monitor4;
-        $five = $this->monitor5;
-        $six = $this->monitor6;
-        $seven = $this->monitor7;
-        $eight = $this->monitor8;
-        $nine = $this->monitor9;
-        $ten = $this->monitor10;
-
-        $reviewed = $this->reviewed;
-        $completed = $this->completed;
-        $count = $this->count;
-        $challenges = $this->challenges;
-        $reinforces = $this->reinforces;
-        $imageGenderMale = $this->imageGenderMale;
-        $imageGenderFemale = $this->imageGenderFemale;
-        $imageGenderTrans = $this->imageGenderTrans;
-        $genderSourcesFemale = $this->genderSourcesFemale;
-        $genderSourcesMale = $this->genderSourcesMale;
-        $genderSourcesTrans = $this->genderSourcesTrans;
-        $presenterFemale = $this->presenterFemale;
-        $presenterMale = $this->presenterMale;
-        $presenterTrans = $this->presenterTrans;
-        $reporterFemale = $this->reporterFemale;
-        $reporterMale = $this->reporterMale;
-        $reporterTrans = $this->reporterTrans;
-
-        return view("elaborate.index",compact('one','two','three','four','five','six','seven','eight','nine','ten','reviewed','completed','count','challenges','reinforces','imageGenderFemale','imageGenderMale','imageGenderTrans','genderSourcesFemale','genderSourcesMale','genderSourcesTrans','presenterFemale','presenterMale','presenterTrans','reporterMale','reporterFemale','reporterTrans'));
+        $answers = DB::table('answers')->where('surveyId',$surveyId)->get();
+        foreach ($answers as $key => $value) {
+            $r = json_decode($value->answer);
+            // print_r($r->data->question991);
+        }
+        return view('elaborate.index');
     }
 
     private function countall($surveyId){

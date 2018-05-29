@@ -156,7 +156,7 @@
                                             <?php if(!$question->title): ?>
                                                 -
                                             <?php else: ?>
-                                                <a href="#"><?php echo e($question->title); ?></a>
+                                                <a href="/survey/info/<?php echo e($question->token); ?>"><?php echo e($question->title); ?></a>
                                             <?php endif; ?>
                                         </td>
                                         <td class="text-truncate">
