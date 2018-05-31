@@ -39,3 +39,5 @@ Route::post('/survey/answer/update', 'AnswerController@resumecompleteupdate');
 Route::post('/answer/submit/complete', 'AnswerController@store');
 Route::get('/answers/csv/all/{surveyId}', "DownloadController@downloadall");
 Route::post('/answers/grouped/create', 'AnswerController@storeMany');
+Route::resource('/settings', 'SettingsController');
+Route::get('/administrative/call', 'AdministrativeController@call');

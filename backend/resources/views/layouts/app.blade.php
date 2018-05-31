@@ -81,7 +81,7 @@
                         Register
                       </a>
                     @else
-                      <a href="#" class="dropdown-item">
+                      <a href="{{ route('settings.index') }}" class="dropdown-item">
                         <i class="icon-head"></i> 
                         Edit Profile
                       </a>
