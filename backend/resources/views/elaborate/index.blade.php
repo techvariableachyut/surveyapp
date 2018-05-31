@@ -20,7 +20,7 @@
                                 <i class="icon-pencil cyan font-large-2 float-xs-left"></i>
                             </div>
                             <div class="media-body text-xs-right">
-                                <h3>{{ $surveyResponseInfo['count'] }}</h3>
+                                <h3>{{ $totalResponse }}</h3>
                                 <span>Total Number of Responses</span>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                                 <i class="icon-chat1 deep-orange font-large-2 float-xs-left"></i>
                             </div>
                             <div class="media-body text-xs-right">
-                                <h3>{{ $surveyResponseInfo['completed'] }}</h3>
+                                <h3>{{ $completed }}</h3>
                                 <span>Responses saved</span>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                                 <i class="icon-trending_up teal font-large-2 float-xs-left"></i>
                             </div>
                             <div class="media-body text-xs-right">
-                                <h3>{{ $surveyResponseInfo['reviewed'] }}</h3>
+                                <h3>{{ $reviewed }}</h3>
                                 <span>Responses reviewed</span>
                             </div>
                         </div>
@@ -95,28 +95,11 @@
                     <div class="card-block">
                         <div class="media">
                             <div class="media-body text-xs-left">
-                                <h3 class="pink">278</h3>
-                                <span>New Projects</span>
+                                <h3 class="pink">{{ $monitors['Monitor 1'] }}</h3>
+                                <span>Monitor 1</span>
                             </div>
                             <div class="media-right media-middle">
                                 <i class="icon-user4 pink font-large-2 float-xs-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body text-xs-left">
-                                <h3 class="teal">156</h3>
-                                <span>New Clients</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-user1 teal font-large-2 float-xs-right"></i>
                             </div>
                         </div>
                     </div>
@@ -130,28 +113,155 @@
                     <div class="card-block">
                         <div class="media">
                             <div class="media-body text-xs-left">
-                                <h3 class="deep-orange">64.89 %</h3>
-                                <span>Conversion Rate</span>
+                                <h3 class="pink">{{ $monitors['Monitor 2'] }}</h3>
+                                <span>Monitor 2</span>
                             </div>
                             <div class="media-right media-middle">
-                                <i class="icon-diagram deep-orange font-large-2 float-xs-right"></i>
+                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col-xl-3 col-lg-6 col-xs-12">
             <div class="card">
                 <div class="card-body">
                     <div class="card-block">
                         <div class="media">
                             <div class="media-body text-xs-left">
-                                <h3 class="cyan">423</h3>
-                                <span>Support Tickets</span>
+                                <h3 class="pink">{{ $monitors['Monitor 3'] }}</h3>
+                                <span>Monitor 3</span>
                             </div>
                             <div class="media-right media-middle">
-                                <i class="icon-ios-help-outline cyan font-large-2 float-xs-right"></i>
+                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-6 col-xs-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="media">
+                            <div class="media-body text-xs-left">
+                                <h3 class="pink">{{ $monitors['Monitor 4'] }}</h3>
+                                <span>Monitor 4</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-6 col-xs-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="media">
+                            <div class="media-body text-xs-left">
+                                <h3 class="pink">{{ $monitors['Monitor 5'] }}</h3>
+                                <span>Monitor 5</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-6 col-xs-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="media">
+                            <div class="media-body text-xs-left">
+                                <h3 class="pink">{{ $monitors['Monitor 6'] }}</h3>
+                                <span>Monitor 6</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-6 col-xs-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="media">
+                            <div class="media-body text-xs-left">
+                                <h3 class="pink">{{ $monitors['Monitor 7'] }}</h3>
+                                <span>Monitor 7</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-6 col-xs-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="media">
+                            <div class="media-body text-xs-left">
+                                <h3 class="pink">{{ $monitors['Monitor 8'] }}</h3>
+                                <span>Monitor 8</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-6 col-xs-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="media">
+                            <div class="media-body text-xs-left">
+                                <h3 class="pink">{{ $monitors['Monitor 9'] }}</h3>
+                                <span>Monitor 9</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-6 col-xs-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="media">
+                            <div class="media-body text-xs-left">
+                                <h3 class="pink">{{ $monitors['Monitor 10'] }}</h3>
+                                <span>Monitor 10</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
                             </div>
                         </div>
                     </div>

@@ -40,8 +40,11 @@ Route::post('/answer/submit/complete', 'AnswerController@store');
 Route::get('/answers/csv/all/{surveyId}', "DownloadController@downloadall");
 Route::post('/answers/grouped/create', 'AnswerController@storeMany');
 
+Route::resource('/settings', 'SettingsController');
+Route::get('/administrative/call', 'AdministrativeController@call');
 
-Route::get('/cronjob', 'CronjobController@save');
+
+//Route::get('/cronjob', 'CronjobController@save');
 
 Route::get('/administrative/responses/submitted', 'AdministrativeController@responsesSubmitted');
 
@@ -60,8 +63,5 @@ Route::get('/administrative/presenter/gender/proportion', 'AdministrativeControl
 Route::get('/administrative/image/gender/proportion', 'AdministrativeController@imageGenderProportion');
 
 Route::get('/administrative/gender/stereotype/challenge', 'AdministrativeController@genderStereotypeChallenge');
-
-//Route::get('/administrative', 'AdministrativeController@responsesSubmitted');
-//Route::get('/administrative', 'AdministrativeController@responsesSubmitted');
 
 Route::get('/survey/info/{id}', 'ElaborateSurvey@elaborate');
