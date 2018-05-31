@@ -52,8 +52,8 @@ class DownloadController extends Controller
 
             foreach ($questions->elements as $e) {
                 if(preg_match("/question/",$e->name)){
-                    if(!$e->title){
 
+                    if(!$e->title){
                     }else{
                         $this->questionarray[$e->name] = $e->title;
                     }
@@ -88,7 +88,7 @@ class DownloadController extends Controller
                                 $a = "";
                                 foreach ($qAnswer as $qI => $qA) {
                                     foreach($qA as $ii => $aa){
-                                        $a = $a . "\r\n" . $this->questionarray[$ii] . " => " . $aa;
+                                        $a = $a . "\r\n" . $this->questionarray[$ii] . " :- " . $aa;
                                     }
                                 }
                                 $temp[$index] = $a;

@@ -2,7 +2,7 @@
   "title": "Digital Gender and Media Monitoring Tool",
   "pages": [
    {
-    "name": "intro",
+    "name": "Introduction",
     "elements": [
      {
       "type": "html",
@@ -533,9 +533,55 @@
      },
      {
       "type": "dropdown",
+      "name": "question0212",
+      "visibleIf": "{question020} > \"0\"",
+      "title": "How many female experts/spokespersons in the story?",
+      "isRequired": true,
+      "choices": [
+       "0",
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "7",
+       "8",
+       "9",
+       "10"
+      ]
+     },
+     {
+      "type": "html",
+      "name": "html",
+      "visibleIf": "{question0212} > \"0\" and {question020} > \"0\"",
+      "html": "<span style=\"color:red;\">Add the details of the source/subject to the <a href=\"https://genderinmyanmarnews.org/en/female-expert\" target=\"_blank\">Myanmar Female Experts</a></span>"
+     },
+     {
+      "type": "dropdown",
       "name": "question023",
       "visibleIf": "{question020} > \"0\"",
       "title": "How many male sources in the story?",
+      "isRequired": true,
+      "choices": [
+       "0",
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "7",
+       "8",
+       "9",
+       "10"
+      ]
+     },
+     {
+      "type": "dropdown",
+      "name": "question0222",
+      "visibleIf": "{question020} > \"0\"",
+      "title": "How many male experts/spokespersons in the story?",
       "isRequired": true,
       "choices": [
        "0",
@@ -800,7 +846,6 @@
         "isRequired": true,
         "hasOther": true,
         "choices": [
-         "Not applicable (person is identified solely as a survivor)",
          "Victim of an accident, natural disaster, poverty",
          "Victim of domestic violence (including rape or murder)",
          "Victim of non-domestic sexual violence, rape, assault, etc. (sexual violence only)",
@@ -820,58 +865,16 @@
         "isRequired": true,
         "hasOther": true,
         "choices": [
-         "Not applicable",
          "Survivor of an accident, natural disaster, poverty.",
-         {
-          "value": "Victim of domestic violence (including rape or murder)",
-          "text": "Survivor of domestic violence (including rape or murder)"
-         },
-         {
-          "value": "Victim of non-domestic sexual violence, rape, assault, etc. (sexual violence only)",
-          "text": "Survivor of non-domestic sexual violence, rape, assault, etc. (sexual violence only)"
-         },
-         {
-          "value": "Victim of other non-domestic crime, robbery, assault, murder, organised crime, human trafficking etc.",
-          "text": "Survivor of other non-domestic crime, robbery, assault, murder, organised crime, human trafficking etc."
-         },
+         "Survivor of domestic violence (including rape or murder)",
+         "Survivor of non-domestic sexual violence, rape, assault, etc. (sexual violence only)",
+         "Survivor of other non-domestic crime, robbery, assault, murder, organised crime etc.",
          "Survivor of violation based on religion, tradition.",
          "Survivor of war, terrorism, vigilantism, state violence.",
-         "Survivor of discrimination based on gender, race, ethnicity, age, religion, ability, etc."
+         "Survivor of discrimination based on gender, race, ethnicity, age, religion, ability, etc.",
+         "Survivor of human trafficking"
         ],
         "otherText": "Other (please specify)*"
-       },
-       {
-        "type": "multipletext",
-        "name": "question38",
-        "visibleIf": "{panel.question026} = \"Female\"  and ( {panel.question030} = \"Expert or Commentator\"  or {panel.question030} = \"Spokesperson\" )",
-        "title": "Female Expert",
-        "isRequired": true,
-        "items": [
-         {
-          "name": "question39",
-          "placeHolder": "Name",
-          "title": "Name",
-          "maxLength": 10
-         },
-         {
-          "name": "question40",
-          "placeHolder": "Position",
-          "title": "Position",
-          "maxLength": 10
-         },
-         {
-          "name": "question41",
-          "placeHolder": "Organisation",
-          "title": "Organization",
-          "maxLength": 10
-         },
-         {
-          "name": "question42",
-          "placeHolder": "Area of expertise",
-          "title": "Area of Expertise",
-          "maxLength": 20
-         }
-        ]
        }
       ],
       "maxPanelCount": 10,
@@ -1276,7 +1279,7 @@
      {
       "type": "dropdown",
       "name": "question064",
-      "title": "Does the story make reference to any piece of legislation or policy that promotes gender equality and/or diversity?",
+      "title": "Does the story make reference to any piece of legislation or policy that promotes gender equality and/or human rights?",
       "isRequired": true,
       "choices": [
        "Yes",
@@ -1296,7 +1299,7 @@
      {
       "type": "dropdown",
       "name": "question066",
-      "title": "Does the story mention specific issues of inequality between women and men?",
+      "title": "Is the story gender aware?",
       "isRequired": true,
       "choices": [
        "Yes",
@@ -1305,33 +1308,36 @@
      },
      {
       "type": "dropdown",
-      "name": "question067",
-      "title": "Does the story reinforce or challenge gender stereotypes?",
+      "name": "question16",
+      "visibleIf": "{question066} = \"Yes\"",
+      "title": "select all that apply for the gender aware story",
       "isRequired": true,
+      "hasOther": true,
       "choices": [
-       "Reinforces stereotypes",
-       "Challenges stereotypes",
-       "Neither"
-      ]
+       "Balance in number and role of sources/subjects and how they are described.",
+       "Challenges gender-based stereotypes about women.",
+       "Challenges gender-based stereotypes about men.",
+       "Challenges other kinds of social stereotypes",
+       "Highlights gender or social equality dimensions of the issue."
+      ],
+      "otherText": "please specify"
      },
      {
       "type": "dropdown",
-      "name": "question068",
-      "title": "Classification",
+      "name": "question17",
+      "visibleIf": "{question066} = \"No\"",
+      "title": "select all that apply for the gender aware story",
       "isRequired": true,
+      "hasOther": true,
       "choices": [
-       "A",
-       "B",
-       "C",
-       "D"
-      ]
-     },
-     {
-      "type": "text",
-      "name": "question069",
-      "title": "Why?",
-      "isRequired": true,
-      "placeHolder": "Describe why you give it this  classification"
+       "Women are underrepresented as sources/subjects.",
+       "Men are underrepresented as sources/subjects",
+       "Reinforces gender-based stereotypes about women.",
+       "Reinforces gender-based stereotypes about men.",
+       "Reinforces other kinds of social stereotypes.",
+       "Misses an opportunity to highlight an issue of inequality."
+      ],
+      "otherText": "please specify"
      },
      {
       "type": "dropdown",
@@ -1342,6 +1348,13 @@
        "Yes",
        "No"
       ]
+     },
+     {
+      "type": "text",
+      "name": "question069",
+      "title": "Why? Please explain your answer.",
+      "isRequired": true,
+      "placeHolder": "Describe why you give it this  classification"
      }
     ],
     "title": "Section 5: Gender Analysis"
@@ -2080,121 +2093,117 @@
       "title": "For each person in the image",
       "isRequired": true,
       "templateElements": [
-        {
-         "type": "dropdown",
-         "name": "question6614",
-         "title": "What is the sex of the person in the picture?",
-         "isRequired": true,
-         "choices": [
-          "Male",
-          "Female",
-          "Trans",
-          "Not clear"
-         ]
-        },
-        {
-         "type": "dropdown",
-         "name": "question26914",
-         "title": "What is the perceived occupation of the person in the picture?",
-         "hasOther": true,
-         "choices": [
-          "Academic expert, lecturer,  teacher",
-          "Activist or worker in civil society organisation, NGO, trade union.",
-          "Agriculture, mining, fishing, forestry",
-          "Business person, exec manager, stock broker",
-          "Child, young person",
-          "Criminal or suspect",
-          "Celebrity, artist, actor, writer, singer, TV personality.",
-          "Doctor, dentist, health specialist",
-          "Domestic worker",
-          "Politician, minister, MP, government spokesperson",
-          "Government employee, public servant",
-          "Member of ethnic organisation",
-          "Health worker, social worker, child care worker.",
-          "Home maker",
-          "Lawyer, judge, magistrate, legal advocate.",
-          "Factory Worker",
-          "Media professional, journalist, film maker",
-          "Police, military, para-military",
-          "Retired person, pensioner.",
-          "Religious figure/ traditional figure",
-          "Royalty, monarch, deposed monarch",
-          "Scientist/ technology/ engineer",
-          "Sex worker",
-          "Sportsperson",
-          "Tradesperson, artisan, labourer, truck driver",
-          "Student, pupil, school child",
-          "Unemployed",
-          "Villager or resident (community member)",
-          "Youth",
-          "Not clear"
-         ]
-        },
-        {
-         "type": "dropdown",
-         "name": "question6714",
-         "visibleIf": "{question071} <= \"10\"",
-         "title": "What is the age of the person in the picture?",
-         "isRequired": true,
-         "choices": [
-          "Not sure",
-          "12 and under",
-          "13-18",
-          "19-34",
-          "35-49",
-          "50-64",
-          "65 and above"
-         ]
-        }
-       ]
-     },
-     {
-      "type": "text",
-      "name": "question12",
-      "title": "How many males in the image?",
-      "isRequired": true
-     },
-     {
-      "type": "text",
-      "name": "question13",
-      "title": "How many females in the image?",
-      "isRequired": true
+       {
+        "type": "dropdown",
+        "name": "question6614",
+        "title": "What is the sex of the person in the picture?",
+        "isRequired": true,
+        "choices": [
+         "Male",
+         "Female",
+         "Trans",
+         "Not clear"
+        ]
+       },
+       {
+        "type": "dropdown",
+        "name": "question26914",
+        "title": "What is the perceived occupation of the person in the picture?",
+        "isRequired": true,
+        "hasOther": true,
+        "choices": [
+         "Academic expert, lecturer,  teacher",
+         "Activist or worker in civil society organisation, NGO, trade union.",
+         "Agriculture, mining, fishing, forestry",
+         "Business person, exec manager, stock broker",
+         "Child, young person",
+         "Criminal or suspect",
+         "Celebrity, artist, actor, writer, singer, TV personality.",
+         "Doctor, dentist, health specialist",
+         "Domestic worker",
+         "Politician, minister, MP, government spokesperson",
+         "Government employee, public servant",
+         "Member of ethnic organisation",
+         "Health worker, social worker, child care worker.",
+         "Home maker",
+         "Lawyer, judge, magistrate, legal advocate.",
+         "Factory Worker",
+         "Media professional, journalist, film maker",
+         "Police, military, para-military",
+         "Retired person, pensioner.",
+         "Religious figure/ traditional figure",
+         "Royalty, monarch, deposed monarch",
+         "Scientist/ technology/ engineer",
+         "Sex worker",
+         "Sportsperson",
+         "Tradesperson, artisan, labourer, truck driver",
+         "Student, pupil, school child",
+         "Unemployed",
+         "Villager or resident (community member)",
+         "Youth",
+         "Not clear"
+        ]
+       },
+       {
+        "type": "dropdown",
+        "name": "question6714",
+        "visibleIf": "{question071} <= \"10\"",
+        "title": "What is the age of the person in the picture?",
+        "isRequired": true,
+        "choices": [
+         "Not sure",
+         "12 and under",
+         "13-18",
+         "19-34",
+         "35-49",
+         "50-64",
+         "65 and above"
+        ]
+       }
+      ]
      },
      {
       "type": "dropdown",
-      "name": "question97",
-      "title": "Occupational categories",
+      "name": "question15",
+      "title": "How many males in the image?",
       "isRequired": true,
       "choices": [
-       "Academic expert, lecturer, teacher",
-       "Activist or worker in civil society organisation, NGO, trade union.",
-       "Agriculture, mining, fishing, forestry",
-       "Business person, exec manager, stock broker",
-       "Child (0-14 years)",
-       "Criminal or suspect",
-       "Celebrity, artist, actor, writer, singer, TV personality.",
-       "Doctor, dentist, health specialist",
-       "Domestic worker",
-       "Government politician, minister, spokesman",
-       "Government employee, public servant",
-       "Leader/representativ e of Ethnic Organisation",
-       "Health worker, social worker, child care worker.",
-       "Home maker",
-       "Lawyer, judge, magistrate, legal advocate.",
-       "Factory worker",
-       "Media professional, journalist, film maker",
-       "Police/military, para- military",
-       "Retired person, pensioner.",
-       "Religious figure/ traditional figures",
-       "Royalty, monarch, deposed monarch",
-       "Scientist/ technology/ engineer",
-       "Sex worker",
-       "Sportsperson",
-       "Tradesperson, artisan, labourer, truck driver",
-       "Student, pupil, school child",
-       "Unemployed",
-       "Villager or resident",
-       "Youth (15-25 years)"
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "7",
+       "8",
+       "9",
+       "10",
+       {
+        "value": "20",
+        "text": " More than 10"
+       }
+      ]
+     },
+     {
+      "type": "dropdown",
+      "name": "question19",
+      "title": "How many females in the image?",
+      "isRequired": true,
+      "choices": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "7",
+       "8",
+       "9",
+       "10",
+       {
+        "value": "20",
+        "text": " More than 10"
+       }
       ]
      },
      {
@@ -2243,7 +2252,8 @@
       "choices": [
        "Assertive",
        "Passive",
-       "Not sure"
+       "Not sure",
+       "Both"
       ]
      },
      {
@@ -2254,7 +2264,8 @@
       "choices": [
        "Assertive",
        "Passive",
-       "Not sure"
+       "Not sure",
+       "Both"
       ]
      },
      {
@@ -2264,7 +2275,8 @@
       "isRequired": true,
       "choices": [
        "Yes",
-       "No"
+       "No",
+       "Not sure"
       ]
      },
      {
@@ -2274,12 +2286,25 @@
       "isRequired": true,
       "choices": [
        "Yes",
-       "No"
+       "No",
+       "Not sure"
       ]
      }
     ],
     "visibleIf": "{section} contains 'Section_Advertising'",
     "title": "Section 12: Advertising"
+   },
+   {
+    "name": "Survey validation (for developer only)",
+    "elements": [
+     {
+      "type": "html",
+      "name": "validation",
+      "visible": false,
+      "html": "function validation(s,options){\n\n            if (options.name == 'question020') {        \n                parseInt( s.data.question020 ) !==0 &&  parseInt( s.data.question020 ) != parseInt(s.data.question022) + parseInt(s.data.question023) + parseInt(s.data.question024) + parseInt(s.data.question025) ? \n                    options.error = \" Total Number of News Source Not Match! \" : options.error = null;\n            }\n\n            if (options.name == 'question054') {\n                parseInt( s.data.question054 ) !==0 &&  parseInt(s.data.question054) != parseInt(s.data.question055) + parseInt(s.data.question056) + parseInt(s.data.question057) + parseInt(s.data.question058) ? \n                    options.error = \" Total Number of Reporter Not Match!  \" : options.error = null;\n            }\n\n            if (options.name == 'question059') {\n                parseInt( s.data.question059 ) !==0 && parseInt(s.data.question059) != parseInt(s.data.question060) + parseInt(s.data.question061) + parseInt(s.data.question062)  + parseInt(s.data.question063) ? \n                    options.error = \" Total Number of Anchor Not Match!  \" : options.error = null;\n            }\n\n            if (options.name == 'question059') {\n                parseInt( s.data.question059 ) !==0 && parseInt(s.data.question059) != parseInt(s.data.question060) + parseInt(s.data.question061) + parseInt(s.data.question062)  + parseInt(s.data.question063) ? \n                    options.error = \" Total Number of Anchor Not Match!  \" : options.error = null;\n            }\n\n            if (options.name == 'question2') {\n                parseInt( s.data.question020 ) != s.data.question2.length  ? options.error = \"Please fill data for each source\" : options.error = null;\n            }\n            \n            if(options.name == 'question5'){       \n                parseInt( s.data.question071 ) != s.data.question5.length  ? options.error = \"Please fill data for each source\" : options.error = null;\n            }\n\n            if(options.name == 'question3'){       \n                parseInt( s.data.question072 ) != s.data.question3.length  ? options.error = \"Please fill data for each source\" : options.error = null;\n            }\n            \n            if(options.name == 'question4'){       \n                parseInt( s.data.question073 ) != s.data.question4.length  ? options.error = \"Please fill data for each source\" : options.error = null;\n            }\n            \n            if(options.name == 'question14'){       \n                parseInt( s.data.question1 ) != s.data.question14.length  ? options.error = \"Please fill data for each source\" : options.error = null;\n            }\n\n            if(options.name == 'question071'){\n                parseInt( s.data.question071 ) !==0 && parseInt(s.data.question071) != parseInt(s.data.question59) + parseInt(s.data.question60) ?\n                    options.error = \" Total Number of Person (Woman + Man) Not Match!  \" : options.error = null;\n            }\n       \n}"
+     }
+    ],
+    "visible": false
    }
   ],
   "showProgressBar": "bottom"
