@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\User;
 use App\Answers;
+use Illuminate\Http\Request;
+use App\Mail\SurveyCreated;
+use Illuminate\Support\Facades\Mail;
 
 class AnswerController extends Controller
 {
@@ -44,6 +47,8 @@ class AnswerController extends Controller
             'done' => "Completed",
             'answer' => json_encode($request['answer'])
         ]);
+
+        $this->sendMail();
     }
 
     /**
@@ -119,4 +124,9 @@ class AnswerController extends Controller
         }
     }
     
+
+    private function sendMail(){
+        $user = User::where('role','admin')->get();
+        Mail::to($user)->send(new SurveyCreated());
+    }    
 }

@@ -54,7 +54,7 @@ class ElaborateSurvey extends Controller{
     );
 
     public function elaborate($surveyId){
-        $answers = DB::table('answers')->where('surveyId',$surveyId)->get();
+        $answers = Answers::where('surveyId',$surveyId)->get();
         $survey = DB::table('questions')->where('token',$surveyId)->first();
         $surveyTitle = $survey->title;
         $this->completed($answers);
