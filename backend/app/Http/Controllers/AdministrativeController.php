@@ -170,7 +170,6 @@ class AdministrativeController extends Controller
         $trans = 0;
 
         $db = DB::table('questions_')->where('surveyId',"5adb93c6e8c82")->whereIn('name',["question060","question061","question062"])->get();
-
         $getanswer = DB::table('answers_')->where('surveyId',"5adb93c6e8c82")->whereIn('name',[$db[0]->name,$db[1]->name,$db[2]->name, ])->get();
 
         foreach ($getanswer as $index => $gender) {

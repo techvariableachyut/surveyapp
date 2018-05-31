@@ -16,6 +16,38 @@ class ElaborateSurvey extends Controller{
     public $surveyTitle;
     public $completed = 0;
     public $reviewed = 0;
+
+    public $questionsSet = array(
+        "monitor"=> "question991",
+        "newsSource"=> array (
+            "female"=> "question022",
+            "male"=>"question023",
+            "trans"=>"question024",
+        ),
+        "image"=> array(
+            "totalperson"=>"question071",
+            "female"=>"question59",
+            "male"=>"question60",
+        ),
+        "genderanalysis"=>array(
+            "genderaware"=>"question066",
+            "furtheranalysis"=> "question070"
+        ),
+       "reporter"=> array(
+           "total"=>"question054",
+           "female"=>"question055",
+           "male"=>"question056",
+           "trans"=>"question057",
+           "unknown"=>"question058"
+       ),
+       "presenter"=> array(
+           "total"=>"question059",
+           "female"=>"question060",
+           "male"=>"question061",
+           "trans"=>"question062",
+           "unknown"=>"question063"
+       ),    
+    );
     public function elaborate($surveyId){
         $survey = DB::table('questions')->where('token',$surveyId)->first();
         $surveyTitle = $survey->title;
@@ -48,5 +80,4 @@ class ElaborateSurvey extends Controller{
         );
         
     }
-
 }
