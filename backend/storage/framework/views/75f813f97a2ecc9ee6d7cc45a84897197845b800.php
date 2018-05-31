@@ -81,7 +81,7 @@
                         Register
                       </a>
                     <?php else: ?>
-                      <a href="#" class="dropdown-item">
+                      <a href="<?php echo e(route('settings.index')); ?>" class="dropdown-item">
                         <i class="icon-head"></i> 
                         Edit Profile
                       </a>

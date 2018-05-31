@@ -99,7 +99,7 @@
                                 <span>Monitor 1</span>
                             </div>
                             <div class="media-right media-middle">
-                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
+                                <i class="icon-user3 pink font-large-2 float-xs-right"></i>
                             </div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                                 <span>Monitor 3</span>
                             </div>
                             <div class="media-right media-middle">
-                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
+                                <i class="icon-user5 pink font-large-2 float-xs-right"></i>
                             </div>
                         </div>
                     </div>
@@ -153,7 +153,7 @@
                                 <span>Monitor 4</span>
                             </div>
                             <div class="media-right media-middle">
-                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
+                                <i class="icon-user6 pink font-large-2 float-xs-right"></i>
                             </div>
                         </div>
                     </div>
@@ -171,7 +171,7 @@
                                 <span>Monitor 5</span>
                             </div>
                             <div class="media-right media-middle">
-                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
+                                <i class="icon-user7 pink font-large-2 float-xs-right"></i>
                             </div>
                         </div>
                     </div>
@@ -189,7 +189,7 @@
                                 <span>Monitor 6</span>
                             </div>
                             <div class="media-right media-middle">
-                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
+                                <i class="icon-user8 pink font-large-2 float-xs-right"></i>
                             </div>
                         </div>
                     </div>
@@ -207,7 +207,7 @@
                                 <span>Monitor 7</span>
                             </div>
                             <div class="media-right media-middle">
-                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
+                                <i class="icon-user9 pink font-large-2 float-xs-right"></i>
                             </div>
                         </div>
                     </div>
@@ -225,7 +225,7 @@
                                 <span>Monitor 8</span>
                             </div>
                             <div class="media-right media-middle">
-                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
+                                <i class="icon-user2 pink font-large-2 float-xs-right"></i>
                             </div>
                         </div>
                     </div>
@@ -243,7 +243,7 @@
                                 <span>Monitor 9</span>
                             </div>
                             <div class="media-right media-middle">
-                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
+                                <i class="icon-user3 pink font-large-2 float-xs-right"></i>
                             </div>
                         </div>
                     </div>

@@ -54,11 +54,9 @@ class ElaborateSurvey extends Controller{
     );
 
     public function elaborate($surveyId){
-        $answers = Answers::all();
-        
+        $answers = DB::table('answers')->where('surveyId',$surveyId)->get();
         $survey = DB::table('questions')->where('token',$surveyId)->first();
         $surveyTitle = $survey->title;
-
         $this->completed($answers);
         $this->reviewed($answers);
         $this->monitor($answers);
@@ -99,6 +97,7 @@ class ElaborateSurvey extends Controller{
     private function monitor($answers){
         foreach ($answers as $index => $answer) {
             $data =  json_decode($answer->answer);
+            // dd($data->data);
             $monitor = $data->data->question991;
 
             $this->sourcesByGender($data);
@@ -117,37 +116,37 @@ class ElaborateSurvey extends Controller{
     }
 
     private function sourcesByGender($data){
-        $this->genderSources["female"] = $this->genderSources["female"] + (int) isset($data->data->question022) ? $data->data->question022 : 0;
-        $this->genderSources["male"] = $this->genderSources["male"] + (int) isset($data->data->question023) ? $data->data->question023 : 0;
-        $this->genderSources["trans"] = $this->genderSources["trans"] + (int) isset($data->data->question024) ? $data->data->question024 : 0;   
+        $this->genderSources["female"] = $this->genderSources["female"] +  isset($data->data->question022) ? (int) $data->data->question022 : 0;
+        $this->genderSources["male"] = $this->genderSources["male"] +  isset($data->data->question023) ? (int) $data->data->question023 : 0;
+        $this->genderSources["trans"] = $this->genderSources["trans"] +  isset($data->data->question024) ? (int) $data->data->question024 : 0;   
     }
 
     private function proportionImage($data){
-        $this->imageSources["female"] = $this->imageSources["female"] + (int) isset($data->data->question059) ? $data->data->question059 : 0;
-        $this->imageSources["male"] = $this->imageSources["male"] + (int) isset($data->data->question060) ? $data->data->question060 : 0;
-        $this->imageSources["trans"] = (int) isset($data->data->question071) ? $data->data->question071 : 0 - $this->imageSources["female"] + $this->imageSources["male"];
+        $this->imageSources["female"] = $this->imageSources["female"] +  isset($data->data->question059) ? (int) $data->data->question059 : 0;
+        $this->imageSources["male"] = $this->imageSources["male"] +  isset($data->data->question060) ? (int) $data->data->question060 : 0;
+        $this->imageSources["trans"] = isset($data->data->question071) ? (int) $data->data->question071 : 0 - $this->imageSources["female"] + $this->imageSources["male"];
     }
 
     private function genderAnalysis($data){
-        $this->genderAware = $this->genderAware + (int) isset($data->data->question066) ? $data->data->question066 : 0;
-        $this->furtherAnalysis = $this->furtherAnalysis + (int) isset($data->data->question070) ? $data->data->question070 : 0;
+        $this->genderAware = $this->genderAware +  isset($data->data->question066) ? (int) $data->data->question066 : 0;
+        $this->furtherAnalysis = $this->furtherAnalysis + isset($data->data->question070) ? (int) $data->data->question070 : 0;
     }
 
     private function reporterProportion($data){
-        $this->reporterProportion["total"] = $this->reporterProportion["total"] + (int) isset($data->data->question054) ? $data->data->question054 : 0;
-        $this->reporterProportion["female"] = $this->reporterProportion["female"] + (int) isset($data->data->question055) ? $data->data->question055 : 0;
-        $this->reporterProportion["male"] = $this->reporterProportion["male"] + (int) isset($data->data->question056) ? $data->data->question056 : 0;
-        $this->reporterProportion["trans"] = $this->reporterProportion["trans"] + (int) isset($data->data->question057) ? $data->data->question057 : 0;
-        $this->reporterProportion["unknown"] = $this->reporterProportion["unknown"] + (int) isset($data->data->question058) ? $data->data->question058 : 0;
+        $this->reporterProportion["total"] = $this->reporterProportion["total"] +  isset($data->data->question054) ? (int) $data->data->question054 : 0;
+        $this->reporterProportion["female"] = $this->reporterProportion["female"] +  isset($data->data->question055) ? (int) $data->data->question055 : 0;
+        $this->reporterProportion["male"] = $this->reporterProportion["male"] +  isset($data->data->question056) ? (int)  $data->data->question056 : 0;
+        $this->reporterProportion["trans"] = $this->reporterProportion["trans"] +  isset($data->data->question057) ? (int) $data->data->question057 : 0;
+        $this->reporterProportion["unknown"] = $this->reporterProportion["unknown"] +  isset($data->data->question058) ? (int) $data->data->question058 : 0;
     }
 
 
     private function presenterProportion($data){
-        $this->presenterProportion["total"] = $this->presenterProportion["total"] + (int) isset($data->data->question059) ? $data->data->question059 : 0;
-        $this->presenterProportion["female"] = $this->presenterProportion["female"] + (int) isset($data->data->question060) ? $data->data->question060 : 0;
-        $this->presenterProportion["male"] = $this->presenterProportion["male"] + (int) isset($data->data->question061) ? $data->data->question061 : 0;
-        $this->presenterProportion["trans"] = $this->presenterProportion["trans"] + (int) isset($data->data->question062) ? $data->data->question062 : 0;
-        $this->presenterProportion["unknown"] = $this->presenterProportion["unknown"] + (int) isset($data->data->question063) ? $data->data->question063 : 0;
+        $this->presenterProportion["total"] = $this->presenterProportion["total"] +  isset($data->data->question059) ? (int) $data->data->question059 : 0;
+        $this->presenterProportion["female"] = $this->presenterProportion["female"] +  isset($data->data->question060) ? (int) $data->data->question060 : 0;
+        $this->presenterProportion["male"] = $this->presenterProportion["male"] +  isset($data->data->question061) ? (int) $data->data->question061 : 0;
+        $this->presenterProportion["trans"] = $this->presenterProportion["trans"] +  isset($data->data->question062) ? (int) $data->data->question062 : 0;
+        $this->presenterProportion["unknown"] = $this->presenterProportion["unknown"] +  isset($data->data->question063) ? (int) $data->data->question063 : 0;
     }
 
 
