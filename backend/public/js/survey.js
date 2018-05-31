@@ -93,19 +93,8 @@ function app(survey,Survey,storageName){
      * News Sources custom  validation 
      */
     function surveyValidateQuestion(s, options) {
-        if (options.name == 'question020') {        
-            parseInt( s.data.question020 ) != parseInt(s.data.question022) + parseInt(s.data.question023) + parseInt(s.data.question024) + parseInt(s.data.question025) ? 
-                options.error = " Total Number of News Source Not Match! " : options.error = null;
-        }
-
-        if (options.name == 'question054') {
-            parseInt(s.data.question054) != parseInt(s.data.question055) + parseInt(s.data.question056) + parseInt(s.data.question057) + parseInt(s.data.question058) ? 
-                options.error = " Total Number of Reporter Not Match!  " : options.error = null;
-        }
-
-        if (options.name == 'question059') {
-            parseInt(s.data.question059) != parseInt(s.data.question060) + parseInt(s.data.question061) + parseInt(s.data.question062)  + parseInt(s.data.question063) ? 
-                options.error = " Total Number of Anchor Not Match!  " : options.error = null;
+        if(typeof validation == "function"){
+            validation(s,options)
         }
     }
     /**
@@ -121,14 +110,20 @@ function app(survey,Survey,storageName){
 
 (function(){
     var json = null;
+    var validationString = null;
     var surveyId = window.location.pathname.split('/');
     var storageName = surveyId[2];
     jQuery
     .get("/getSurvey?surveyId="+surveyId[2], function(data) {
         json = data;
+        if(json.pages[json.pages.length-1].elements[0].name == "validation"){
+            validationString = json.pages[json.pages.length-1].elements[0].html
+            var validationScriptTag = document.createElement('script');
+            validationScriptTag.innerHTML = validationString;
+            document.body.appendChild(validationScriptTag);
+        }
         window.survey = new Survey.Model(json);
         app(window.survey,Survey,storageName)
     })
-    
 })()
   

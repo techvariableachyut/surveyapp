@@ -163,6 +163,7 @@
     <!-- END ROBUST JS-->
     <!-- BEGIN PAGE LEVEL JS-->
     <script src="/app-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+    <script src="/js/charts/charts.js" type="text/javascript"></script>
     <script>
       var csrfToken = "{{ Session::token() }}";
     </script>
