@@ -41,6 +41,8 @@ class SettingsController extends Controller
                 'password' => Hash::make($request->password)
             ]);
         }
+
+        return redirect('/settings');
     }
 
     /**
