@@ -66,3 +66,4 @@ Route::get('/administrative/image/gender/proportion', 'AdministrativeController@
 Route::get('/administrative/gender/stereotype/challenge', 'AdministrativeController@genderStereotypeChallenge');
 
 Route::get('/survey/info/{id}', 'ElaborateSurvey@elaborate');
+Route::get('/download/administrative/{id}', 'ElaborateSurvey@createCsv');

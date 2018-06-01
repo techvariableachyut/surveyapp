@@ -14,6 +14,7 @@ class ElaborateSurvey extends Controller{
 
     private $completed = 0;
     private $reviewed = 0;
+    private $total;
     private $monitors = ["Monitor 1" => 0,"Monitor 2" => 0,"Monitor 3" => 0,"Monitor 4" => 0,"Monitor 5" => 0,"Monitor 6" => 0,"Monitor 7" => 0,"Monitor 8" => 0,"Monitor 9" => 0,"Monitor 10" => 0];
     private $genderAware = ['yes' => 0,'no'=>0];
     private $furtherAnalysis = ['yes' => 0,'no'=>0];
@@ -25,7 +26,7 @@ class ElaborateSurvey extends Controller{
 
     public function elaborate($surveyId){
         $answers = Answers::where('surveyId',$surveyId)->get();
-        
+        $this->total = count($answers);
         $survey = DB::table('questions')->where('token',$surveyId)->first();
         $surveyTitle = $survey->title;
 
@@ -81,9 +82,9 @@ class ElaborateSurvey extends Controller{
     }
 
     private function proportionImage($data){
-        $this->imageSources["female"] = $this->imageSources["female"] + (int) isset($data->data->question059) ? (int) $data->data->question059 : 0;
-        $this->imageSources["male"] = $this->imageSources["male"] + (int) isset($data->data->question060) ? (int) $data->data->question060 : 0;
-        $this->imageSources["trans"] = (int) isset($data->data->question071) ? (int) $data->data->question071 : 0 - $this->imageSources["female"] + $this->imageSources["male"];
+        $this->imageSources["female"] = $this->imageSources["female"] + isset($data->data->question59) ? (int) $data->data->question59 : 0;
+        $this->imageSources["male"] = $this->imageSources["male"] + isset($data->data->question60) ? (int) $data->data->question60 : 0;
+        $this->imageSources["trans"] = $data->data->question071 - ($this->imageSources["female"] + $this->imageSources["male"]);
     }
 
     private function genderAnalysis($data){
@@ -120,5 +121,73 @@ class ElaborateSurvey extends Controller{
         $this->presenterProportion["unknown"] = $this->presenterProportion["unknown"] + (int) isset($data->data->question063) ? (int) $data->data->question063 : 0;
     }
 
+    public function createCsv($surveyId){
+        $this->elaborate($surveyId);
+        $array = [$this->total,$this->monitors,$this->completed,$this->reviewed,$this->genderSources,$this->imageSources,$this->genderAware,$this->furtherAnalysis,$this->reporterProportion,$this->presenterProportion];
+        $get = $this->render($array);
 
+        $question = 
+        ["Total number of responses submitted
+        # Number of responses submitted by each monitor
+        # Total number of responses saved 
+        # Total number of responses reviewed
+        # Sources by gender - proportion of female, male, trans of total sources
+        # People in images – proportion of female, male, trans of total people in images
+        # Stories that are gender aware – proportion of total number of stories
+        # Number of stories for further analysis
+        # Reporters by gender - female, male, trans proportion of total reporters
+        # Presenters by gender - female, male, trans proportion of total presenters 
+        ",
+        "$get"
+        ];
+
+        $this->downloadfile($question);
+    }
+
+
+    private function downloadfile($finalarray){
+        $file = fopen('php://memory', 'w');
+
+        if(!is_dir(public_path() . "/csv")){
+            mkdir(public_path() . "/csv", 0777);
+        }
+
+        $uniqueid = uniqid();
+
+        $localfile = fopen(public_path() . "/csv/$uniqueid" . ".csv", 'w');
+        fwrite($localfile, json_encode($finalarray));
+        
+        foreach($finalarray as $line){
+            fputcsv($file,explode('#',$line)); 
+        }
+        
+        // reset the file pointer to the start of the file
+        fseek($file, 0);
+        // tell the browser it's going to be a csv file
+        header('Content-Type: application/csv');
+        // tell the browser we want to save it instead of displaying it
+        header('Content-Disposition: attachment; filename="csvfile.csv";');
+        // make php send the generated csv lines to the browser
+        fpassthru($file);
+        fclose($localfile); 
+    }
+
+    private function render($data){
+        $allarray = array();
+
+        foreach ($data as $dindex => $dvalue) {
+            if(is_array($dvalue)){
+                $array = array();
+                foreach ($dvalue as $key => $value) {
+                    $array[$key] = "$key" . " : " .  "$value"; 
+                }   
+
+                $allarray[] = implode("\r\n", $array);
+            }else{
+                $allarray[] = $dvalue;
+            }
+        }
+
+        return implode("#", $allarray);
+    }
 }

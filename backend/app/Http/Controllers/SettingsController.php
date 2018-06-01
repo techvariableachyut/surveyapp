@@ -38,7 +38,9 @@ class SettingsController extends Controller
     {
         if ($request->password == $request->confirm_password) { 
             User::where('email',Auth::user()->email)->update([
-                'password' => Hash::make($request->password)
+                'password' => Hash::make($request->password),
+                'name' => $request->input('name'),
+                'email' => $request->input('email')
             ]);
         }
 
