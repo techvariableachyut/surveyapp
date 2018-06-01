@@ -48,7 +48,7 @@ class AnswerController extends Controller
             'answer' => json_encode($request['answer'])
         ]);
 
-        $this->sendMail();
+        // $this->sendMail();
     }
 
     /**

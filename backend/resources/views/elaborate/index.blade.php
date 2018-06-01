@@ -1,15 +1,30 @@
 @extends('layouts.app')
 @section('content')
 
+<style>
+.headgo{
+    display:flex;
+    justify-content: space-between;
+}
+</style>
  
 <section id="minimal-statistics">
     <div class="row">
-        <div class="col-xs-12 mt-1 mb-3">
-            <h4>{{ $surveyTitle }}</h4>
-            <p>Statistics on the survey</p>
-            <hr>
+        <div class="col-xs-12 mt-1 mb-3 headgo ">
+            <div>
+                <h4>{{ $surveyTitle }}</h4>
+                <p>Statistics</p>
+                <hr>
+            </div>
+            <div>
+                <i>
+                   <a href="/answers/csv/all/{{$surveyId}}">Download CSV/XLS File</a>
+                </i>
+            </div>
         </div>
+        
     </div>
+    
     <div class="row">
         <div class="col-xl-3 col-lg-6 col-xs-12">
             <div class="card">
@@ -51,7 +66,7 @@
                     <div class="card-block">
                         <div class="media">
                             <div class="media-left media-middle">
-                                <i class="icon-trending_up teal font-large-2 float-xs-left"></i>
+                                <i class="icon-chat2 font-large-2 float-xs-left"></i>
                             </div>
                             <div class="media-body text-xs-right">
                                 <h3>{{ $reviewed }}</h3>
@@ -62,437 +77,198 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="col-xl-3 col-lg-6 col-xs-12">
+        <div class="col-xl-3 col-lg-6 col-xs-12">
             <div class="card">
                 <div class="card-body">
                     <div class="card-block">
                         <div class="media">
                             <div class="media-left media-middle">
-                                <i class="icon-map1 pink font-large-2 float-xs-left"></i>
+                                <i class="icon-chat4 pink font-large-2 float-xs-left"></i>
                             </div>
                             <div class="media-body text-xs-right">
-                                <h3>423</h3>
-                                <span>Total Visits</span>
+                                <h3>{{ $incomplete }}</h3>
+                                <span>Incomplete Survey</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 
     <div class="row">
         <div class="col-xs-12 mt-1 mb-3">
             <h4>Responses By Each Monitor.</h4>
+            <p>For survey {{ $surveyTitle }}</p>
             <hr>
         </div>
     </div>
 
     <div class="row">
+        @foreach($monitors as $index => $monitor )
         <div class="col-xl-3 col-lg-6 col-xs-12">
             <div class="card">
                 <div class="card-body">
                     <div class="card-block">
                         <div class="media">
                             <div class="media-body text-xs-left">
-                                <h3 class="pink">{{ $monitors['Monitor 1'] }}</h3>
-                                <span>Monitor 1</span>
+                                <h3 class="pink">{{ $monitors[$index] }}</h3>
+                                <span>{{ $index }}</span>
                             </div>
                             <div class="media-right media-middle">
-                                <i class="icon-user3 pink font-large-2 float-xs-right"></i>
+                                <i class="icon-user4 {{ $loop->iteration%2==0 ? 'pink' : 'black' }} font-large-2 float-xs-right"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body text-xs-left">
-                                <h3 class="pink">{{ $monitors['Monitor 2'] }}</h3>
-                                <span>Monitor 2</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body text-xs-left">
-                                <h3 class="pink">{{ $monitors['Monitor 3'] }}</h3>
-                                <span>Monitor 3</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-user5 pink font-large-2 float-xs-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body text-xs-left">
-                                <h3 class="pink">{{ $monitors['Monitor 4'] }}</h3>
-                                <span>Monitor 4</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-user6 pink font-large-2 float-xs-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body text-xs-left">
-                                <h3 class="pink">{{ $monitors['Monitor 5'] }}</h3>
-                                <span>Monitor 5</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-user7 pink font-large-2 float-xs-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body text-xs-left">
-                                <h3 class="pink">{{ $monitors['Monitor 6'] }}</h3>
-                                <span>Monitor 6</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-user8 pink font-large-2 float-xs-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body text-xs-left">
-                                <h3 class="pink">{{ $monitors['Monitor 7'] }}</h3>
-                                <span>Monitor 7</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-user9 pink font-large-2 float-xs-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body text-xs-left">
-                                <h3 class="pink">{{ $monitors['Monitor 8'] }}</h3>
-                                <span>Monitor 8</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-user2 pink font-large-2 float-xs-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body text-xs-left">
-                                <h3 class="pink">{{ $monitors['Monitor 9'] }}</h3>
-                                <span>Monitor 9</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-user3 pink font-large-2 float-xs-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body text-xs-left">
-                                <h3 class="pink">{{ $monitors['Monitor 10'] }}</h3>
-                                <span>Monitor 10</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-user4 pink font-large-2 float-xs-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body text-xs-left">
-                                <h3 class="cyan">278</h3>
-                                <span>New Posts</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-pencil cyan font-large-2 float-xs-right"></i>
-                            </div>
-                        </div>
-                        <progress class="progress progress-sm progress-cyan mt-1 mb-0" value="80" max="100"></progress>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body text-xs-left">
-                                <h3 class="deep-orange">156</h3>
-                                <span>New Comments</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-chat1 deep-orange font-large-2 float-xs-right"></i>
-                            </div>
-                            <progress class="progress progress-sm progress-deep-orange mt-1 mb-0" value="35" max="100"></progress>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body text-xs-left">
-                                <h3 class="teal">64.89 %</h3>
-                                <span>Bounce Rate</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-trending_up teal font-large-2 float-xs-right"></i>
-                            </div>
-                            <progress class="progress progress-sm progress-teal mt-1 mb-0" value="60" max="100"></progress>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body text-xs-left">
-                                <h3 class="pink">423</h3>
-                                <span>Total Visits</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-map1 pink font-large-2 float-xs-right"></i>
-                            </div>
-                            <progress class="progress progress-sm progress-pink mt-1 mb-0" value="40" max="100"></progress>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </section>
-<!-- // Minimal statistics section end -->
 
-<!-- Minimal statistics with bg color section start -->
+
 <section id="minimal-statistics-bg">
     <div class="row">
         <div class="col-xs-12 mt-1 mb-3">
-            <h4>Minimal Statistics With Background Color</h4>
-            <p>Statistics on minimal cards with background color.</p>
+            <h4>Sources by gender</h4>
+            <p>Proportion of Female, Male, Transgender of total sources.</p>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach($genderSources as $index => $genderSource )
+        <div class="col-xl-3 col-lg-6 col-xs-12">
+            <div class="card bg-deep-orange">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="media">
+                            <div class="media-left media-middle">
+                                <i class="icon-user1 white font-large-2 float-xs-left"></i>
+                            </div>
+                            <div class="media-body white text-xs-right">
+                                <h3>{{ $index }}</h3>
+                                <span>{{ $genderSource }} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+    </div>
+</section>
+
+
+<section id="minimal-statistics-bg">
+    <div class="row">
+        <div class="col-xs-12 mt-1 mb-3">
+            <h4>People in images</h4>
+            <p>Proportion of Female, Male, Transgender of total people in images.</p>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach($imageSources as $index => $imageSource )
+        <div class="col-xl-3 col-lg-6 col-xs-12">
+            <div class="card bg-blue">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="media">
+                            <div class="media-left media-middle">
+                                <i class="icon-user1 white font-large-2 float-xs-left"></i>
+                            </div>
+                            <div class="media-body white text-xs-right">
+                                <h3>{{ $index }}</h3>
+                                <span>{{ $imageSource }} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+
+</section>
+
+
+
+<section id="minimal-statistics-bg">
+    <div class="row">
+        <div class="col-xs-12 mt-1 mb-3">
+            <h4>Stories that are gender aware</h4>
+            <p>Proportion of total number of stories .</p>
             <hr>
         </div>
     </div>
 
     <div class="row">
         <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card bg-cyan">
+            <div class="card bg-blue">
                 <div class="card-body">
                     <div class="card-block">
                         <div class="media">
                             <div class="media-left media-middle">
-                                <i class="icon-pencil white font-large-2 float-xs-left"></i>
+                                <i class="icon-user1 white font-large-2 float-xs-left"></i>
                             </div>
                             <div class="media-body white text-xs-right">
-                                <h3>278</h3>
-                                <span>New Posts</span>
+                                <h3>Gender aware Stories </h3>
+                                <span>{{ $genderAware['yes'] }} </span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card bg-deep-orange">
+            <div class="card bg-blue">
                 <div class="card-body">
                     <div class="card-block">
                         <div class="media">
                             <div class="media-left media-middle">
-                                <i class="icon-chat1 white font-large-2 float-xs-left"></i>
+                                <i class="icon-user1 white font-large-2 float-xs-left"></i>
                             </div>
                             <div class="media-body white text-xs-right">
-                                <h3>156</h3>
-                                <span>New Comments</span>
+                                <h3>Not Gender aware Stories </h3>
+                                <span>{{ $genderAware['no'] }} </span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card bg-teal">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-left media-middle">
-                                <i class="icon-trending_up white font-large-2 float-xs-left"></i>
-                            </div>
-                            <div class="media-body white text-xs-right">
-                                <h3>64.89 %</h3>
-                                <span>Bounce Rate</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card bg-pink">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-left media-middle">
-                                <i class="icon-map1 white font-large-2 float-xs-left"></i>
-                            </div>
-                            <div class="media-body white text-xs-right">
-                                <h3>423</h3>
-                                <span>Total Visits</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+    </div>
+</section>
+
+
+
+
+<section id="minimal-statistics-bg">
+    <div class="row">
+        <div class="col-xs-12 mt-1 mb-3">
+            <h4>Number of stories for further analysis</h4>
+            <hr>
         </div>
     </div>
 
     <div class="row">
         <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card bg-pink">
+            <div class="card bg-blue">
                 <div class="card-body">
                     <div class="card-block">
                         <div class="media">
-                            <div class="media-body white text-xs-left">
-                                <h3>278</h3>
-                                <span>New Projects</span>
+                            <div class="media-left media-middle">
+                                <i class="icon-user1 white font-large-2 float-xs-left"></i>
                             </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-bag2 white font-large-2 float-xs-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card bg-teal">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body white text-xs-left">
-                                <h3>156</h3>
-                                <span>New Clients</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-user1 white font-large-2 float-xs-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card bg-deep-orange">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body white text-xs-left">
-                                <h3>64.89 %</h3>
-                                <span>Conversion Rate</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-diagram white font-large-2 float-xs-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card bg-cyan">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body white text-xs-left">
-                                <h3>423</h3>
-                                <span>Support Tickets</span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-ios-help-outline white font-large-2 float-xs-right"></i>
+                            <div class="media-body white text-xs-right">
+                                <h3># </h3>
+                                <span>{{ $furtherAnalysis['yes'] }} </span>
                             </div>
                         </div>
                     </div>
@@ -502,7 +278,74 @@
     </div>
 </section>
 
+
+<section id="minimal-statistics-bg">
+    <div class="row">
+        <div class="col-xs-12 mt-1 mb-3">
+            <h4>Reporters by gender</h4>
+            <p>Female, Male, Transgender proportion of total reporters.</p>
+            <hr>
         </div>
-      </div>
     </div>
-    @endsection
+
+    <div class="row">
+        @foreach($reporterProportion as $index => $reporter )
+        <div class="col-xl-3 col-lg-6 col-xs-12">
+            <div class="card bg-pink">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="media">
+                            <div class="media-left media-middle">
+                                <i class="icon-user1 white font-large-2 float-xs-left"></i>
+                            </div>
+                            <div class="media-body white text-xs-right">
+                                <h3>{{ $index }}</h3>
+                                <span>{{ $reporter }} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</section>
+
+
+<section id="minimal-statistics-bg">
+    <div class="row">
+        <div class="col-xs-12 mt-1 mb-3">
+            <h4>Presenters by gender</h4>
+            <p>Female, Male, Transgender proportion of total reporters.</p>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach($presenterProportion as $index => $presenter )
+        <div class="col-xl-3 col-lg-6 col-xs-12">
+            <div class="card bg-grey">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="media">
+                            <div class="media-left media-middle">
+                                <i class="icon-user1 white font-large-2 float-xs-left"></i>
+                            </div>
+                            <div class="media-body white text-xs-right">
+                                <h3>{{ $index }}</h3>
+                                <span>{{ $presenter }} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</section>
+
+
+    </div>
+    </div>
+</div>
+@endsection
