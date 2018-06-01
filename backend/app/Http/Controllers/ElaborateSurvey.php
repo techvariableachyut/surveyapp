@@ -16,8 +16,6 @@ class ElaborateSurvey extends Controller{
     private $reviewed = 0;
     private $incomplete = 0;
     private $monitors = ["Monitor 1" => 0,"Monitor 2" => 0,"Monitor 3" => 0,"Monitor 4" => 0,"Monitor 5" => 0,"Monitor 6" => 0,"Monitor 7" => 0,"Monitor 8" => 0,"Monitor 9" => 0,"Monitor 10" => 0];
-    // private $genderAware = 0;
-    // private $furtherAnalysis = 0;
     private $genderSources = ["Male" => 0, "Female" => 0, "Transgender" => 0];
     private $imageSources = ["Male" => 0, "Female" => 0, "Transgender" => 0];
     private $reporterProportion = ["Total" => 0, "Male" => 0,"Female" => 0,"Transgender" => 0, "Unknown" => 0];
@@ -148,13 +146,8 @@ class ElaborateSurvey extends Controller{
     private function proportionImage($data){
         $this->imageSources["Female"] = $this->imageSources["Female"] +  (isset($data->data->question059) ? (int) $data->data->question059 : 0);
         $this->imageSources["Male"] = $this->imageSources["Male"] + ( isset($data->data->question060) ? (int) $data->data->question060 : 0);
-        $this->imageSources["Transgender"] = isset($data->data->question071) ? (int) $data->data->question071 : 0 - $this->imageSources["Female"] + $this->imageSources["Male"];
+        $this->imageSources["Transgender"] =  (int) $data->data->question071 - $this->imageSources["Female"] + $this->imageSources["Male"];
     }
-
-    // private function genderAnalysis($data){
-    //     $this->genderAware = $this->genderAware +  isset($data->data->question066) ? (int) $data->data->question066 : 0;
-    //     $this->furtherAnalysis = $this->furtherAnalysis + isset($data->data->question070) ? (int) $data->data->question070 : 0;
-    // }
 
 
     private function genderAnalysis($data){
