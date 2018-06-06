@@ -78,11 +78,13 @@
     <script src="/js/bootstrap-notify.min.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/survey.app.js"></script>
-    <script src="/js/surveyjs-widgets.js"></script>
     <script src="/js/config.js"></script>
     <script src="/js/survey.js"></script>
     <script src="/js/scripts.js"></script>
     <script src="/js/jquery-confirm.min.js"></script>
+    <script src="/js/select2.min.js"></script>
+    <link href="/css/select2.min.css" rel="stylesheet"/>
+    <script src="/js/surveyjs-widgets.js"></script>
 
 </body>
 </html>
