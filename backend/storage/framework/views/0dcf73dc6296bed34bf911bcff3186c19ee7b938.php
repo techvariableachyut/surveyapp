@@ -17,7 +17,7 @@
             </div>
             <div>
                 <i>
-                   <a href="/answers/csv/all/<?php echo e($surveyId); ?>">Download CSV/XLS File</a>
+                   <a href="/download/administrative/<?php echo e($surveyId); ?>">Download CSV/XLS File</a>
                 </i>
             </div>
         </div>
