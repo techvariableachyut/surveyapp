@@ -18,7 +18,7 @@
             </div>
             <div>
                 <i>
-                   <a href="/answers/csv/all/{{$surveyId}}">Download CSV/XLS File</a>
+                   <a href="/download/administrative/{{$surveyId}}">Download CSV/XLS File</a>
                 </i>
             </div>
         </div>
