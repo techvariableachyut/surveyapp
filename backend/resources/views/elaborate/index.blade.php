@@ -159,6 +159,8 @@
         @endforeach
     </div>
     </div>
+    <canvas id="pie-chart" width="800" height="450"></canvas>
+    
 </section>
 
 
@@ -192,7 +194,7 @@
         </div>
         @endforeach
     </div>
-
+    <canvas id="bar-chart" width="800" height="450"></canvas>
 </section>
 
 
@@ -309,6 +311,8 @@
         </div>
         @endforeach
     </div>
+    <canvas id="gender_analysis" width="800" height="450"></canvas>
+    
 </section>
 
 
@@ -342,8 +346,59 @@
         </div>
         @endforeach
     </div>
+    <canvas id="gender_analysis02" width="800" height="450"></canvas>
 </section>
 
+
+<!-- Vertical Tabs start -->
+<section id="vertical-tabs">
+	<div class="row">
+		<div class="col-xs-12 mt-1">
+			<h4>Vertical Tabs</h4>
+			<hr>
+		</div>
+	</div>
+	<div class="row match-height">
+		<div class="col-xl-12 col-lg-12">
+			<div class="card">
+				<div class="card-header">
+					<h4 class="card-title">Vertical Left Tabs</h4>
+				</div>
+				<div class="card-body">
+					<div class="card-block">
+						<p>Wrap tabs and tab content with <code>.nav-vertical</code> class. To add left navigation use <code>.nav-left</code> class to <code>.nav.nav-tabs</code>.</p>
+						<div class="nav-vertical">
+							<ul class="nav nav-tabs nav-left">
+								<li class="nav-item">
+									<a class="nav-link active" id="baseVerticalLeft-tab1" data-toggle="tab" aria-controls="tabVerticalLeft1" href="#tabVerticalLeft1" aria-expanded="true">Tab 1</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="baseVerticalLeft-tab2" data-toggle="tab" aria-controls="tabVerticalLeft2" href="#tabVerticalLeft2" aria-expanded="false">Tab 2</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="baseVerticalLeft-tab3" data-toggle="tab" aria-controls="tabVerticalLeft3" href="#tabVerticalLeft3" aria-expanded="false">Tab 3 </a>
+								</li>
+							</ul>
+							<div class="tab-content px-1">
+								<div role="tabpanel" class="tab-pane active" id="tabVerticalLeft1" aria-expanded="true" aria-labelledby="baseVerticalLeft-tab1">
+									<p>Oat cake marzipan cake lollipop caramels wafer pie jelly beans. Icing halvah chocolate cake carrot cake. Jelly beans carrot cake marshmallow gingerbread chocolate cake. Gummies cupcake croissant.</p>
+								</div>
+								<div class="tab-pane" id="tabVerticalLeft2" aria-labelledby="baseVerticalLeft-tab2">
+									<p>Sugar plum tootsie roll biscuit caramels. Liquorice brownie pastry cotton candy oat cake fruitcake jelly chupa chups. Pudding caramels pastry powder cake soufflé wafer caramels. Jelly-o pie cupcake.</p>
+								</div>
+								<div class="tab-pane" id="tabVerticalLeft3" aria-labelledby="baseVerticalLeft-tab3">
+									<p>Biscuit ice cream halvah candy canes bear claw ice cream cake chocolate bar donut. Toffee cotton candy liquorice. Oat cake lemon drops gingerbread dessert caramels. Sweet dessert jujubes powder sweet sesame snaps.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>
+<!-- Vertical Tabs end -->
 
     </div>
     </div>
