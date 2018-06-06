@@ -125,6 +125,10 @@
         </div>
         @endforeach
     </div>
+
+    <div class="row">    
+        <canvas id="bar-chart-monitors" width="800" height="350"></canvas>
+    </div>
 </section>
 
 
@@ -158,8 +162,15 @@
         </div>
         @endforeach
     </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <canvas id="bar-chart-genderSources" width="800" height="350"></canvas>
+        </div>
+        <div class="col-lg-6">
+            <canvas id="bar-chart-genderSourcesValue" width="800" height="350"></canvas>
+        </div> 
     </div>
-    <canvas id="pie-chart" width="800" height="450"></canvas>
     
 </section>
 
@@ -172,6 +183,7 @@
             <hr>
         </div>
     </div>
+
 
     <div class="row">
         @foreach($imageSources as $index => $imageSource )
@@ -194,7 +206,15 @@
         </div>
         @endforeach
     </div>
-    <canvas id="bar-chart" width="800" height="450"></canvas>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <canvas id="bar-chart-imageSources" width="800" height="350"></canvas>
+        </div>
+        <div class="col-lg-6">
+            <canvas id="bar-chart-imageSourcesValue" width="800" height="350"></canvas> 
+        </div>
+    </div>
 </section>
 
 
@@ -244,7 +264,15 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="row">
+        <div class="col-lg-6">
+            <canvas id="genderAware" width="800" height="350"></canvas>
+        </div>
+        <div class="col-lg-6">
+            <canvas id="genderAwareValue" width="800" height="350"></canvas>
+        </div>
     </div>
 </section>
 
@@ -289,7 +317,7 @@
             <hr>
         </div>
     </div>
-
+    
     <div class="row">
         @foreach($reporterProportion as $index => $reporter )
         <div class="col-xl-3 col-lg-6 col-xs-12">
@@ -311,8 +339,15 @@
         </div>
         @endforeach
     </div>
-    <canvas id="gender_analysis" width="800" height="450"></canvas>
-    
+
+    <div class="row">
+        <div class="col-lg-6">
+            <canvas id="reporterProportion" width="800" height="350"></canvas>
+        </div>
+        <div class="col-lg-6">
+            <canvas id="reporterProportionValue" width="800" height="350"></canvas>
+        </div>
+    </div>
 </section>
 
 
@@ -346,12 +381,20 @@
         </div>
         @endforeach
     </div>
-    <canvas id="gender_analysis02" width="800" height="450"></canvas>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <canvas id="presenterProportion" width="800" height="350"></canvas>
+        </div>
+        <div class="col-lg-6">        
+            <canvas id="presenterProportionValue" width="800" height="350"></canvas>
+        </div>
+    </div>
 </section>
 
 
 <!-- Vertical Tabs start -->
-<section id="vertical-tabs">
+<!-- <section id="vertical-tabs">
 	<div class="row">
 		<div class="col-xs-12 mt-1">
 			<h4>Vertical Tabs</h4>
@@ -397,7 +440,7 @@
 		</div>
 
 	</div>
-</section>
+</section> -->
 <!-- Vertical Tabs end -->
 
     </div>
@@ -405,3 +448,14 @@
 </div>
 @endsection
 
+@section('script')
+    <script>
+        window.monitors = '<?= json_encode($monitors) ?>';
+        window.genderSources = '<?= json_encode($genderSources) ?>';
+        window.imageSources = '<?= json_encode($imageSources) ?>';
+        window.reporterProportion = '<?= json_encode($reporterProportion) ?>';
+        window.presenterProportion = '<?= json_encode($presenterProportion) ?>';
+        window.genderAwareYes = '<?= $genderAware["yes"] ?>';
+        window.genderAwareNo = '<?= $genderAware["no"] ?>';
+    </script>
+@endsection
