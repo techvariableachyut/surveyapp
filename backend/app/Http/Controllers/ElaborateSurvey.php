@@ -15,28 +15,83 @@ class ElaborateSurvey extends Controller{
     private $completed = 0;
     private $reviewed = 0;
     private $total;
+    private $incomplete = 0;
     private $monitors = ["Monitor 1" => 0,"Monitor 2" => 0,"Monitor 3" => 0,"Monitor 4" => 0,"Monitor 5" => 0,"Monitor 6" => 0,"Monitor 7" => 0,"Monitor 8" => 0,"Monitor 9" => 0,"Monitor 10" => 0];
-    private $genderAware = ['yes' => 0,'no'=>0];
-    private $furtherAnalysis = ['yes' => 0,'no'=>0];
-    private $genderSources = ["male" => 0, "female" => 0, "trans" => 0];
-    private $imageSources = ["male" => 0, "female" => 0, "trans" => 0];
-    private $reporterProportion = ["total" => 0, "male" => 0,"female" => 0,"trans" => 0, "unknown" => 0];
-    private $presenterProportion = ["total" => 0, "male" => 0,"female" => 0,"trans" => 0, "unknown" => 0];
-
+    private $genderSources = ["Male" => 0, "Female" => 0, "Transgender" => 0];
+    private $imageSources = ["Male" => 0, "Female" => 0, "Transgender" => 0];
+    private $reporterProportion = ["Total" => 0, "Male" => 0,"Female" => 0,"Transgender" => 0, "Unknown" => 0];
+    private $presenterProportion = ["Total" => 0, "Male" => 0,"Female" => 0,"Transgender" => 0, "Unknown" => 0];
+    private $genderAware = ['yes' => 0,'no'=> 0];
+    private $furtherAnalysis = ['yes' => 0,'no'=> 0];
+    private $questionsSet = array(
+        "monitor"=> "question991",
+        "newsSource"=> array (
+            "Female"=> "question022",
+            "Male"=>"question023",
+            "Transgender"=>"question024",
+        ),
+        "image"=> array(
+            "Totalperson"=>"question071",
+            "Female"=>"question59",
+            "Male"=>"question60",
+        ),
+        "genderanalysis"=>array(
+            "genderaware"=>"question066",
+            "furtheranalysis"=> "question070"
+        ),
+       "reporter"=> array(
+           "Total"=>"question054",
+           "Female"=>"question055",
+           "Male"=>"question056",
+           "Transgender"=>"question057",
+           "Unknown"=>"question058"
+       ),
+       "presenter"=> array(
+           "Total"=>"question059",
+           "Female"=>"question060",
+           "Male"=>"question061",
+           "Transgender"=>"question062",
+           "Unknown"=>"question063"
+       ),    
+    );
 
     public function elaborate($surveyId){
         $answers = Answers::where('surveyId',$surveyId)->get();
         $this->total = count($answers);
         $survey = DB::table('questions')->where('token',$surveyId)->first();
         $surveyTitle = $survey->title;
-
         $this->completed($answers);
         $this->reviewed($answers);
+        $this->incomplete($answers);
         $this->monitor($answers);
+        $totalResponse = count($answers); 
+        $completed = $this->completed;
+        $incomplete = $this->incomplete;
+        $reviewed = $this->reviewed; 
+        $monitors = $this->monitors; 
+        $genderSources = $this->genderSources; 
+        $imageSources = $this->imageSources; 
+        $reporterProportion = $this->reporterProportion; 
+        $presenterProportion = $this->presenterProportion;
+        $genderAware = $this->genderAware;
+        $furtherAnalysis = $this->furtherAnalysis;
 
-        $totalResponse = count($answers); $completed = $this->completed;$reviewed = $this->reviewed; $monitors = $this->monitors; $genderSources = $this->genderSources; $imageSources = $this->imageSources; $reporterProportion = $this->reporterProportion; $presenterProportion = $this->presenterProportion;$genderAware = $this->genderAware;$furtherAnalysis = $this->furtherAnalysis;
 
-        return view("elaborate.index",compact('totalResponse','surveyTitle','completed','reviewed','monitors','genderSources','imageSources','reporterProportion','presenterProportion','genderAware','furtherAnalysis'));
+        return view("elaborate.index",compact(
+            'surveyId',
+            'totalResponse',
+            'surveyTitle',
+            'completed',
+            'reviewed',
+            'incomplete',
+            'monitors',
+            'genderSources',
+            'imageSources',
+            'reporterProportion',
+            'presenterProportion',
+            'genderAware',
+            'furtherAnalysis'
+        ));
     }
 
     private function completed($answers){
@@ -55,9 +110,18 @@ class ElaborateSurvey extends Controller{
         }
     }
 
+    private function incomplete($answers){
+        foreach ($answers as $answer) {
+            if ($answer->done == "Incomplete") {
+                $this->incomplete = $this->incomplete + 1;
+            }
+        }
+    }
+
     private function monitor($answers){
         foreach ($answers as $index => $answer) {
             $data =  json_decode($answer->answer);
+            // dd($data->data);
             $monitor = $data->data->question991;
 
             $this->sourcesByGender($data);
@@ -76,16 +140,17 @@ class ElaborateSurvey extends Controller{
     }
 
     private function sourcesByGender($data){
-        $this->genderSources["female"] = $this->genderSources["female"] + (int) isset($data->data->question022) ? (int) $data->data->question022 : 0;
-        $this->genderSources["male"] = $this->genderSources["male"] + (int) isset($data->data->question023) ? (int) $data->data->question023 : 0;
-        $this->genderSources["trans"] = $this->genderSources["trans"] + (int) isset($data->data->question024) ? (int) $data->data->question024 : 0;   
+        $this->genderSources["Female"] = $this->genderSources["Female"] +  ( isset($data->data->question022) ? (int) $data->data->question022 : 0 );
+        $this->genderSources["Male"] = $this->genderSources["Male"] +  (isset($data->data->question023) ? (int) $data->data->question023 : 0);
+        $this->genderSources["Transgender"] = $this->genderSources["Transgender"] +  (isset($data->data->question024) ? (int) $data->data->question024 : 0);   
     }
 
     private function proportionImage($data){
-        $this->imageSources["female"] = $this->imageSources["female"] + isset($data->data->question59) ? (int) $data->data->question59 : 0;
-        $this->imageSources["male"] = $this->imageSources["male"] + isset($data->data->question60) ? (int) $data->data->question60 : 0;
-        $this->imageSources["trans"] = $data->data->question071 - ($this->imageSources["female"] + $this->imageSources["male"]);
+        $this->imageSources["Female"] = $this->imageSources["Female"] + isset($data->data->question59) ? (int) $data->data->question59 : 0;
+        $this->imageSources["Male"] = $this->imageSources["Male"] + isset($data->data->question60) ? (int) $data->data->question60 : 0;
+        $this->imageSources["trans"] = $data->data->question071 - ($this->imageSources["Female"] + $this->imageSources["Male"]);
     }
+
 
     private function genderAnalysis($data){
         if (isset($data->data->question066) && $data->data->question066 == "Yes") {
@@ -105,20 +170,20 @@ class ElaborateSurvey extends Controller{
     }
 
     private function reporterProportion($data){
-        $this->reporterProportion["total"] = $this->reporterProportion["total"] + (int) isset($data->data->question054) ? (int) $data->data->question054 : 0;
-        $this->reporterProportion["female"] = $this->reporterProportion["female"] + (int) isset($data->data->question055) ? (int) $data->data->question055 : 0;
-        $this->reporterProportion["male"] = $this->reporterProportion["male"] + (int) isset($data->data->question056) ? (int) $data->data->question056 : 0;
-        $this->reporterProportion["trans"] = $this->reporterProportion["trans"] + (int) isset($data->data->question057) ? (int) $data->data->question057 : 0;
-        $this->reporterProportion["unknown"] = $this->reporterProportion["unknown"] + (int) isset($data->data->question058) ? (int) $data->data->question058 : 0;
+        $this->reporterProportion["Total"] = $this->reporterProportion["Total"] +  (isset($data->data->question054) ? (int) $data->data->question054 : 0);
+        $this->reporterProportion["Female"] = $this->reporterProportion["Female"] +  (isset($data->data->question055) ? (int) $data->data->question055 : 0);
+        $this->reporterProportion["Male"] = $this->reporterProportion["Male"] +  (isset($data->data->question056) ? (int)  $data->data->question056 : 0);
+        $this->reporterProportion["Transgender"] = $this->reporterProportion["Transgender"] +  (isset($data->data->question057) ? (int) $data->data->question057 : 0);
+        $this->reporterProportion["Unknown"] = $this->reporterProportion["Unknown"] + ( isset($data->data->question058) ? (int) $data->data->question058 : 0);
     }
 
 
     private function presenterProportion($data){
-        $this->presenterProportion["total"] = $this->presenterProportion["total"] + (int) isset($data->data->question059) ? (int) $data->data->question059 : 0;
-        $this->presenterProportion["female"] = $this->presenterProportion["female"] + (int) isset($data->data->question060) ? (int) $data->data->question060 : 0;
-        $this->presenterProportion["male"] = $this->presenterProportion["male"] + (int) isset($data->data->question061) ? (int) $data->data->question061 : 0;
-        $this->presenterProportion["trans"] = $this->presenterProportion["trans"] + (int) isset($data->data->question062) ? (int) $data->data->question062 : 0;
-        $this->presenterProportion["unknown"] = $this->presenterProportion["unknown"] + (int) isset($data->data->question063) ? (int) $data->data->question063 : 0;
+        $this->presenterProportion["Total"] = $this->presenterProportion["Total"] +  (isset($data->data->question059) ? (int) $data->data->question059 : 0);
+        $this->presenterProportion["Female"] = $this->presenterProportion["Female"] +  (isset($data->data->question060) ? (int) $data->data->question060 : 0);
+        $this->presenterProportion["Male"] = $this->presenterProportion["Male"] +  (isset($data->data->question061) ? (int) $data->data->question061 : 0);
+        $this->presenterProportion["Transgender"] = $this->presenterProportion["Transgender"] +  (isset($data->data->question062) ? (int) $data->data->question062 : 0);
+        $this->presenterProportion["Unknown"] = $this->presenterProportion["Unknown"] +  (isset($data->data->question063) ? (int) $data->data->question063 : 0);
     }
 
     public function createCsv($surveyId){
@@ -131,12 +196,12 @@ class ElaborateSurvey extends Controller{
         # Number of responses submitted by each monitor
         # Total number of responses saved 
         # Total number of responses reviewed
-        # Sources by gender - proportion of female, male, trans of total sources
-        # People in images – proportion of female, male, trans of total people in images
+        # Sources by gender - proportion of Female, male, trans of total sources
+        # People in images – proportion of Female, male, trans of total people in images
         # Stories that are gender aware – proportion of total number of stories
         # Number of stories for further analysis
-        # Reporters by gender - female, male, trans proportion of total reporters
-        # Presenters by gender - female, male, trans proportion of total presenters 
+        # Reporters by gender - Female, male, trans proportion of total reporters
+        # Presenters by gender - Female, male, trans proportion of total presenters 
         ",
         "$get"
         ];

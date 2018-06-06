@@ -48,7 +48,7 @@ class AnswerController extends Controller
             'answer' => json_encode($request['answer'])
         ]);
 
-        $this->sendMail();
+        // $this->sendMail();
     }
 
     /**
@@ -127,7 +127,6 @@ class AnswerController extends Controller
 
     private function sendMail(){
         $user = User::where('role','admin')->get();
-
         Mail::to($user)->send(new SurveyCreated());
     }    
 }

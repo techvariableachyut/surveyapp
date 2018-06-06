@@ -7,13 +7,8 @@
                 </li>
               </ol>
         </div>
-<div class="col-lg-12">
+        <div class="col-lg-12">
             <div class="card">
-                <!-- <div class="card-header">
-                    <h4 class="card-title"><?php echo e($question->title); ?></h4>
-                    
-                    
-                </div> -->
                 <div class="card-body">
 
                     <div class="card-block">
