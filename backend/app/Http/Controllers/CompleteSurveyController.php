@@ -35,7 +35,7 @@ class CompleteSurveyController extends Controller{
                         if(isset($token->question995)){
                             $obj->token = $token->question995;
                         }else{
-                            $obj->token = "12345678";
+                            $obj->token = "12345678s";
                         }
                     }
                 }

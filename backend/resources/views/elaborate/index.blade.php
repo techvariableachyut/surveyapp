@@ -127,7 +127,7 @@
     </div>
 
     <div class="row">    
-        <canvas id="bar-chart-monitors" width="800" height="350"></canvas>
+        <canvas id="bar-chart-monitors" class="charts" width="800" height="350"></canvas>
     </div>
 </section>
 
@@ -165,10 +165,17 @@
 
     <div class="row">
         <div class="col-lg-6">
-            <canvas id="bar-chart-genderSources" width="800" height="350"></canvas>
+            <canvas id="bar-chart-genderSources" class="charts" width="800" height="350"></canvas>
         </div>
         <div class="col-lg-6">
-            <canvas id="bar-chart-genderSourcesValue" width="800" height="350"></canvas>
+            <canvas id="bar-chart-genderSourcesValue" class="charts" width="800" height="350"></canvas>
+        </div> 
+
+        <div class="col-lg-6">
+            <canvas id="pie-chart-genderSources" class="charts" width="800" height="350"></canvas>
+        </div> 
+        <div class="col-lg-6">
+            <canvas id="pie-chart-genderSourcesValue" class="charts" width="800" height="350"></canvas>
         </div> 
     </div>
     
@@ -209,10 +216,16 @@
 
     <div class="row">
         <div class="col-lg-6">
-            <canvas id="bar-chart-imageSources" width="800" height="350"></canvas>
+            <canvas id="bar-chart-imageSources" class="charts" width="800" height="350"></canvas>
         </div>
         <div class="col-lg-6">
-            <canvas id="bar-chart-imageSourcesValue" width="800" height="350"></canvas> 
+            <canvas id="bar-chart-imageSourcesValue" class="charts" width="800" height="350"></canvas> 
+        </div>
+        <div class="col-lg-6">
+            <canvas id="pie-chart-imageSources" class="charts" width="800" height="350"></canvas> 
+        </div>
+        <div class="col-lg-6">
+            <canvas id="pie-chart-imageSourcesValue" class="charts" width="800" height="350"></canvas> 
         </div>
     </div>
 </section>
@@ -268,10 +281,16 @@
 
     <div class="row">
         <div class="col-lg-6">
-            <canvas id="genderAware" width="800" height="350"></canvas>
+            <canvas id="genderAware" class="charts" width="800" height="350"></canvas>
         </div>
         <div class="col-lg-6">
-            <canvas id="genderAwareValue" width="800" height="350"></canvas>
+            <canvas id="genderAwareValue" class="charts" width="800" height="350"></canvas>
+        </div>
+        <div class="col-lg-6">
+            <canvas id="piegenderAware" class="charts" width="800" height="350"></canvas>
+        </div>
+        <div class="col-lg-6">
+            <canvas id="piegenderAwareValue" class="charts" width="800" height="350"></canvas>
         </div>
     </div>
 </section>
@@ -342,10 +361,16 @@
 
     <div class="row">
         <div class="col-lg-6">
-            <canvas id="reporterProportion" width="800" height="350"></canvas>
+            <canvas id="reporterProportion" class="charts" width="800" height="350"></canvas>
         </div>
         <div class="col-lg-6">
-            <canvas id="reporterProportionValue" width="800" height="350"></canvas>
+            <canvas id="reporterProportionValue" class="charts" width="800" height="350"></canvas>
+        </div>
+        <div class="col-lg-6">
+            <canvas id="pieReporterProportion" class="charts" width="800" height="350"></canvas>
+        </div>
+        <div class="col-lg-6">
+            <canvas id="pieReporterProportionValue" class="charts" width="800" height="350"></canvas>
         </div>
     </div>
 </section>
@@ -384,10 +409,16 @@
 
     <div class="row">
         <div class="col-lg-6">
-            <canvas id="presenterProportion" width="800" height="350"></canvas>
+            <canvas id="presenterProportion" class="charts" width="800" height="350"></canvas>
         </div>
         <div class="col-lg-6">        
-            <canvas id="presenterProportionValue" width="800" height="350"></canvas>
+            <canvas id="presenterProportionValue" class="charts" width="800" height="350"></canvas>
+        </div>
+        <div class="col-lg-6">
+            <canvas id="piePresenterProportion" class="charts" width="800" height="350"></canvas>
+        </div>
+        <div class="col-lg-6">        
+            <canvas id="piePresenterProportionValue" class="charts" width="800" height="350"></canvas>
         </div>
     </div>
 </section>

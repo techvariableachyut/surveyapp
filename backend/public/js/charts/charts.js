@@ -45,32 +45,12 @@ new Chart(document.getElementById("bar-chart-genderSources"), {
           ],
         }
       ],
-      datacol:[{
-        data:[
-          genderSources['Female'],genderSources['Male'],genderSources['Transgender']
-        ]
-      }]
     },
     options: {
       legend: { display: false },
       title: {
         display: true,
         text: "Responses by each monitor"
-      },
-      animation: {
-        onComplete: function () {
-          var chartInstance = this.chart;
-          var ctx = chartInstance.ctx;
-          
-          var height = chartInstance.controller.boxes[0].bottom;
-          ctx.textAlign = "center";
-          Chart.helpers.each(this.data.datacol.forEach(function (dataset, i) {
-            var meta = chartInstance.controller.getDatasetMeta(i);
-            Chart.helpers.each(meta.data.forEach(function (bar, index) {
-              ctx.fillText(dataset.data[index], bar._model.x, height - ((height - bar._model.y) / 1.1));
-            }),this)
-          }),this);
-        }
       },
       scales: {            
         yAxes: [{
@@ -140,33 +120,13 @@ new Chart(document.getElementById("bar-chart-imageSources"), {
             imageSources['Transgender']*100/(imageSources['Male']+imageSources['Female']+imageSources['Transgender']),
           ],
         }
-      ],
-      datacol:[{
-        data:[
-          imageSources['Female'],imageSources['Male'],imageSources['Transgender']
-        ]
-      }]
+      ]
     },
     options: {
       legend: { display: false },
       title: {
         display: true,
         text: "Sources by images"
-      },
-      animation: {
-        onComplete: function () {
-          var chartInstance = this.chart;
-          var ctx = chartInstance.ctx;
-          
-          var height = chartInstance.controller.boxes[0].bottom;
-          ctx.textAlign = "center";
-          Chart.helpers.each(this.data.datacol.forEach(function (dataset, i) {
-            var meta = chartInstance.controller.getDatasetMeta(i);
-            Chart.helpers.each(meta.data.forEach(function (bar, index) {
-              ctx.fillText(dataset.data[index], bar._model.x, height - ((height - bar._model.y) / 1.1));
-            }),this)
-          }),this);
-        }
       },
       scales: {            
         yAxes: [{
@@ -236,32 +196,12 @@ new Chart(document.getElementById("genderAware"), {
           ],
         }
       ],
-      datacol:[{
-        data:[
-          genderAwareYes,genderAwareNo
-        ]
-      }]
     },
     options: {
       legend: { display: false },
       title: {
         display: true,
         text: "Gender Aware"
-      },
-      animation: {
-        onComplete: function () {
-          var chartInstance = this.chart;
-          var ctx = chartInstance.ctx;
-          
-          var height = chartInstance.controller.boxes[0].bottom;
-          ctx.textAlign = "center";
-          Chart.helpers.each(this.data.datacol.forEach(function (dataset, i) {
-            var meta = chartInstance.controller.getDatasetMeta(i);
-            Chart.helpers.each(meta.data.forEach(function (bar, index) {
-              ctx.fillText(dataset.data[index], bar._model.x, height - ((height - bar._model.y) / 1.1));
-            }),this)
-          }),this);
-        }
       },
       scales: {            
         yAxes: [{
@@ -325,39 +265,19 @@ new Chart(document.getElementById("reporterProportion"), {
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#3bsd9f"],
           //data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
           data:[
-            reporterProportion['Female']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']),
-            reporterProportion['Male']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']),
-            reporterProportion['Transgender']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']),
+            reporterProportion['Female']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']+reporterProportion['Unknown']),
+            reporterProportion['Male']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']+reporterProportion['Unknown']),
+            reporterProportion['Transgender']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']+reporterProportion['Unknown']),
             reporterProportion['Unknown']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']+reporterProportion['Unknown']),
           ],
         }
       ],
-      datacol:[{
-        data:[
-          reporterProportion['Female'],reporterProportion['Male'],reporterProportion['Transgender'],reporterProportion['Unknown']
-        ]
-      }]
     },
     options: {
       legend: { display: false },
       title: {
         display: true,
         text: "Reporter proportion"
-      },
-      animation: {
-        onComplete: function () {
-          var chartInstance = this.chart;
-          var ctx = chartInstance.ctx;
-          
-          var height = chartInstance.controller.boxes[0].bottom;
-          ctx.textAlign = "center";
-          Chart.helpers.each(this.data.datacol.forEach(function (dataset, i) {
-            var meta = chartInstance.controller.getDatasetMeta(i);
-            Chart.helpers.each(meta.data.forEach(function (bar, index) {
-              ctx.fillText(dataset.data[index], bar._model.x, height - ((height - bar._model.y) / 1.1));
-            }),this)
-          }),this);
-        }
       },
       scales: {            
         yAxes: [{
@@ -385,39 +305,19 @@ new Chart(document.getElementById("presenterProportion"), {
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#3bsd9f"],
           //data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
           data:[
-            presenterProportion['Female']*100/(presenterProportion['Male']+presenterProportion['Female']+presenterProportion['Transgender']),
-            presenterProportion['Male']*100/(presenterProportion['Male']+presenterProportion['Female']+presenterProportion['Transgender']),
-            presenterProportion['Transgender']*100/(presenterProportion['Male']+presenterProportion['Female']+presenterProportion['Transgender']),
+            presenterProportion['Female']*100/(presenterProportion['Male']+presenterProportion['Female']+presenterProportion['Transgender']+presenterProportion['Unknown']),
+            presenterProportion['Male']*100/(presenterProportion['Male']+presenterProportion['Female']+presenterProportion['Transgender']+presenterProportion['Unknown']),
+            presenterProportion['Transgender']*100/(presenterProportion['Male']+presenterProportion['Female']+presenterProportion['Transgender']+presenterProportion['Unknown']),
             presenterProportion['Unknown']*100/(presenterProportion['Male']+presenterProportion['Female']+presenterProportion['Transgender']+presenterProportion['Unknown']),
           ],
         }
       ],
-      datacol:[{
-        data:[
-          presenterProportion['Female'],presenterProportion['Male'],presenterProportion['Transgender'],presenterProportion['Unknown']
-        ]
-      }]
     },
     options: {
       legend: { display: false },
       title: {
         display: true,
         text: "Reporter proportion"
-      },
-      animation: {
-        onComplete: function () {
-          var chartInstance = this.chart;
-          var ctx = chartInstance.ctx;
-          
-          var height = chartInstance.controller.boxes[0].bottom;
-          ctx.textAlign = "center";
-          Chart.helpers.each(this.data.datacol.forEach(function (dataset, i) {
-            var meta = chartInstance.controller.getDatasetMeta(i);
-            Chart.helpers.each(meta.data.forEach(function (bar, index) {
-              ctx.fillText(dataset.data[index], bar._model.x, height - ((height - bar._model.y) / 1.1));
-            }),this)
-          }),this);
-        }
       },
       scales: {            
         yAxes: [{
@@ -510,3 +410,126 @@ new Chart(document.getElementById("presenterProportionValue"), {
       }
     }
 });
+
+var gSD = [
+    genderSources['Female']*100/(genderSources['Male']+genderSources['Female']+genderSources['Transgender']),
+    genderSources['Male']*100/(genderSources['Male']+genderSources['Female']+genderSources['Transgender']),
+    genderSources['Transgender']*100/(genderSources['Male']+genderSources['Female']+genderSources['Transgender']),
+];
+var gSL = ["Female","Male","Transgender"];
+var pieGenderSources = getPie("pie-chart-genderSources",gSL,gSD);
+
+
+var gSDV = [
+  genderSources['Female'],
+  genderSources['Male'],
+  genderSources['Transgender'],
+];
+
+var gSLV = ["Female","Male","Transgender"];
+var pieGenderSourcesValue = getPie("pie-chart-genderSourcesValue",gSLV,gSDV);
+
+
+
+var iSDV = [
+    imageSources['Female']*100/(imageSources['Male']+imageSources['Female']+imageSources['Transgender']),
+    imageSources['Male']*100/(imageSources['Male']+imageSources['Female']+imageSources['Transgender']),
+    imageSources['Transgender']*100/(imageSources['Male']+imageSources['Female']+imageSources['Transgender']),
+];
+
+var iSLV = ["Female","Male","Transgender"];
+var pieImageSourcesValue = getPie("pie-chart-imageSources",iSLV,iSDV);
+
+
+
+var iSDV = [
+    imageSources['Female'],
+    imageSources['Male'],
+    imageSources['Transgender']
+];
+
+var iSLV = ["Female","Male","Transgender"];
+var pieImageSourcesValue = getPie("pie-chart-imageSourcesValue",iSLV,iSDV);
+
+var gad = [
+    genderAwareYes*100/(genderAwareYes+genderAwareNo),
+    genderAwareNo*100/(genderAwareYes+genderAwareNo),
+];
+
+var gal = ["Yes","No"];
+var gaf = getPie("piegenderAware",gal,gad);
+
+
+var gadv = [
+    genderAwareYes,
+    genderAwareNo,
+];
+
+var galv = ["Yes","No"];
+var gafv = getPie("piegenderAwareValue",galv,gadv);
+
+
+var rPD = [
+    reporterProportion['Female']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']+reporterProportion['Unknown']),
+    reporterProportion['Male']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']+reporterProportion['Unknown']),
+    reporterProportion['Transgender']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']+reporterProportion['Unknown']),
+    reporterProportion['Unknown']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']+reporterProportion['Unknown']),
+];
+
+var rPL = ["Female","Male","Transgender","Unknown"];
+var rPF = getPie("pieReporterProportion",rPL,rPD);
+
+var rPDV = [
+    reporterProportion['Female'],
+    reporterProportion['Male'],
+    reporterProportion['Transgender'],
+    reporterProportion['Unknown'],
+];
+
+var rPLV = ["Female","Male","Transgender","Unknown"];
+var rPFV = getPie("pieReporterProportionValue",rPLV,rPDV);
+
+//Presenter Proportion
+
+var pPD = [
+    presenterProportion['Female']*100/(presenterProportion['Male']+presenterProportion['Female']+presenterProportion['Transgender']+presenterProportion['Unknown']),
+    presenterProportion['Male']*100/(presenterProportion['Male']+presenterProportion['Female']+presenterProportion['Transgender']+presenterProportion['Unknown']),
+    presenterProportion['Transgender']*100/(presenterProportion['Male']+presenterProportion['Female']+presenterProportion['Transgender']+presenterProportion['Unknown']),
+    presenterProportion['Unknown']*100/(presenterProportion['Male']+presenterProportion['Female']+presenterProportion['Transgender']+presenterProportion['Unknown']),
+];
+
+var pPL = ["Female","Male","Transgender","Unknown"];
+var pPF = getPie("piePresenterProportion",pPL,pPD);
+
+
+var pPDV = [
+    presenterProportion['Female'],
+    presenterProportion['Male'],
+    presenterProportion['Transgender'],
+    presenterProportion['Unknown'],
+];
+
+var pPLV = ["Female","Male","Transgender","Unknown"];
+var pPFV = getPie("piePresenterProportionValue",pPLV,pPDV);
+
+function getPie(id,l,d){
+  var oilCanvas = document.getElementById(id);
+
+  var oilData = {
+      labels: l,
+      datasets: [
+          {
+              data:d,
+              backgroundColor: [
+                  "#3e95cd","#8e5ea2","#3cba9f",
+              ]
+          }]
+  };
+
+  var pieChart = new Chart(oilCanvas, {
+    type: 'pie',
+    data: oilData
+  });
+}
+
+console.log(0*100/0+0);
