@@ -148,7 +148,7 @@ class ElaborateSurvey extends Controller{
     private function proportionImage($data){
         $this->imageSources["Female"] = $this->imageSources["Female"] + isset($data->data->question59) ? (int) $data->data->question59 : 0;
         $this->imageSources["Male"] = $this->imageSources["Male"] + isset($data->data->question60) ? (int) $data->data->question60 : 0;
-        $this->imageSources["trans"] = $data->data->question071 - ($this->imageSources["Female"] + $this->imageSources["Male"]);
+        $this->imageSources["trans"] = isset($data->data->question071) ? (int) $data->data->question071 : 0 - ($this->imageSources["Female"] + $this->imageSources["Male"]);
     }
 
 
