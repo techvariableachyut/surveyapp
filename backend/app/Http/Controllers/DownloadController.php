@@ -66,40 +66,17 @@ class DownloadController extends Controller
                         }
                     }
                 }
-                
-                // foreach ($e as $index => $questiontitle) {
-                //     if(preg_match("/question/",$e->name)){
-                //         $this->questionnames[] = $questiontitle;
-                //         $this->questionnames[] = $questiontitle;
-                //     }
-                    
-                //     if ($index == "title") {
-                //         $this->questionarray[] = $questiontitle;
-                //     }
-
-                //     if ($index == "label") {
-                //         $this->questionarray[] = $questiontitle;
-                //     }
-
-                //     if($index == "name"){
-                //         if (preg_match("/section/",$questiontitle) ) {
-                //         }else{
-                //             $this->questionnames[] = $questiontitle;
-                //         }
-                //     }
-                // }
 
             }
             
         }
-        dd($this->questionarray);
     }
 
     private function renderAnswer($a){
-        //get the questions of survey
+        
         $answers = json_decode($a);
         $questionnames = $this->questionnames;
-        dd($questionnames);
+
         foreach (json_decode($answers[0]->answer) as $answersindex => $answer) {
             if ($answersindex == "data") {
                 $temp = array();   
