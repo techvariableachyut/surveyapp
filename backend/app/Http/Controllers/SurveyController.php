@@ -18,12 +18,28 @@ class SurveyController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function index(){
+        $completed = 0;
+        $reviewed = 0;
+
         if (!Auth::user()) {
             return redirect('/login');
         }
         $questions = Questions::all();
-        //dd($questions);
-        return view('survey.dashboard',compact('questions'));
+        $answers = DB::table('answers')->select('done')->get();
+
+        foreach ($answers as $key => $value) {
+            if ($value->done == "Completed") {
+                $completed = $completed + 1;
+            }
+
+            if ($value->done == "Reviewed") {
+                $reviewed = $reviewed + 1;
+            }
+        }
+        
+        //dd($completed,$reviewed);
+        //dd($answers);
+        return view('survey.dashboard',compact('questions','answers','completed','reviewed'));
     }
 
     /**

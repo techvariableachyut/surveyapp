@@ -39,3 +39,30 @@ Route::post('/survey/answer/update', 'AnswerController@resumecompleteupdate');
 Route::post('/answer/submit/complete', 'AnswerController@store');
 Route::get('/answers/csv/all/{surveyId}', "DownloadController@downloadall");
 Route::post('/answers/grouped/create', 'AnswerController@storeMany');
+
+Route::resource('/settings', 'SettingsController');
+Route::get('/administrative/call', 'AdministrativeController@call');
+
+
+//Route::get('/cronjob', 'CronjobController@save');
+
+Route::get('/administrative/responses/submitted', 'AdministrativeController@responsesSubmitted');
+
+Route::get('/administrative/responses/monitor', 'AdministrativeController@responsesSubmittedMonitor');
+
+Route::get('/administrative/responses/saved', 'AdministrativeController@responsesSaved');
+
+Route::get('/administrative/responses/reviewed', 'AdministrativeController@responsesReviewed');
+
+Route::get('/administrative/sources/gender', 'AdministrativeController@genderSources');
+
+Route::get('/administrative/reporter/gender/proportion', 'AdministrativeController@reporterGenderProportion');
+
+Route::get('/administrative/presenter/gender/proportion', 'AdministrativeController@presenterGenderProportion');
+
+Route::get('/administrative/image/gender/proportion', 'AdministrativeController@imageGenderProportion');
+
+Route::get('/administrative/gender/stereotype/challenge', 'AdministrativeController@genderStereotypeChallenge');
+
+Route::get('/survey/info/{id}', 'ElaborateSurvey@elaborate');
+Route::get('/download/administrative/{id}', 'ElaborateSurvey@createCsv');

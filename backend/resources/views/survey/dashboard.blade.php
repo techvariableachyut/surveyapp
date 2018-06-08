@@ -8,8 +8,8 @@
                 <div class="card-block">
                     <div class="media">
                         <div class="media-body text-xs-left">
-                            <h3 class="pink">278</h3>
-                            <span>New Projects</span>
+                            <h3 class="pink"><?= count($questions) ?></h3>
+                            <span>Total Survey</span>
                         </div>
                         <div class="media-right media-middle">
                             <i class="icon-bag2 pink font-large-2 float-xs-right"></i>
@@ -25,8 +25,8 @@
                 <div class="card-block">
                     <div class="media">
                         <div class="media-body text-xs-left">
-                            <h3 class="teal">156</h3>
-                            <span>New Clients</span>
+                            <h3 class="teal"><?= count($answers) ?></h3>
+                            <span>Total Responses</span>
                         </div>
                         <div class="media-right media-middle">
                             <i class="icon-user1 teal font-large-2 float-xs-right"></i>
@@ -42,8 +42,8 @@
                 <div class="card-block">
                     <div class="media">
                         <div class="media-body text-xs-left">
-                            <h3 class="deep-orange">64.89 %</h3>
-                            <span>Conversion Rate</span>
+                            <h3 class="deep-orange">{{ $completed }}</h3>
+                            <span>Completed</span>
                         </div>
                         <div class="media-right media-middle">
                             <i class="icon-diagram deep-orange font-large-2 float-xs-right"></i>
@@ -59,8 +59,8 @@
                 <div class="card-block">
                     <div class="media">
                         <div class="media-body text-xs-left">
-                            <h3 class="cyan">423</h3>
-                            <span>Support Tickets</span>
+                            <h3 class="cyan">{{ $reviewed }}</h3>
+                            <span>Reviewed</span>
                         </div>
                         <div class="media-right media-middle">
                             <i class="icon-ios-help-outline cyan font-large-2 float-xs-right"></i>
@@ -92,23 +92,23 @@
             <div class="card-footer">
                 <div class="row">
                     <div class="col-xs-3 text-xs-center">
-                        <span class="text-muted">Total Projects</span>
-                        <h2 class="block font-weight-normal">18</h2>
+                        <span class="text-muted">Total Surveys</span>
+                        <h2 class="block font-weight-normal"><?= count($questions) ?></h2>
                         <progress class="progress progress-xs mt-2 progress-success" value="70" max="100"></progress>
                     </div>
                     <div class="col-xs-3 text-xs-center">
-                        <span class="text-muted">Total Task</span>
-                        <h2 class="block font-weight-normal">125</h2>
+                        <span class="text-muted">Total Responses</span>
+                        <h2 class="block font-weight-normal"><?= count($answers) ?></h2>
                         <progress class="progress progress-xs mt-2 progress-success" value="40" max="100"></progress>
                     </div>
                     <div class="col-xs-3 text-xs-center">
-                        <span class="text-muted">Completed Task</span>
-                        <h2 class="block font-weight-normal">242</h2>
+                        <span class="text-muted">Completed</span>
+                        <h2 class="block font-weight-normal">{{ $completed }}</h2>
                         <progress class="progress progress-xs mt-2 progress-success" value="60" max="100"></progress>
                     </div>
                     <div class="col-xs-3 text-xs-center">
-                        <span class="text-muted">Total Revenue</span>
-                        <h2 class="block font-weight-normal">$11,582</h2>
+                        <span class="text-muted">Reviewed</span>
+                        <h2 class="block font-weight-normal">{{ $reviewed }}</h2>
                         <progress class="progress progress-xs mt-2 progress-success" value="90" max="100"></progress>
                     </div>
                 </div>
@@ -120,12 +120,12 @@
             <div class="card-body">
                 <div class="position-relative">
                     <div class="chart-title position-absolute mt-2 ml-2 white">
-                        <h1 class="display-4">84%</h1>
-                        <span>Employees Satisfied</span>
+                        <h1 class="display-4">{{ floor(($reviewed/count($answers))*100) }}%</h1>
+                        <span>Survey Reviewed</span>
                     </div>
                     <canvas id="emp-satisfaction" class="height-400 block"></canvas>
                     <div class="chart-stats position-absolute position-bottom-0 position-right-0 mb-2 mr-3 white">
-                        <a href="#" class="btn bg-info bg-darken-3 mr-1 white">Statistics <i class="icon-stats-bars"></i></a> for the last year.
+                        <a href="/survey/all" class="btn bg-info bg-darken-3 mr-1 white">Statistics <i class="icon-stats-bars"></i></a> for all survey.
                     </div>
                 </div>
             </div>
@@ -157,7 +157,7 @@
                                             @if(!$question->title)
                                                 -
                                             @else
-                                                {{ $question->title }}
+                                                <a href="/survey/info/{{$question->token}}">{{ $question->title }}</a>
                                             @endif
                                         </td>
                                         <td class="text-truncate">

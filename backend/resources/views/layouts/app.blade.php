@@ -81,7 +81,7 @@
                         Register
                       </a>
                     @else
-                      <a href="#" class="dropdown-item">
+                      <a href="{{ route('settings.index') }}" class="dropdown-item">
                         <i class="icon-head"></i> 
                         Edit Profile
                       </a>
@@ -169,9 +169,8 @@
     <script src="/js/surveylist.js"></script>
     <!-- END PAGE LEVEL JS-->
     @yield('script')
-
     @yield('editscript')
-
+    <script src="/js/charts/charts.js" type="text/javascript"></script>
 
   </body>
 </html>

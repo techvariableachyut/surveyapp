@@ -9,13 +9,8 @@
                 </li>
               </ol>
         </div>
-<div class="col-lg-12">
+        <div class="col-lg-12">
             <div class="card">
-                <!-- <div class="card-header">
-                    <h4 class="card-title">{{$question->title}}</h4>
-                    
-                    
-                </div> -->
                 <div class="card-body">
 
                     <div class="card-block">
@@ -40,20 +35,20 @@
                             <tbody>
                                 @foreach($answers as $index => $a)
                                   <tr>
-                                      <td class="text-truncate"><a href="#">{{ $index + 1 }}</a></td>
+                                      <td class="text-truncate"><a href="#">{{ $a->attribute->token }}</a></td>
                                       <td class="text-truncate">
-                                          {{ $a->done }}
+                                          {{ $a->attribute->done }}
                                       </td>
-                                      <td> <a href="/survey/answer/user/{{$a->surveyId}}/{{$a->token}}">View</a></td>
-                                      <td><a href="/answer/create/csv/{{ $a->surveyId }}/{{ $a->token }}" class="btn btn-sm">Download</a></td>
+                                      <td> <a href="/survey/answer/user/{{$a->attribute->surveyId}}/{{$a->attribute->token}}">View</a></td>
+                                      <td><a href="/answer/create/csv/{{ $a->attribute->surveyId }}/{{ $a->attribute->token }}" class="btn btn-sm">Download</a></td>
                                       
                                   </tr>
                                 @endforeach
                             </tbody>
                         </table>
                         <div style="padding: 5%;">
-                            @if(count($answers) == 0)
-                                No responses has been yet made to this Survey. Yet you can visit reviewed if there are any. View <a href="/survey/reviewed/{{$question->token}}" class="btn btn-sm btn-default">Reviewed</a>
+                            @if(count($ans) == 0)
+                                <p>No response were found for this survey.</p>
                             @endif
                         </div>
                     </div>
