@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Auth;
 use App\Answers;
 use App\Sections;
@@ -148,7 +146,7 @@ class ElaborateSurvey extends Controller{
     private function proportionImage($data){
         $this->imageSources["Female"] = $this->imageSources["Female"] + isset($data->data->question59) ? (int) $data->data->question59 : 0;
         $this->imageSources["Male"] = $this->imageSources["Male"] + isset($data->data->question60) ? (int) $data->data->question60 : 0;
-        $this->imageSources["trans"] = $data->data->question071 - ($this->imageSources["Female"] + $this->imageSources["Male"]);
+        $this->imageSources["Transgender"] = $data->data->question071 - ($this->imageSources["Female"] + $this->imageSources["Male"]);
     }
 
 
@@ -192,18 +190,19 @@ class ElaborateSurvey extends Controller{
         $get = $this->render($array);
 
         $question = 
-        ["Total number of responses submitted
-        # Number of responses submitted by each monitor
-        # Total number of responses saved 
-        # Total number of responses reviewed
-        # Sources by gender - proportion of Female, male, trans of total sources
-        # People in images – proportion of Female, male, trans of total people in images
-        # Stories that are gender aware – proportion of total number of stories
-        # Number of stories for further analysis
-        # Reporters by gender - Female, male, trans proportion of total reporters
-        # Presenters by gender - Female, male, trans proportion of total presenters 
-        ",
-        "$get"
+        [
+            "Total number of responses submitted
+            # Number of responses submitted by each monitor
+            # Total number of responses saved 
+            # Total number of responses reviewed
+            # Sources by gender - proportion of Female, male, trans of total sources
+            # People in images – proportion of Female, male, trans of total people in images
+            # Stories that are gender aware – proportion of total number of stories
+            # Number of stories for further analysis
+            # Reporters by gender - Female, male, trans proportion of total reporters
+            # Presenters by gender - Female, male, trans proportion of total presenters 
+            ",
+            "$get"
         ];
 
         $this->downloadfile($question);

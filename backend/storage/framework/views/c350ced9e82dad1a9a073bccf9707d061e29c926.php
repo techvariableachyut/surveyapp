@@ -69,7 +69,6 @@
         </div>
     </div>
 
-
     <script type="text/javascript">
         window.__token__ = "<?php echo e(Session::token()); ?>";
         window.__page__ = "survey"
@@ -82,11 +81,8 @@
     <script src="/js/survey.js"></script>
     <script src="/js/scripts.js"></script>
     <script src="/js/jquery-confirm.min.js"></script>
-
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet"/>
-        <script src="/js/surveyjs-widgets.js"></script>
-
+    <script src="/js/select2.min.js"></script>
+    <link href="/css/select2.min.css" rel="stylesheet"/>
+    <script src="/js/surveyjs-widgets.js"></script>
 </body>
 </html>

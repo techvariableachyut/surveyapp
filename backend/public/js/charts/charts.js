@@ -1,4 +1,4 @@
-
+var steps = 3;
 var m = JSON.parse(monitors);
 var genderSources = JSON.parse(genderSources);
 var imageSources = JSON.parse(imageSources);
@@ -16,7 +16,6 @@ new Chart(document.getElementById("bar-chart-monitors"), {
           label: "Responses by each monitor",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
           data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
-          //data:[5,10,15,20,25,30,35,40,45,50]
         }
       ]
     },
@@ -37,7 +36,6 @@ new Chart(document.getElementById("bar-chart-genderSources"), {
         {
           label: "Sources by gender",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
-          //data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
           data:[
             genderSources['Female']*100/(genderSources['Male']+genderSources['Female']+genderSources['Transgender']),
             genderSources['Male']*100/(genderSources['Male']+genderSources['Female']+genderSources['Transgender']),
@@ -96,7 +94,6 @@ new Chart(document.getElementById("bar-chart-genderSourcesValue"), {
         {
           label: "Sources by gender",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
-          //data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
           data:[
             genderSources['Female'],
             genderSources['Male'],
@@ -118,7 +115,7 @@ new Chart(document.getElementById("bar-chart-genderSourcesValue"), {
           },  
           scaleLabel: {
             display: true,
-            labelString: "Percentage"
+            labelString: "Number"
           }
         }]
       }
@@ -133,7 +130,6 @@ new Chart(document.getElementById("bar-chart-imageSources"), {
         {
           label: "Sources by images",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
-          //data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
           data:[
             imageSources['Female']*100/(imageSources['Male']+imageSources['Female']+imageSources['Transgender']),
             imageSources['Male']*100/(imageSources['Male']+imageSources['Female']+imageSources['Transgender']),
@@ -192,7 +188,6 @@ new Chart(document.getElementById("bar-chart-imageSourcesValue"), {
         {
           label: "Sources by images",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
-          //data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
           data:[
             imageSources['Female'],
             imageSources['Male'],
@@ -214,7 +209,7 @@ new Chart(document.getElementById("bar-chart-imageSourcesValue"), {
           },  
           scaleLabel: {
             display: true,
-            labelString: "Percentage"
+            labelString: "Number"
           }
         }]
       }
@@ -229,7 +224,6 @@ new Chart(document.getElementById("genderAware"), {
         {
           label: "Gender Aware",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
-          //data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
           data:[
             genderAwareYes*100/(genderAwareYes+genderAwareNo),
             genderAwareNo*100/(genderAwareYes+genderAwareNo),
@@ -287,7 +281,6 @@ new Chart(document.getElementById("genderAwareValue"), {
         {
           label: "Gender Aware",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
-          //data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
           data:[
             genderAwareYes,
             genderAwareNo,
@@ -308,7 +301,7 @@ new Chart(document.getElementById("genderAwareValue"), {
           },  
           scaleLabel: {
             display: true,
-            labelString: "Percentage"
+            labelString: "Number"
           }
         }]
       }
@@ -323,12 +316,11 @@ new Chart(document.getElementById("reporterProportion"), {
         {
           label: "Reporter Proportion",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#3bsd9f"],
-          //data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
           data:[
             reporterProportion['Female']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']),
             reporterProportion['Male']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']),
             reporterProportion['Transgender']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']),
-            reporterProportion['Unknown']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']+reporterProportion['Unknown']),
+            reporterProportion['Unknown']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']),
           ],
         }
       ],
@@ -383,7 +375,6 @@ new Chart(document.getElementById("presenterProportion"), {
         {
           label: "Reporter Proportion",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#3bsd9f"],
-          //data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
           data:[
             presenterProportion['Female']*100/(presenterProportion['Male']+presenterProportion['Female']+presenterProportion['Transgender']),
             presenterProportion['Male']*100/(presenterProportion['Male']+presenterProportion['Female']+presenterProportion['Transgender']),
@@ -408,7 +399,6 @@ new Chart(document.getElementById("presenterProportion"), {
         onComplete: function () {
           var chartInstance = this.chart;
           var ctx = chartInstance.ctx;
-          
           var height = chartInstance.controller.boxes[0].bottom;
           ctx.textAlign = "center";
           Chart.helpers.each(this.data.datacol.forEach(function (dataset, i) {
@@ -435,6 +425,7 @@ new Chart(document.getElementById("presenterProportion"), {
     }
 });
 
+
 new Chart(document.getElementById("reporterProportionValue"), {
     type: 'bar',
     data: {
@@ -443,7 +434,6 @@ new Chart(document.getElementById("reporterProportionValue"), {
         {
           label: "Reporter Proportion",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#3bsd9f"],
-          //data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
           data:[
             reporterProportion['Female'],
             reporterProportion['Male'],
@@ -466,7 +456,7 @@ new Chart(document.getElementById("reporterProportionValue"), {
           },  
           scaleLabel: {
             display: true,
-            labelString: "Percentage"
+            labelString: "Number"
           }
         }]
       }
@@ -481,7 +471,6 @@ new Chart(document.getElementById("presenterProportionValue"), {
         {
           label: "Reporter Proportion",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#3bsd9f"],
-          //data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
           data:[
             presenterProportion['Female'],
             presenterProportion['Male'],
@@ -504,7 +493,7 @@ new Chart(document.getElementById("presenterProportionValue"), {
           },  
           scaleLabel: {
             display: true,
-            labelString: "Percentage"
+            labelString: "Number"
           }
         }]
       }

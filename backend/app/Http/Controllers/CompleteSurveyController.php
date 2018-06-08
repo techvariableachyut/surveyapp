@@ -22,7 +22,6 @@ class CompleteSurveyController extends Controller{
             return redirect('/login');
         }
         $ans = Answers::where('surveyId',$id)->where('done','Completed')->simplePaginate(10);
-
         $obj = new \StdClass();
         $answers = new \StdClass();
 
@@ -35,7 +34,7 @@ class CompleteSurveyController extends Controller{
                         if(isset($token->question995)){
                             $obj->token = $token->question995;
                         }else{
-                            $obj->token = "12345678";
+                            $obj->token = "";
                         }
                     }
                 }
@@ -43,7 +42,6 @@ class CompleteSurveyController extends Controller{
             $answers->$aindex = $obj;
         }
 
-        //dd($answers);
         $question = Questions::where('token',$id)->first();
         return view('answer.answers',compact('answers','question','ans'));
     }
@@ -61,8 +59,26 @@ class CompleteSurveyController extends Controller{
         if (!Auth::user()) {
             return redirect('/login');
         }
-        $answers = Answers::where('surveyId',$id)->where('done','Reviewed')->simplePaginate(10);
+        $ans = Answers::where('surveyId',$id)->where('done','Reviewed')->simplePaginate(10);
+        $obj = new \StdClass();
+        $answers = new \StdClass();
+        foreach ($ans as $aindex => $avalue) {
+            foreach ($avalue as $key => $value) {
+                $obj->$key = $value;
+                $obj->attribute = $avalue;
+                foreach (json_decode($avalue->answer) as $tokenindex => $token){
+                    if ($tokenindex == "data") {
+                        if(isset($token->question995)){
+                            $obj->token = $token->question995;
+                        }else{
+                            $obj->token = "";
+                        }
+                    }
+                }
+            }
+            $answers->$aindex = $obj;
+        }
         $question = Questions::where('token',$id)->first();
-        return view('answer.reviewed',compact('answers','question'));
+        return view('answer.reviewed',compact('answers','question','ans'));
     }
 }

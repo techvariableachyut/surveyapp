@@ -25,7 +25,7 @@
                         <table class="table table-hover mb-0">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th>Tracking Code</th>
                                     <th>Status</th>
                                     <th>View Response</th>
                                     <th>Downlaod</th>

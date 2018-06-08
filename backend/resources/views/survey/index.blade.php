@@ -69,7 +69,6 @@
         </div>
     </div>
 
-
     <script type="text/javascript">
         window.__token__ = "{{ Session::token() }}";
         window.__page__ = "survey"
@@ -85,6 +84,5 @@
     <script src="/js/select2.min.js"></script>
     <link href="/css/select2.min.css" rel="stylesheet"/>
     <script src="/js/surveyjs-widgets.js"></script>
-
 </body>
 </html>
