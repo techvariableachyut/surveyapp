@@ -5,7 +5,6 @@
     display:flex;
     justify-content: space-between;
 }
-
 </style>
  
 <section id="minimal-statistics">
@@ -127,7 +126,7 @@
     </div>
 
     <div class="row">    
-        <canvas class="charts" id="bar-chart-monitors" width="800" height="350"></canvas>
+        <canvas id="bar-chart-monitors" class="charts" width="800" height="350"></canvas>
     </div>
 </section>
 
@@ -165,11 +164,18 @@
 
     <div class="row">
         <div class="col-lg-6">
-            <canvas class="charts" id="bar-chart-genderSources" width="800" height="350"></canvas>
+            <canvas id="bar-chart-genderSources" class="charts" width="800" height="350"></canvas>
         </div>
+        <!-- <div class="col-lg-6">
+            <canvas id="bar-chart-genderSourcesValue" class="charts" width="800" height="350"></canvas>
+        </div>  -->
+
         <div class="col-lg-6">
-            <canvas class="charts" id="bar-chart-genderSourcesValue" width="800" height="350"></canvas>
+            <canvas id="pie-chart-genderSources" class="charts" width="800" height="350"></canvas>
         </div> 
+        <!-- <div class="col-lg-6">
+            <canvas id="pie-chart-genderSourcesValue" class="charts" width="800" height="350"></canvas>
+        </div>  -->
     </div>
     
 </section>
@@ -209,11 +215,17 @@
 
     <div class="row">
         <div class="col-lg-6">
-            <canvas class="charts" id="bar-chart-imageSources" width="800" height="350"></canvas>
+            <canvas id="bar-chart-imageSources" class="charts" width="800" height="350"></canvas>
         </div>
+        <!-- <div class="col-lg-6">
+            <canvas id="bar-chart-imageSourcesValue" class="charts" width="800" height="350"></canvas> 
+        </div> -->
         <div class="col-lg-6">
-            <canvas class="charts" id="bar-chart-imageSourcesValue" width="800" height="350"></canvas> 
+            <canvas id="pie-chart-imageSources" class="charts" width="800" height="350"></canvas> 
         </div>
+        <!-- <div class="col-lg-6">
+            <canvas id="pie-chart-imageSourcesValue" class="charts" width="800" height="350"></canvas> 
+        </div> -->
     </div>
 </section>
 
@@ -268,11 +280,17 @@
 
     <div class="row">
         <div class="col-lg-6">
-            <canvas class="charts" id="genderAware" width="800" height="350"></canvas>
+            <canvas id="genderAware" class="charts" width="800" height="350"></canvas>
         </div>
+        <!-- <div class="col-lg-6">
+            <canvas id="genderAwareValue" class="charts" width="800" height="350"></canvas>
+        </div> -->
         <div class="col-lg-6">
-            <canvas class="charts" id="genderAwareValue" width="800" height="350"></canvas>
+            <canvas id="piegenderAware" class="charts" width="800" height="350"></canvas>
         </div>
+        <!-- <div class="col-lg-6">
+            <canvas id="piegenderAwareValue" class="charts" width="800" height="350"></canvas>
+        </div> -->
     </div>
 </section>
 
@@ -320,35 +338,42 @@
     
     <div class="row">
         <?php $__currentLoopData = $reporterProportion; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $reporter): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <?php if( $index != "Total"): ?>
-            <div class="col-xl-3 col-lg-6 col-xs-12">
-                <div class="card bg-pink">
-                    <div class="card-body">
-                        <div class="card-block">
-                            <div class="media">
-                                <div class="media-left media-middle">
-                                    <i class="icon-user1 white font-large-2 float-xs-left"></i>
-                                </div>
-                                <div class="media-body white text-xs-right">
-                                    <h3><?php echo e($index); ?></h3>
-                                    <span><?php echo e($reporter); ?> </span>
+            <?php if($index != 'Total'): ?>         
+                <div class="col-xl-3 col-lg-6 col-xs-12">
+                    <div class="card bg-pink">
+                        <div class="card-body">
+                            <div class="card-block">
+                                <div class="media">
+                                    <div class="media-left media-middle">
+                                        <i class="icon-user1 white font-large-2 float-xs-left"></i>
+                                    </div>
+                                    <div class="media-body white text-xs-right">
+                                        <h3><?php echo e($index); ?></h3>
+                                        <span><?php echo e($reporter); ?> </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        <?php endif; ?>
+            <?php endif; ?>
+
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
 
     <div class="row">
         <div class="col-lg-6">
-            <canvas class="charts" id="reporterProportion" width="800" height="350"></canvas>
+            <canvas id="reporterProportion" class="charts" width="800" height="350"></canvas>
         </div>
+        <!-- <div class="col-lg-6">
+            <canvas id="reporterProportionValue" class="charts" width="800" height="350"></canvas>
+        </div> -->
         <div class="col-lg-6">
-            <canvas class="charts" id="reporterProportionValue" width="800" height="350"></canvas>
+            <canvas id="pieReporterProportion" class="charts" width="800" height="350"></canvas>
         </div>
+        <!-- <div class="col-lg-6">
+            <canvas id="pieReporterProportionValue" class="charts" width="800" height="350"></canvas>
+        </div> -->
     </div>
 </section>
 
@@ -364,37 +389,70 @@
 
     <div class="row">
         <?php $__currentLoopData = $presenterProportion; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $presenter): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <?php if( $index != "Total"): ?>
-                <div class="col-xl-3 col-lg-6 col-xs-12">
-                    <div class="card bg-grey">
-                        <div class="card-body">
-                            <div class="card-block">
-                                <div class="media">
-                                    <div class="media-left media-middle">
-                                        <i class="icon-user1 white font-large-2 float-xs-left"></i>
-                                    </div>
-                                    <div class="media-body white text-xs-right">
-                                        <h3><?php echo e($index); ?></h3>
-                                        <span><?php echo e($presenter); ?> </span>
-                                    </div>
-                                </div>
+        <?php if($index != 'Total'): ?>  
+        <div class="col-xl-3 col-lg-6 col-xs-12">
+            <div class="card bg-grey">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="media">
+                            <div class="media-left media-middle">
+                                <i class="icon-user1 white font-large-2 float-xs-left"></i>
+                            </div>
+                            <div class="media-body white text-xs-right">
+                                <h3><?php echo e($index); ?></h3>
+                                <span><?php echo e($presenter); ?> </span>
                             </div>
                         </div>
                     </div>
                 </div>
-            <?php endif; ?>
+            </div>
+        </div>
+        <?php endif; ?>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
 
     <div class="row">
         <div class="col-lg-6">
-            <canvas id="presenterProportion" width="800" height="350"></canvas>
+            <canvas id="presenterProportion" class="charts" width="800" height="350"></canvas>
         </div>
-        <div class="col-lg-6">        
-            <canvas id="presenterProportionValue" width="800" height="350"></canvas>
+        <!-- <div class="col-lg-6">        
+            <canvas id="presenterProportionValue" class="charts" width="800" height="350"></canvas>
+        </div> -->
+        <div class="col-lg-6">
+            <canvas id="piePresenterProportion" class="charts" width="800" height="350"></canvas>
+        </div>
+        <!-- <div class="col-lg-6">        
+            <canvas id="piePresenterProportionValue" class="charts" width="800" height="350"></canvas>
+        </div> -->
+    </div>
+</section>
+
+
+
+<section id="minimal-statistics-bg">
+    <div class="row">
+        <div class="col-xs-12 mt-1 mb-3">
+            <h4>Women reporters and proportions</h4>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            Female Reporter and Sources
+            <canvas id="womenReporterAndSources" class="charts" width="800" height="350"></canvas>
+        </div>
+        <div class="col-lg-6">
+            Male Reporter and Sources
+            <canvas id="manReporterAndSources" class="charts" width="800" height="350"></canvas>
+        </div>
+        <div class="col-lg-6">
+            Stories with women sources/subject
+            <canvas id="storiesWithWomen" class="charts" width="800" height="350"></canvas>
         </div>
     </div>
 </section>
+
 
     </div>
     </div>
@@ -412,5 +470,4 @@
         window.genderAwareNo = '<?= $genderAware["no"] ?>';
     </script>
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

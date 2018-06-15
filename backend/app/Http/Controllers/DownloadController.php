@@ -68,34 +68,49 @@ class DownloadController extends Controller
                             $this->questionarray[$val->name] = $val->title;
                         }
                     }
+
                 }
 
             }
-        }     
+            
+        }
     }
 
-    private function renderAnswer($a){
+
+    private function renderAnswer($answers){
         $count = 0;
-        foreach ($a as $answer) {
+        foreach ($answers as $answer) {
             $temp = array();
-            foreach (json_decode($answer->answer) as $index => $value) {
-                if ($index == "data") {
-                    foreach ($value as $index => $qAnswer) {
-                        if ($index === "section") {
-                            
-                        }else{
-                            if(is_array($qAnswer)){
-                                $a = "";
-                                foreach ($qAnswer as $qI => $qA) {
-                                    foreach($qA as $ii => $aa){
-                                        $a = $a . "\r\n" . $this->questionarray[$ii] . " :- " . $aa;
+            $json = json_decode($answer->answer);
+            $questionAnswer = $json->data;
+
+            foreach ($questionAnswer as $index => $eachQA) {
+                if ($index !== "section" ) {
+                    if (is_array($eachQA)) {
+                        $string = "";
+                        $i = 0;
+                        foreach ($eachQA as $loopindex => $loopvalue) {
+                            if($index !== "question16"){
+                                foreach ($loopvalue as $stringindex => $stringvalue) {
+                                    if($this->questionarray[$stringindex]){
+                                        if($stringvalue == "other"){
+
+                                        }
+                                        $string = $string . "\r\n" . $this->questionarray[$stringindex] . " :- " . $stringvalue;
+                                    }else {
+                                        $q = explode("-",$stringindex);
                                     }
                                 }
-                                $temp[$index] = $a;
-                            }else{
-                                $temp[$index] = $qAnswer;
                             }
+
+                            if(++$i != $loopindex ) {
+                                $string = $string . "\r\n" . "---------------------------------------------------------------------------------------------------";
+                            }
+
                         }
+                        $temp[$index] = $string;
+                    }else{
+                        $temp[$index] = $eachQA;
                     }
                 }
             }
@@ -104,10 +119,12 @@ class DownloadController extends Controller
         }
     }
 
+
     private function sequenceQuestionAnswer(){
         $questions = $this->questionarray;
         $answers = $this->answersarray;
 
+        
         foreach ($answers as $aIndex => $a) {
             $temp = array();
             foreach ($questions as $qIndex =>  $q) {
@@ -130,14 +147,15 @@ class DownloadController extends Controller
         }
     }
 
+
+
+
     public function downloadall(Request $request,$surveyId){
         $answers = Answers::where('surveyId',$surveyId)->get();
         $question = Questions::where('token',$surveyId)->first();
 
         $this->renderQuestion($question);
         $this->renderAnswer($answers);
-
-
         $this->sequenceQuestionAnswer();
         
 
@@ -152,16 +170,12 @@ class DownloadController extends Controller
 
     private function downloadfile($finalarray){
         $file = fopen('php://memory', 'w');
-
-        if(!is_dir(public_path() . "/csv")){
-            mkdir(public_path() . "/csv", 0777);
-        }
-
-        $uniqueid = uniqid();
-
-        $localfile = fopen(public_path() . "/csv/$uniqueid" . ".csv", 'w');
-        fwrite($localfile, json_encode($finalarray));
-        
+        // if(!is_dir(public_path() . "/csv")){
+        //     mkdir(public_path() . "/csv", 0777);
+        // }
+        // $uniqueid = uniqid();
+        // $localfile = fopen(public_path() . "/csv/$uniqueid" . ".csv", 'w');
+        // fwrite($localfile, json_encode($finalarray));
         foreach($finalarray as $line){
             fputcsv($file,explode('#',$line)); 
         }
