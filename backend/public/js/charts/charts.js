@@ -31,16 +31,17 @@ new Chart(document.getElementById("bar-chart-monitors"), {
 new Chart(document.getElementById("bar-chart-genderSources"), {
     type: 'bar',
     data: {
-      labels: ["Female", "Male", "Transgender"],
+      labels: ["Female", "Male", "Transgender","Unknown"],
       datasets: [
         {
           label: "Sources by gender",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#3cba8e"],
           //data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
           data:[
-            genderSources['Female']*100/(genderSources['Male']+genderSources['Female']+genderSources['Transgender']),
-            genderSources['Male']*100/(genderSources['Male']+genderSources['Female']+genderSources['Transgender']),
-            genderSources['Transgender']*100/(genderSources['Male']+genderSources['Female']+genderSources['Transgender']),
+            genderSources['Female']*100/(genderSources['Male']+genderSources['Female']+genderSources['Transgender']+genderSources['Unknown']),
+            genderSources['Male']*100/(genderSources['Male']+genderSources['Female']+genderSources['Transgender']+genderSources['Unknown']),
+            genderSources['Transgender']*100/(genderSources['Male']+genderSources['Female']+genderSources['Transgender']+genderSources['Unknown']),
+            genderSources['Unknown']*100/(genderSources['Male']+genderSources['Female']+genderSources['Transgender']+genderSources['Unknown']),
           ],
         }
       ],
@@ -116,7 +117,7 @@ new Chart(document.getElementById("bar-chart-imageSources"), {
           data:[
             imageSources['Female']*100/(imageSources['Male']+imageSources['Female']+imageSources['Transgender']),
             imageSources['Male']*100/(imageSources['Male']+imageSources['Female']+imageSources['Transgender']),
-            imageSources['Transgender']*100/(imageSources['Male']+imageSources['Female']+imageSources['Transgender']),
+            0,
           ],
         }
       ]
@@ -261,7 +262,7 @@ new Chart(document.getElementById("reporterProportion"), {
       datasets: [
         {
           label: "Reporter Proportion",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#3bsd9f"],
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#3cba99"],
           //data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
           data:[
             reporterProportion['Female']*100/(reporterProportion['Male']+reporterProportion['Female']+reporterProportion['Transgender']+reporterProportion['Unknown']),
@@ -301,7 +302,7 @@ new Chart(document.getElementById("presenterProportion"), {
       datasets: [
         {
           label: "Reporter Proportion",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#3bsd9f"],
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#3cba99"],
           //data: [m['Monitor 1'], m['Monitor 2'], m['Monitor 3'], m['Monitor 4'], m['Monitor 5'], m['Monitor 6'], m['Monitor 7'], m['Monitor 8'], m['Monitor 9'], m['Monitor 10']]
           data:[
             presenterProportion['Female']*100/(presenterProportion['Male']+presenterProportion['Female']+presenterProportion['Transgender']+presenterProportion['Unknown']),
@@ -416,7 +417,7 @@ var gSD = [
     genderSources['Transgender']*100/(genderSources['Male']+genderSources['Female']+genderSources['Transgender']),
 ];
 var gSL = ["Female","Male","Transgender"];
-var pieGenderSources = getPie("pie-chart-genderSources",gSL,gSD);
+// var pieGenderSources = getPie("pie-chart-genderSources",gSL,gSD);
 
 
 var gSDV = [
@@ -437,7 +438,7 @@ var iSDV = [
 ];
 
 var iSLV = ["Female","Male","Transgender"];
-var pieImageSourcesValue = getPie("pie-chart-imageSources",iSLV,iSDV);
+// var pieImageSourcesValue = getPie("pie-chart-imageSources",iSLV,iSDV);
 
 
 
@@ -456,7 +457,7 @@ var gad = [
 ];
 
 var gal = ["Yes","No"];
-var gaf = getPie("piegenderAware",gal,gad);
+// var gaf = getPie("piegenderAware",gal,gad);
 
 
 var gadv = [
@@ -476,7 +477,7 @@ var rPD = [
 ];
 
 var rPL = ["Female","Male","Transgender","Unknown"];
-var rPF = getPie("pieReporterProportion",rPL,rPD);
+// var rPF = getPie("pieReporterProportion",rPL,rPD);
 
 var rPDV = [
     reporterProportion['Female'],
@@ -498,7 +499,7 @@ var pPD = [
 ];
 
 var pPL = ["Female","Male","Transgender","Unknown"];
-var pPF = getPie("piePresenterProportion",pPL,pPD);
+// var pPF = getPie("piePresenterProportion",pPL,pPD);
 
  
 var pPDV = [
@@ -578,7 +579,7 @@ function getBar(id,l,d){
           {
               data:d,
               backgroundColor: [
-                  "#3e95cd","#8e5ea2","#3cba9f",
+                  "#3e95cd","#8e5ea2","#3cba9f","#3cba9d",
               ]
           }]
   };

@@ -17,7 +17,7 @@
             </div>
             <div>
                 <i>
-                   <a href="/download/administrative/<?php echo e($surveyId); ?>">Download CSV/XLS File</a>
+                   <a href="/answers/csv/all/<?php echo e($surveyId); ?>">Download CSV/XLS File</a>
                 </i>
             </div>
         </div>
@@ -170,9 +170,9 @@
             <canvas id="bar-chart-genderSourcesValue" class="charts" width="800" height="350"></canvas>
         </div>  -->
 
-        <div class="col-lg-6">
+        <!-- <div class="col-lg-6">
             <canvas id="pie-chart-genderSources" class="charts" width="800" height="350"></canvas>
-        </div> 
+        </div>  -->
         <!-- <div class="col-lg-6">
             <canvas id="pie-chart-genderSourcesValue" class="charts" width="800" height="350"></canvas>
         </div>  -->
@@ -220,9 +220,9 @@
         <!-- <div class="col-lg-6">
             <canvas id="bar-chart-imageSourcesValue" class="charts" width="800" height="350"></canvas> 
         </div> -->
-        <div class="col-lg-6">
+        <!-- <div class="col-lg-6">
             <canvas id="pie-chart-imageSources" class="charts" width="800" height="350"></canvas> 
-        </div>
+        </div> -->
         <!-- <div class="col-lg-6">
             <canvas id="pie-chart-imageSourcesValue" class="charts" width="800" height="350"></canvas> 
         </div> -->
@@ -285,9 +285,9 @@
         <!-- <div class="col-lg-6">
             <canvas id="genderAwareValue" class="charts" width="800" height="350"></canvas>
         </div> -->
-        <div class="col-lg-6">
+        <!-- <div class="col-lg-6">
             <canvas id="piegenderAware" class="charts" width="800" height="350"></canvas>
-        </div>
+        </div> -->
         <!-- <div class="col-lg-6">
             <canvas id="piegenderAwareValue" class="charts" width="800" height="350"></canvas>
         </div> -->
@@ -368,9 +368,9 @@
         <!-- <div class="col-lg-6">
             <canvas id="reporterProportionValue" class="charts" width="800" height="350"></canvas>
         </div> -->
-        <div class="col-lg-6">
+        <!-- <div class="col-lg-6">
             <canvas id="pieReporterProportion" class="charts" width="800" height="350"></canvas>
-        </div>
+        </div> -->
         <!-- <div class="col-lg-6">
             <canvas id="pieReporterProportionValue" class="charts" width="800" height="350"></canvas>
         </div> -->
@@ -418,9 +418,9 @@
         <!-- <div class="col-lg-6">        
             <canvas id="presenterProportionValue" class="charts" width="800" height="350"></canvas>
         </div> -->
-        <div class="col-lg-6">
+        <!-- <div class="col-lg-6">
             <canvas id="piePresenterProportion" class="charts" width="800" height="350"></canvas>
-        </div>
+        </div> -->
         <!-- <div class="col-lg-6">        
             <canvas id="piePresenterProportionValue" class="charts" width="800" height="350"></canvas>
         </div> -->
@@ -429,7 +429,7 @@
 
 
 
-<section id="minimal-statistics-bg">
+<!-- <section id="minimal-statistics-bg">
     <div class="row">
         <div class="col-xs-12 mt-1 mb-3">
             <h4>Women reporters and proportions</h4>
@@ -451,7 +451,7 @@
             <canvas id="storiesWithWomen" class="charts" width="800" height="350"></canvas>
         </div>
     </div>
-</section>
+</section> -->
 
 
     </div>

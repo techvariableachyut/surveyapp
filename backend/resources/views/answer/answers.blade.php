@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+.pagination{
+    float: right;
+    padding-right: 10px;
+}
+</style>
 <div class="breadcrumb-wrapper col-xs-12">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/survey/all">All Survey</a>
@@ -33,20 +39,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($answers as $index => $a)
+                                @foreach($ans as $index => $a)
+                                 
                                   <tr>
-                                      <td class="text-truncate"><a href="#">{{ $a->attribute->token }}</a></td>
+                                      <td class="text-truncate"><a href="#">{{json_decode($a->answer)->data->question995}}</a></td>
                                       <td class="text-truncate">
-                                          {{ $a->attribute->done }}
+                                          {{ $a->done }}
                                       </td>
-                                      <td> <a href="/survey/answer/user/{{$a->attribute->surveyId}}/{{$a->attribute->token}}">View</a></td>
-                                      <td><a href="/answer/create/csv/{{ $a->attribute->surveyId }}/{{ $a->attribute->token }}" class="btn btn-sm">Download</a></td>
+                                      <td> <a href="/survey/answer/user/{{$a->surveyId}}/{{$a->token}}">View</a></td>
+                                      <td><a href="/answer/create/csv/{{ $a->surveyId }}/{{ $a->token }}" class="btn btn-sm">Download</a></td>
                                       
                                   </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        <div style="padding: 5%;">
+                        <div class="pagination">
+                            {{ $ans->links() }}
+                        </div>
+                        
+                        <div style="padding: 10px;">
                             @if(count($ans) == 0)
                                 <p>No response were found for this survey.</p>
                             @endif

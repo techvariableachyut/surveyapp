@@ -5,6 +5,9 @@
     .form-group{
         margin-bottom: 1em !important;
     }
+    .logo{
+        width:220px;
+    }
 </style>
 <section class="flexbox-container">
     <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1  box-shadow-2 p-0">
@@ -12,6 +15,7 @@
             <div class="card-header no-border">
                 <div class="card-title text-xs-center">
                     <div class="p-1">
+                        <img class="logo" src="/imgs/logo.jpg" alt="">
                         <h1>IMS survey tool</h1>
                     </div>
                 </div>
