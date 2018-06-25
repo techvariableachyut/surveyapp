@@ -35,20 +35,23 @@
                                     <th>Status</th>
                                     <th>View Response</th>
                                     <th>Downlaod</th>
-
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($ans as $index => $a)
-                                 
                                   <tr>
                                       <td class="text-truncate"><a href="#">{{json_decode($a->answer)->data->question995}}</a></td>
                                       <td class="text-truncate">
                                           {{ $a->done }}
                                       </td>
-                                      <td> <a href="/survey/answer/user/{{$a->surveyId}}/{{$a->token}}">View</a></td>
+                                      <td> 
+                                        <a href="/survey/answer/user/{{$a->surveyId}}/{{$a->token}}">View</a>
+                                      </td>
                                       <td><a href="/answer/create/csv/{{ $a->surveyId }}/{{ $a->token }}" class="btn btn-sm">Download</a></td>
-                                      
+                                      <td>
+                                        <a onclick="deleteSurveyResponse('{{$a->token}}')" href="#"  class="btn btn-sm btn-danger">Delete</a>
+                                      </td>
                                   </tr>
                                 @endforeach
                             </tbody>

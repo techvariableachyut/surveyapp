@@ -9,6 +9,5 @@ class Answers extends Model
     protected $fillable = [
         'email', 'surveyId', 'answer','token','done'
     ];
-
-    public $timestamps = false;
+    public $timestamps = true;
 }

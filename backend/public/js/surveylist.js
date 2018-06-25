@@ -3,6 +3,12 @@ function deleteSurvey(token){
   conf ? window.location.replace('/survey/delete/'+token) : false
 }
 
+function deleteSurveyResponse(token){
+    var conf = confirm('Are you sure?')
+    conf ? window.location.replace('/survey/response/delete/'+token) : false
+  }
+
+
 function copy(token,id,csrfToken){
   $.ajax({
       type: 'POST', 

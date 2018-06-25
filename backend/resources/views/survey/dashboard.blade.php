@@ -157,7 +157,7 @@
                                             @if(!$question->title)
                                                 -
                                             @else
-                                                <a href="/survey/info/{{$question->token}}">{{ $question->title }}</a>
+                                                <a href="{{ URL::asset("/survey/info/".$question->token)}}">{{ $question->title }}</a>
                                             @endif
                                         </td>
                                         <td class="text-truncate">

@@ -103,28 +103,6 @@
         </div>
     </div>
 
-    <div class="row">
-        <?php $__currentLoopData = $monitors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $monitor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <div class="col-xl-3 col-lg-6 col-xs-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="media">
-                            <div class="media-body text-xs-left">
-                                <h3 class="pink"><?php echo e($monitors[$index]); ?></h3>
-                                <span><?php echo e($index); ?></span>
-                            </div>
-                            <div class="media-right media-middle">
-                                <i class="icon-user4 <?php echo e($loop->iteration%2==0 ? 'pink' : 'black'); ?> font-large-2 float-xs-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </div>
-
     <div class="row">    
         <canvas id="bar-chart-monitors" class="charts" width="800" height="350"></canvas>
     </div>

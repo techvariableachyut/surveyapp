@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Answers;
 use App\Questions;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 // use NestedJsonFlattener\Flattener\Flattener;
 
 class DownloadController extends Controller
@@ -46,6 +47,9 @@ class DownloadController extends Controller
     }
 
     private function renderQuestion($question){
+        $this->questionarray["Response ID"] = "Response ID";
+        $this->questionarray["Date Submitted"] = "Date Submitted";
+        $this->questionarray["Status"] = "Status";
         foreach (json_decode($question->json) as $questions) {
             foreach ($questions->elements as $e) {
                 if(preg_match("/question/",$e->name)){
@@ -78,6 +82,10 @@ class DownloadController extends Controller
             $totalList = array();
             $json = json_decode($answer->answer);
             $questionAnswer = $json->data;
+            $temp["Response ID"]= $answer->id;
+            $temp["Date Submitted"] =  $answer->created_at;
+            $temp["Status"] =  $answer->done;
+
             foreach ($questionAnswer as $index => $eachQA) {
                 if ($index !== "section" ) {
                         if (is_array($eachQA)) {
@@ -85,6 +93,7 @@ class DownloadController extends Controller
                                 $i = 0;
                                 foreach ($eachQA as $loopindex => $loopvalue) {
                                     $i ++;
+                                    // $r[] = $loopvalue;
                                     foreach ($loopvalue as $stringindex => $stringvalue) { 
                                         if(preg_match("/\bComment\b/",$stringindex)){
                                             $hasother = explode("-",$stringindex);
@@ -115,7 +124,6 @@ class DownloadController extends Controller
             }
             if (!empty($list)) {
                 foreach ($list as $key => $value) {
-                    // dd($list);
                     $totalList = array_merge($temp,$value);
                     $this->answersarray[] = $totalList;
                 } 
@@ -171,13 +179,16 @@ class DownloadController extends Controller
         // fwrite($localfile, json_encode($finalarray));
         // fclose($localfile); 
 
+        $today = Carbon::today();
+        $date = Carbon::today()->format('d-m-Y');
+        $fileName = "Gender-Media-Monitoring-Tool-Export-Data-".$date.".csv";
         $file = fopen('php://memory', 'w');
         foreach($finalarray as $line){
             fputcsv($file,explode('#',$line)); 
         }
         fseek($file, 0);
         header('Content-Type: application/csv');
-        header('Content-Disposition: attachment; filename="csvfile.csv";');
+        header('Content-Disposition: attachment; filename='.$fileName);
         fpassthru($file);
     }
 

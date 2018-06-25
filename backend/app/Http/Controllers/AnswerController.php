@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\User;
 use App\Answers;
 use Illuminate\Http\Request;
@@ -47,7 +47,6 @@ class AnswerController extends Controller
             'done' => "Completed",
             'answer' => json_encode($request['answer'])
         ]);
-
         // $this->sendMail();
     }
 
@@ -98,7 +97,11 @@ class AnswerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (!Auth::user()) {
+            return redirect('/login');
+        }
+        Answers::where('token', $id)->delete();
+        return redirect()->back();
     }
 
     public function resumecompleteupdate(Request $request){

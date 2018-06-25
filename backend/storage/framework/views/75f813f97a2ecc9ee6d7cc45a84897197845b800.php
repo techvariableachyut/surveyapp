@@ -7,35 +7,35 @@
     <meta name="description" content="Robust admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, robust admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Survey App</title>
-    <link rel="apple-touch-icon" sizes="60x60" href="/app-assets/images/ico/apple-icon-60.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/app-assets/images/ico/apple-icon-76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/app-assets/images/ico/apple-icon-120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/app-assets/images/ico/apple-icon-152.png">
-    <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/ico/favicon.ico">
-    <link rel="shortcut icon" type="image/png" href="/app-assets/images/ico/favicon-32.png">
+    <title>Gender Media Monitoring Tool</title>
+    <link rel="apple-touch-icon" sizes="60x60" href="<?php echo e(URL::asset('/app-assets/images/ico/apple-icon-60.png')); ?>">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo e(URL::asset('/app-assets/images/ico/apple-icon-76.png')); ?>">
+    <link rel="apple-touch-icon" sizes="120x120" href="<?php echo e(URL::asset('/app-assets/images/ico/apple-icon-120.png')); ?>">
+    <link rel="apple-touch-icon" sizes="152x152" href="<?php echo e(URL::asset('/app-assets/images/ico/apple-icon-152.png')); ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(URL::asset('/app-assets/images/ico/favicon.ico')); ?>">
+    <link rel="shortcut icon" type="image/png" href="<?php echo e(URL::asset('/app-assets/images/ico/favicon-32.png')); ?>">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <!-- BEGIN VENDOR CSS-->
-    <link rel="stylesheet" type="text/css" href="/app-assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(URL::asset('/app-assets/css/bootstrap.css')); ?>">
     <!-- font icons-->
-    <link rel="stylesheet" type="text/css" href="/app-assets/fonts/icomoon.css">
-    <link rel="stylesheet" type="text/css" href="/app-assets/fonts/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/pace.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(URL::asset('/app-assets/fonts/icomoon.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(URL::asset('/app-assets/fonts/flag-icon-css/css/flag-icon.min.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(URL::asset('/app-assets/vendors/css/extensions/pace.css')); ?>">
     <!-- END VENDOR CSS-->
     <!-- BEGIN ROBUST CSS-->
-    <link rel="stylesheet" type="text/css" href="/app-assets/css/bootstrap-extended.css">
-    <link rel="stylesheet" type="text/css" href="/app-assets/css/app.css">
-    <link rel="stylesheet" type="text/css" href="/app-assets/css/colors.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(URL::asset('/app-assets/css/bootstrap-extended.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(URL::asset('/app-assets/css/app.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(URL::asset('/app-assets/css/colors.css')); ?>">
     <!-- END ROBUST CSS-->
     <!-- BEGIN Page Level CSS-->
-    <link rel="stylesheet" type="text/css" href="/app-assets/css/core/menu/menu-types/vertical-menu.css">
-    <link rel="stylesheet" type="text/css" href="/app-assets/css/core/menu/menu-types/vertical-overlay-menu.css">
-    <link rel="stylesheet" type="text/css" href="/app-assets/css/core/colors/palette-gradient.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(URL::asset('/app-assets/css/core/menu/menu-types/vertical-menu.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(URL::asset('/app-assets/css/core/menu/menu-types/vertical-overlay-menu.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(URL::asset('/app-assets/css/core/colors/palette-gradient.css')); ?>">
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(URL::asset('/assets/css/style.css')); ?>">
     <!-- END Custom CSS-->
     
   </head>
@@ -48,16 +48,14 @@
           <ul class="nav navbar-nav">
             <li class="nav-item mobile-menu hidden-md-up float-xs-left"><a class="nav-link nav-menu-main menu-toggle hidden-xs"><i class="icon-menu5 font-large-1"></i></a></li>
             <li class="nav-item">
-              <a href="index.html" class="navbar-brand nav-link">
+              <a href="<?php echo e(URL::asset('/')); ?>" class="navbar-brand nav-link">
                 <img alt="branding logo" 
-                src="/app-assets/images/logo/logo.png" 
-                data-expand="/app-assets/images/logo/logo.png" 
-                data-collapse="/app-assets/images/logo/logo-small.png" 
+                src="<?php echo e(URL::asset('/app-assets/images/logo/logo.png')); ?>" 
+                data-expand="<?php echo e(URL::asset('/app-assets/images/logo/logo.png')); ?>" 
+                data-collapse="<?php echo e(URL::asset('/app-assets/images/logo/logo-small.png')); ?>" 
                 class="brand-logo">
               </a>
-               <!-- <a href="/" class="navbar-brand nav-link">
-                <h1>Survey App</h1>
-              </a> -->
+
             </li>
             <li class="nav-item hidden-md-up float-xs-right"><a data-toggle="collapse" data-target="#navbar-mobile" class="nav-link open-navbar-container"><i class="icon-ellipsis pe-2x icon-icon-rotate-right-right"></i></a></li>
           </ul>
@@ -72,21 +70,25 @@
               <li class="dropdown dropdown-user nav-item"><a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link"><span class="avatar avatar-online"><img src="/app-assets/images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></span><span class="user-name"> <?php if(auth()->guard()->guest()): ?> <?php else: ?> <?php echo e(Auth::user()->name); ?> <?php endif; ?></span></a>
                   <div class="dropdown-menu dropdown-menu-right">
                     <?php if(auth()->guard()->guest()): ?>
-                      <a href="<?php echo e(route('login')); ?>" class="dropdown-item">
+                      <a href="<?php echo e(route("login")); ?>" class="dropdown-item">
                         <i class="icon-head"></i> 
                         Login
                       </a>
-                      <a href="<?php echo e(route('register')); ?>" class="dropdown-item">
+                      <a href="<?php echo e(route("register")); ?>" class="dropdown-item">
                         <i class="icon-head"></i> 
                         Register
                       </a>
                     <?php else: ?>
-                      <a href="<?php echo e(route('settings.index')); ?>" class="dropdown-item">
+                      <a href="<?php echo e(route("settings.index")); ?>" class="dropdown-item">
                         <i class="icon-head"></i> 
                         Edit Profile
                       </a>
-                      <div class="dropdown-divider"></div><a href="#" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="icon-power3"></i> Logout </a>
-                      <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;"><?php echo csrf_field(); ?></form>
+                      <div class="dropdown-divider"></div>
+                      <a href="#" 
+                      class="dropdown-item" 
+                      onclick="event.preventDefault(); document.getElementById("logout-form").submit();">
+                      <i class="icon-power3"></i> Logout </a>
+                      <form id="logout-form" action="<?php echo e(route("logout")); ?>" method="POST" style="display: none;"><?php echo csrf_field(); ?></form>
                     <?php endif; ?>
                   </div>
               </li>
@@ -105,21 +107,15 @@
       <!-- main menu content-->
       <div class="main-menu-content">
         <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
-          <li class=" nav-item"><a href="/dashboard"><i class="icon-home3"></i><span data-i18n="nav.dash.main" class="menu-title">Dashboard</span></a>
-            <!-- <ul class="menu-content">
-              <li ><a href="/survey" data-i18n="nav.dash.main" class="menu-item">Survey lists</a>
-              </li>
-              <li><a href="/create/question" data-i18n="nav.dash.main" class="menu-item">Create questions</a>
-              </li>
-            </ul> -->
+          <li class=" nav-item"><a href="<?php echo e(URL::asset("/dashboard")); ?>"><i class="icon-home3"></i><span data-i18n="nav.dash.main" class="menu-title">Dashboard</span></a>
+            
           </li>
 
 
           <li class=" nav-item"><a href="#"><i class="icon-paper"></i><span data-i18n="nav.survey.main" class="menu-title">Survey</span></a>
             <ul class="menu-content">
-              <li><a href="/create/question" data-i18n="nav.survey.create" class="menu-item">Create Survey</a></li>
-              <li><a href="/survey/all" data-i18n="nav.survey.create" class="menu-item">All Survey</a></li>
-              <!-- <li><a href="/survey/results" data-i18n="nav.survey.create" class="menu-item">Survey Responses</a></li> -->
+              <li><a href="<?php echo e(URL::asset("/create/question")); ?>" data-i18n="nav.survey.create" class="menu-item">Create Survey</a></li>
+              <li><a href="<?php echo e(URL::asset("/survey/all")); ?>" data-i18n="nav.survey.create" class="menu-item">All Survey</a></li>
 
             </ul>
           </li>
@@ -137,39 +133,39 @@
         <div class="content-header row">
         </div>
         <div class="content-body">
-            <?php echo $__env->yieldContent('content'); ?>
+            <?php echo $__env->yieldContent("content"); ?>
         </div>
       </div>
     </div>
 
 
     <!-- BEGIN VENDOR JS-->
-    <script src="<?php echo e(asset('/app-assets/js/core/libraries/jquery.min.js')); ?>" type="text/javascript"></script>
-    <script src="<?php echo e(asset('/app-assets/vendors/js/ui/tether.min.js')); ?>" type="text/javascript"></script>
-    <script src="/app-assets/js/core/libraries/bootstrap.min.js" type="text/javascript"></script>
-    <script src="/app-assets/vendors/js/ui/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
-    <script src="/app-assets/vendors/js/ui/unison.min.js" type="text/javascript"></script>
-    <script src="/app-assets/vendors/js/ui/blockUI.min.js" type="text/javascript"></script>
-    <script src="/app-assets/vendors/js/ui/jquery.matchHeight-min.js" type="text/javascript"></script>
-    <script src="/app-assets/vendors/js/ui/screenfull.min.js" type="text/javascript"></script>
-    <script src="/app-assets/vendors/js/extensions/pace.min.js" type="text/javascript"></script>
+    <script src="<?php echo e(URL::asset("/app-assets/js/core/libraries/jquery.min.js")); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(URL::asset("/app-assets/vendors/js/ui/tether.min.js")); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(URL::asset("/app-assets/js/core/libraries/bootstrap.min.js")); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(URL::asset("/app-assets/vendors/js/ui/perfect-scrollbar.jquery.min.js")); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(URL::asset("/app-assets/vendors/js/ui/unison.min.js")); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(URL::asset("/app-assets/vendors/js/ui/blockUI.min.js")); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(URL::asset("/app-assets/vendors/js/ui/jquery.matchHeight-min.js")); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(URL::asset("/app-assets/vendors/js/ui/screenfull.min.js")); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(URL::asset("/app-assets/vendors/js/extensions/pace.min.js")); ?>" type="text/javascript"></script>
     <!-- BEGIN VENDOR JS-->
     <!-- BEGIN PAGE VENDOR JS-->
-    <script src="/app-assets/vendors/js/charts/chart.min.js" type="text/javascript"></script>
+    <script src="<?php echo e(URL::asset("/app-assets/vendors/js/charts/chart.min.js")); ?>" type="text/javascript"></script>
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN ROBUST JS-->
-    <script src="/app-assets/js/core/app-menu.js" type="text/javascript"></script>
-    <script src="/app-assets/js/core/app.js" type="text/javascript"></script>
+    <script src="<?php echo e(URL::asset("/app-assets/js/core/app-menu.js")); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(URL::asset("/app-assets/js/core/app.js")); ?>" type="text/javascript"></script>
     <!-- END ROBUST JS-->
     <!-- BEGIN PAGE LEVEL JS-->
-    <script src="/app-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+    <script src="<?php echo e(URL::asset("/app-assets/js/scripts/pages/dashboard-lite.js")); ?>" type="text/javascript"></script>
     <script>
       var csrfToken = "<?php echo e(Session::token()); ?>";
     </script>
-    <script src="/js/surveylist.js"></script>
+    <script src="<?php echo e(URL::asset("/js/surveylist.js")); ?>"></script>
     <!-- END PAGE LEVEL JS-->
-    <?php echo $__env->yieldContent('script'); ?>
-    <?php echo $__env->yieldContent('editscript'); ?>
-    <script src="/js/charts/charts.js" type="text/javascript"></script>
+    <?php echo $__env->yieldContent("script"); ?>
+    <?php echo $__env->yieldContent("editscript"); ?>
+    <script src="<?php echo e(URL::asset("/js/charts/charts.js")); ?>" type="text/javascript"></script>
   </body>
 </html>

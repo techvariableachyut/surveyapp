@@ -23,7 +23,7 @@
                         <p>
                         {{$question->title}} 
                             <span class="float-xs-right">
-                                <a href="/survey/answer/{{$question->token}}">All Responses <i class="icon-arrow-right2"></i></a>
+                                <a href="/survey/answer/{{$question->token}}">All Completed Responses <i class="icon-arrow-right2"></i></a>
                             </span>
                         </p>
                     </div>
@@ -35,7 +35,7 @@
                                     <th>Status</th>
                                     <th>View Response</th>
                                     <th>Downlaod</th>
-
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,7 +48,9 @@
                                       </td>
                                       <td> <a href="/survey/answer/user/{{$a->surveyId}}/{{$a->token}}">View</a></td>
                                       <td><a href="/answer/create/csv/{{ $a->surveyId }}/{{ $a->token }}" class="btn btn-sm">Download</a></td>
-                                      
+                                      <td>
+                                        <a onclick="deleteSurveyResponse('{{$a->token}}')" href="#"  class="btn btn-sm btn-danger">Delete</a>
+                                      </td>
                                   </tr>
                                 @endforeach
                             </tbody>
