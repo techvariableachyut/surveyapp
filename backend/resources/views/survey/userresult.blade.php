@@ -26,20 +26,22 @@
     <link type="text/css" rel="stylesheet" href="/css/jquery-ui.css" />
     <link type="text/css" rel="stylesheet" href="/css/survey.css" />
     <link type="text/css" rel="stylesheet" href="/css/jquery-confirm.min.css">
+    <script src="/js/select2.min.js"></script>
+    <link href="/css/select2.min.css" rel="stylesheet"/>
     <script>
         window.__question__ = <?= $question ?>;
         window.__answer__ = <?= $answer ?>;
         window.__token__ = "{{Session::token()}}";
     </script>
-
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap-notify.min.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/survey.app.admin.js"></script>
-    <script src="/js/surveyjs-widgets.js"></script>
     <script src="/js/config.js"></script>
-    <script src="/js/survey_admin.js"></script>
     <script src="/js/jquery-confirm.min.js"></script>
+    <script src="/js/select2.min.js"></script>
+    <script src="/js/surveyjs-widgets.js"></script>
+    <script src="/js/survey_admin.js"></script>
     
     
 @endsection

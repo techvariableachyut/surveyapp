@@ -56,7 +56,6 @@
 <link rel="stylesheet" href="/css/survey.css" />
 <link rel="stylesheet" href="/css/surveyeditor.css" />
 <link rel="stylesheet" href="/css/index.css" />
-
 <script src="/js/editor.js"></script>
 
 @endsection

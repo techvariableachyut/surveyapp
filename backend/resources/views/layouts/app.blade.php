@@ -84,11 +84,10 @@
                         Edit Profile
                       </a>
                       <div class="dropdown-divider"></div>
-                      <a href="#" 
-                      class="dropdown-item" 
-                      onclick="event.preventDefault(); document.getElementById("logout-form").submit();">
-                      <i class="icon-power3"></i> Logout </a>
-                      <form id="logout-form" action="{{ route("logout") }}" method="POST" style="display: none;">@csrf</form>
+
+                      <a class="dropdown-item"  href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout </a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                      
                     @endif
                   </div>
               </li>

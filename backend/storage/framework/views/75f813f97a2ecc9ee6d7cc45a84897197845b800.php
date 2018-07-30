@@ -84,11 +84,10 @@
                         Edit Profile
                       </a>
                       <div class="dropdown-divider"></div>
-                      <a href="#" 
-                      class="dropdown-item" 
-                      onclick="event.preventDefault(); document.getElementById("logout-form").submit();">
-                      <i class="icon-power3"></i> Logout </a>
-                      <form id="logout-form" action="<?php echo e(route("logout")); ?>" method="POST" style="display: none;"><?php echo csrf_field(); ?></form>
+
+                      <a class="dropdown-item"  href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout </a>
+                      <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;"><?php echo e(csrf_field()); ?></form>
+                      
                     <?php endif; ?>
                   </div>
               </li>

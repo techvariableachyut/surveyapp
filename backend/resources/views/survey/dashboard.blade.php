@@ -120,8 +120,13 @@
             <div class="card-body">
                 <div class="position-relative">
                     <div class="chart-title position-absolute mt-2 ml-2 white">
+                    @if(count($answers) > 0 ) 
                         <h1 class="display-4">{{ floor(($reviewed/count($answers))*100) }}%</h1>
-                        <span>Survey Reviewed</span>
+                    @else 
+                        <h1 class="display-4">0%</h1>
+                    @endif
+                        
+                    <span>Survey Reviewed</span>
                     </div>
                     <canvas id="emp-satisfaction" class="height-400 block"></canvas>
                     <div class="chart-stats position-absolute position-bottom-0 position-right-0 mb-2 mr-3 white">

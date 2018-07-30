@@ -16,7 +16,7 @@
                 <div class="card-title text-xs-center">
                     <div class="p-1">
                         <img class="logo" src="/imgs/logo.jpg" alt="">
-                        <h1>Gender Media Monitoring Tool</h1>
+                        <h5>Gender Media Monitoring Tool</h5>
                     </div>
                 </div>
             </div>

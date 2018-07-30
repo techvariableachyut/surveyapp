@@ -13,6 +13,7 @@ function app(survey,Survey){
 
     function loadState(survey) {
         res = JSON.parse(__answer__.answer);
+        console.log(res)
         //Set the loaded data into the survey.
         survey.currentPageNo = 0;
         survey.data = res.data;
@@ -32,7 +33,7 @@ function app(survey,Survey){
     var json = {
         pages: JSON.parse(__question__.json)
     }
-
+    console.log(json)
     window.survey = new Survey.Model(json);
     app(window.survey,Survey)
     $('#title').html(__question__.title)

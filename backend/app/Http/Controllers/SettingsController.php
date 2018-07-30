@@ -16,7 +16,8 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        return view('settings');
+        $user = User::where('email',Auth::user()->email)->first();
+        return view('settings', compact('user'));
     }
 
     /**
@@ -36,14 +37,23 @@ class SettingsController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->password == $request->confirm_password) { 
-            User::where('email',Auth::user()->email)->update([
-                'password' => Hash::make($request->password),
-                'name' => $request->input('name'),
-                'email' => $request->input('email')
-            ]);
+        if($request->password){
+            if ($request->password == $request->confirm_password) { 
+                User::where('email',Auth::user()->email)->update([
+                    'password' => Hash::make($request->password),
+                    'name' =>  $request->input('name'),
+                    'username' => $request->input('username')
+                ]);
+            }
+        }else{
+            if ($request->password == $request->confirm_password) { 
+                User::where('email',Auth::user()->email)->update([
+                    'name' =>  $request->input('name'),
+                    'username' => $request->input('username')
+                ]);
+            }
         }
-
+        $request->session()->flash('upadteStatus', 'Updated successfully!');
         return redirect('/settings');
     }
 
